@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.post-container {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.post-types button {
+    padding: 10px;
+    border: none;
+    background-color: #eee;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.post-types button.active {
+    background-color: #ddd;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-form label,
+.post-form select,
+.post-form input,
+.post-form textarea {
+    margin-bottom: 10px;
+}
+
+.post-form input[type="text"],
+.post-form select,
+.post-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.post-settings {
+    margin: 20px 0;
+}
+
+.post-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.save-draft {
+    background-color: #eee;
+}
+
+.post-submit {
+    background-color: #0055B7;
+    color: white;
+}
+
+.home-button-container {
+    text-align: center; 
+    margin-top: 20px; 
+}
+
+
+
+.home-button:hover {
+    background-color: #003366; /* hover color */
+}
+.home-button {
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: #0055B7; /* Background color */
+    color: white; /* Text color */
+    text-decoration: none; 
+    border-radius: 5px; 
+    margin-bottom: 20px; 
+}
+
+.post-submit {
+    background-color: #0055B7; 
+    color: white;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; 
+}
+
+.post-submit:hover {
+    background-color: #003366; /* hover color */
+}

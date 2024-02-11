@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; 
+}
+
+.navbar {
+    background-color: #0055B7; 
+    color: white;
+    padding: 10px 0;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar ul li {
+    margin: 0 10px; 
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 10px 20px; 
+    border: 2px solid white; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.navbar ul li a:hover {
+    background-color: white; /* colors on hover */
+    color: #0055B7;
+    cursor: pointer;
+}
+
+.posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.post {
+    background-color: #ffffff; /* background for the post */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    border-radius: 5px; 
+    margin: 10px;
+    padding: 20px;
+    width: calc(33% - 20px); 
+    box-sizing: border-box;
+}
+
+.post h3 {
+    margin-top: 0;
+    color: #0055B7; 
+}
+
+.post p {
+    color: #333; 
+}
+
+ /*To make it good for other devices*/
+
+ @media (max-width: 768px) {
+    .posts-container {
+        padding: 10px;
+    }
+
+    .post {
+        width: calc(50% - 20px); /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .post {
+        width: 100%; /* Full width on very small screens */
+        margin: 10px 0;
+    }
+}
+
+
+/* Search bar */
+.search-container {
+    display: flex; 
+    justify-content: start; 
+    align-items: center; 
+    padding-left: 20px; 
+}
+
+/* Styles for the search input */
+#site-search {
+    padding: 10px;
+    margin-right: 10px; 
+    border: 2px solid #ccc; 
+    border-radius: 5px; 
+    outline: none; 
+}
+
+/* Styles for the search button */
+.search-button {
+    padding: 10px 20px;
+    background-color: #0055B7; 
+    color: white;
+    border: 2px solid #0055B7; 
+    border-radius: 5px; 
+    cursor: pointer;
+    outline: none; 
+}
+
+.search-button:hover {
+    background-color: #003366; /* hover color */
+    border-color: #f80808; /* change the border color on hover */
+}
+
+
+/* style for the Post button */
+.navbar ul li .post-tab {
+    background-color: #ffcc00; /* button color */
+    color: #000; /* text color */
+    padding: 10px 20px; 
+    border-radius: 5px;
+    margin-left: 20px; 
+    transition: background-color 0.3s; /* hover effect */
+}
+
+.navbar ul li .post-tab:hover {
+    background-color: #e6b800; /* color for hover */
+    color: #000;
+}

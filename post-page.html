@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Post</title>
+    <link rel="stylesheet" href="stylepost.css">
+</head>
+<body>
+    <body>
+
+        <a href="main page.html" class="home-button">Home</a> <!-- Go Home button -->
+    
+        <div class="post-container">
+            <h1>Create a post</h1>
+            <div class="post-types">
+                <button type="button" class="post-type active">Post</button>
+                <button type="button" class="post-type" id="image-video-btn">Image & Video</button>
+            </div>
+    
+            <form class="post-form" action="main page.html" method="post">     <!-- takes u to main page after post -->
+
+                <!-- drop down list for where to post-->
+                <label for="community">Choose where to post</label>
+                <select id="community" name="community">
+                    <option value="job-search">Job Search</option>
+                    <option value="lab-switches">Lab Switches</option>
+                    <option value="ubco-activities">UBCO Activities</option>
+                    <option value="marketplace">Marketplace</option>
+                </select>
+                <input type="text" id="title" name="title" placeholder="Title" required>
+                <textarea id="text" name="text" placeholder="Text (optional)"></textarea>
+    
+                <!-- Image upload section, shown/hidden -->
+                <div class="image-upload-container" id="image-upload-container" style="display: none;">
+                    <input type="file" id="image-upload" name="image-upload" accept="image/*,video/*">
+                </div>
+    
+                <button type="submit" class="post-submit">Post</button> <!--  button to submit the form -->
+            </form>
+        </div>
+    
+        <!-- JavaScript for image upload button -->
+        <script>
+            document.getElementById('image-video-btn').addEventListener('click', function() {
+                var imageUploadContainer = document.getElementById('image-upload-container');
+                imageUploadContainer.style.display = imageUploadContainer.style.display === 'none' ? 'block' : 'none';
+            });
+        </script>
+</body>
+</html>
