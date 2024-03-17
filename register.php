@@ -26,15 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // this is the default hashing algorithm
 
     // SQL statements to insert the data
-    $stmt = $con->prepare('INSERT INTO user_details(first_name, last_name, email, username, password) VALUES (:firstname, :lastname, :email, :username, :password)');
+    $stmt = $conn->prepare('INSERT INTO user_details(first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)');
 
-    $stmt->execute([
-        ':firstname' => $firstName,
-        ':lastname' => $lastName,
-        ':email' => $email,
-        ':username' => $username,
-        ':password' => $hashedPassword
-    ]);
+    $stmt->bind_param('sssss', $firstName, $lastName, $email, $username, $hashedPassword);
+
+    $stmt->execute();
 
     //redirect the user to the login page
     header('Location: main_page.html');
