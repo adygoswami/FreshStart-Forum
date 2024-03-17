@@ -1,14 +1,14 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'db_47130992';
-$dbuser = '47130992';
-$dbpass = '47130992';
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "db_47130992";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // making a connection to the db
-    $con = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
     // form data
     $firstName = $_POST['firstname'];
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ]);
 
     //redirect the user to the login page
-    header('Location: login.html');
+    header('Location: main_page.html');
     exit();
 }
 
