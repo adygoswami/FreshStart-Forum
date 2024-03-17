@@ -7,6 +7,8 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4; 
+    display: flex; /* flex display to body since there's no more container */
+    min-height: 100vh; 
 }
 
 .navbar {
@@ -124,15 +126,78 @@ body {
 
 /* style for the Post button */
 .navbar ul li .post-tab {
-    background-color: #ffcc00; /* button color */
-    color: #000; /* text color */
-    padding: 10px 20px; 
+    background-color: #0055B7; /* button color */
+    color: #ffffff; /* text color */
+   /*padding: 10px 20px; */
     border-radius: 5px;
-    margin-left: 20px; 
+    /*margin-left: 20px; */
     transition: background-color 0.3s; /* hover effect */
 }
 
 .navbar ul li .post-tab:hover {
     background-color: #e6b800; /* color for hover */
     color: #000;
+}
+
+/* Container for the two-column */
+.container {
+    display: flex; /* creates a flex container for the side layout */
+    width: 100%; 
+}
+
+/* Sidebar styles */
+.sidebar {
+    flex-basis: 25%; 
+    background-color: #f4f4f4; 
+  
+}
+
+/* Main content styles */
+.main-content {
+    flex-basis: 75%; 
+    background-color: #fff; 
+    padding: 20px;
+}
+
+/* make navbar to be on the sidebar */
+.navbar {
+    display: block; /* Stack the nav items instead of flex row */
+    background-color: #ffffff;
+    color: white;
+    padding: 0;
+
+}
+
+.navbar ul {
+    display: block;
+}
+
+.navbar ul li {
+    margin: 10px 0; 
+}
+
+.navbar ul li a {
+    color: #333; 
+    padding: 10px; 
+    border: none; 
+}
+
+.navbar ul li a:hover {
+    background-color: #f4f4f4; /* hover background color */
+    color: #0055B7; /* text color */
+}
+
+/* search bar styles*/
+.search-container {
+    padding-left: 0; 
+}
+
+/* posts-container to be in main content area */
+.posts-container {
+    flex-direction: column; /* Stack the posts vertically */
+}
+
+.post {
+    width: 100%; 
+    margin: 10px 0;
 }
