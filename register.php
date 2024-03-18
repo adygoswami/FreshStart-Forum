@@ -5,9 +5,13 @@
 // $dbuser = '47130992';
 // $dbpass = 'Yarvp04117.';
 
-$servername = "cosc360.ok.ubc.ca";
-$username = "47130992";
-$password = "Yarvp04117.";
+// $servername = "cosc360.ok.ubc.ca";
+// $username = "47130992";
+// $password = "Yarvp04117.";
+// $dbname = "db_47130992";
+$servername = "localhost";
+$username = "root";
+$password = "";
 $dbname = "db_47130992";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
