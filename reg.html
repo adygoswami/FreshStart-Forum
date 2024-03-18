@@ -42,7 +42,7 @@
                         <input type="password" id="password" name="password" >
                         
                         <!-- Password is invalid -->
-                        <div>
+                        <div class="pwe">
                             <p id="pwErrorLength"  class="pwError" style="display: none;"> The password must be at least 8 characters</p>
                             <p id="pwErrorSpecChar" class="pwError" style="display: none;"> The password must contain a special character {@, #, $, etc}</p>
                         </div> 
@@ -51,7 +51,7 @@
                         <input type="password" id="confirmpassword" name="confirmpassword" >
                         
                         <!-- Passwords do not match -->
-                        <div>
+                        <div class="pwe">
                             <p id="pwErrorMatch" class="pwError" style="display: none;"> The passwords do not match</p>
                         </div>
 
@@ -73,16 +73,25 @@
                 var pwErrorLength = document.getElementById('pwErrorLength');
                 var pwErrorSpecChar = document.getElementById('pwErrorSpecChar');
                 
+                //for the length
                 if(pw.length < 8){
                     pwErrorLength.style.display = 'block';
+                    pwErrorMatch.display = 'none';
+                    pwErrorSpecChar.display = 'none';
                     return false;
                 }
+                //for the special character
                 if(!pw.match(/[!@#$%^&*]/)){
                     pwErrorSpecChar.style.display = 'block';
+                    pwErrorLength.style.display = 'none';
+                    pwErrorMatch.display = 'none';
                     return false;
                 }
+                // for confirming password
                 if(pw != cpw){
                     pwErrorMatch.style.display = 'block';
+                    pwErrorSpecChar.style.display = 'none';
+                    pwErrorLength.style.display = 'none';
                     return false;
                 }
                 return true;

@@ -58,8 +58,8 @@ body {
 
 /* REGISTRATION FORM  */
 .reg form {
-    max-width:400px;
-    width: 100%;
+    max-width:25em;
+    width: 25em;
     background-color: white;
     padding: 50px;
     display: flex;
@@ -78,9 +78,15 @@ body {
 .reg input, button {
     width: 100%;
     padding:10px;
-    margin-bottom: 20px;
+    margin-bottom: 1em;
     border-radius: 5px;
     border: 1px solid #ccc;
+}
+.pwError{
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 button {
     padding: 15px;
@@ -95,6 +101,9 @@ button:hover {
     opacity: 0.8;
 }
 
+.pwe{
+    margin-bottom: 0.5em;
+}
 
 .welcome{
     font-family:Georgia, 'Times New Roman', Times, serif;
