@@ -1,14 +1,20 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_47130992";
+$host = "cosc360.ok.ubc.ca";
+$dbname = 'db_47130992';
+$dbuser = '47130992';
+$dbpass = 'Yarvp04117.';
+
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "db_47130992";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // making a connection to the db
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    // $conn = new mysqli($servername, $username, $password, $dbname);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
 
     // form data
     $firstName = $_POST['firstname'];
@@ -28,12 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // SQL statements to insert the data
     $stmt = $conn->prepare('INSERT INTO user_details(first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)');
 
-    $stmt->bind_param('sssss', $firstName, $lastName, $email, $username, $hashedPassword);
+    // $stmt->bind_param('sssss', $firstName, $lastName, $email, $username, $hashedPassword);
 
-    $stmt->execute();
+    // $stmt->execute();
+
+    $stmt->execute([$firstName, $lastName, $email, $username, $hashedPassword]);
 
     //redirect the user to the login page
-    header('Location: main_page.html');
+    header('Location: login.html');
     exit();
 }
 
