@@ -32,13 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // to include a number inthe password
     // (/d) is an expression that checks for a digit
-    if (!preg_match('/\d/', $password)) {
-        die ('Password must contain at least one number');
-    }
-    // check length of the password
-    if (strlen($password) < 8) {
-        die ('Password must be at least 8 characters long');
-    }
+    // if (!preg_match('/\d/', $password)) {
+    //     die ('Password must contain at least one number');
+    // }
+    // // check length of the password
+    // if (strlen($password) < 8) {
+    //     die ('Password must be at least 8 characters long');
+    // }
     // check if the password matches the confpassword
     if ($password !== $confirmPassword) {
         die ('Passwords do not match.');
