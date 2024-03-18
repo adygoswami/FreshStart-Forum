@@ -1,55 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <link rel="stylesheet" href="css/log-reg.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreshStart Forum for UBCO Students</title>
-</head>
+    <head>
+        <link rel="stylesheet" href="css/log-reg.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FreshStart Forum for UBCO Students</title>
+    </head>
 
-<body>
-    <div class="container">
-
-        <div class="left">
-            <div class="welcome">
-                <P>Welcome to
-                <p>
-                <h1>FreshStart</h1>
+    <body>
+        <div class="container">
+            <!-- LEFT SIDE -->
+            <div class="left">
+                <div class="welcome">
+                    <P>Welcome to
+                    <p>
+                    <h1>FreshStart</h1>
+                </div>
             </div>
-        </div>
+            
+            <!-- RIGHT SIDE -->
+            <div class="right">
 
-        <div class="right">
+                <div class="reg">
 
-            <div class="reg">
+                    <!-- <form action="main page.html" method="get"> -->
+                    <form action="register.php" method="post">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" name="firstname" >
 
-                <!-- <form action="main page.html" method="get"> -->
-                <form action="register.php" method="post">
-                    <label for="firstname">First Name</label>
-                    <input type="text" id="firstname" name="firstname" >
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" name="lastname" >
 
-                    <label for="lastname">Last Name</label>
-                    <input type="text" id="lastname" name="lastname" >
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" >
 
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" >
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" >
 
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" >
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" >
+                        
+                        <!-- Password is invalid -->
+                        <div>
+                            <p id="pwErrorLength" style="display: none;"> The password must be at least 8 characters</p>
+                            <p id="pwErrorSpecChar" style="display: none;"> The password must contain a special character {@, #, $, etc}</p>
+                        </div> 
 
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" >
+                        <label for="confirmpassword">Confirm Password</label>
+                        <input type="password" id="confirmpassword" name="confirmpassword" >
+                        
+                        <!-- Passwords do not match -->
+                        <div>
+                            <p id="pwErrorMatch" style="display: none;"> The passwords do not match</p>
+                        </div>
 
-                    <label for="confirmpassword">Confirm Password</label>
-                    <input type="password" id="confirmpassword" name="confirmpassword" >
+                        <button type="submit">Register and Log in</button>
 
-                    <button type="submit">Register and Log in</button>
+                    </form>
 
-                </form>
+                </div>
 
             </div>
 
         </div>
+        <script>
+            function validateForm(){
+                var pw = document.getElementById("password").value;
+                var cpw = document.getElementById("confirmpassword").value;
 
-    </div>
-</body>
+                var pwErrorMatch = document.getElementById('pwErrorMatch');
+                var pwErrorLength = document.getElementById('pwErrorLength');
+                var pwErrorSpecChar = document.getElementById('pwErrorSpecChar');
+                
+                if(pw.length < 8){
+                    pwErrorLength.style.display = 'block';
+                    return false;
+                }
+                if(!pw.match(/[!@#$%^&*]/)){
+                    pwErrorSpecChar.style.display = 'block';
+                    return false;
+                }
+                if(pw != cpw){
+                    pwErrorMatch.style.display = 'block';
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>

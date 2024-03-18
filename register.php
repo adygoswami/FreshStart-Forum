@@ -1,5 +1,5 @@
 <?php
-
+///// SERVER STUFF /////
 // $host = "cosc360.ok.ubc.ca";
 // $dbname = 'db_47130992';
 // $dbuser = '47130992';
@@ -14,6 +14,7 @@ $username = "root";
 $password = "";
 $dbname = "db_47130992";
 
+///// REGISTERING /////
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // making a connection to the db
@@ -21,13 +22,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
 
     // form data
-    $firstName = $_POST['firstname'];
-    $lastName = $_POST['lastname'];
-    $email = $_POST['email'];
-    $username = $_POST['username'];
+    // with filter_var, I can sanitize the data and ensure that there is no harmful user input data
+    $firstName = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+    $lastName = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmpassword'];
 
+    // to include a number inthe password
+    // (/d) is an expression that checks for a digit
+    if (!preg_match('/\d/', $password)) {
+        die ('Password must contain at least one number');
+    }
+    // check length of the password
+    if (strlen($password) < 8) {
+        die ('Password must be at least 8 characters long');
+    }
     // check if the password matches the confpassword
     if ($password !== $confirmPassword) {
         die ('Passwords do not match.');
