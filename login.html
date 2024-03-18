@@ -22,12 +22,24 @@
 
             <div class="login">
 
-                <form action="main_page.html" method="get">
+                <form action="login.php" method="post">
                     <label for="username">Username / Email</label>
                     <input type="text" id="username" name="username" required>
                     
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
+
+                    <div id="logError">
+                        <?php
+                        session_start();
+                            if (isset($_SESSION['error'])) {
+                                echo $_SESSION['error'];
+                                // unset the error message so it's not displayed again
+                                unset($_SESSION['error']);
+                            }
+                        ?>
+                    </div>
+                    <!-- <p> <a href="forgot.html"> Forgot Password?</a></p> -->
 
                     <button type="submit">Log In</button>
 
