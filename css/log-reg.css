@@ -55,6 +55,8 @@ body {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
+/* REGISTRATION FORM  */
 .reg form {
     max-width:400px;
     width: 100%;
