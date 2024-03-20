@@ -8,7 +8,7 @@ session_start();
     <link rel="stylesheet" href="css/log-reg.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreshStart Forum for UBCO Students</title>
+    <title>FreshStart - UBCO </title>
 </head>
 
 <body>
@@ -16,8 +16,7 @@ session_start();
 
         <div class="left">
             <div class="welcome">
-                <P>Welcome to
-                <p>
+                <P>Welcome to</p>
                 <h1>FreshStart</h1>
             </div>
         </div>
@@ -32,7 +31,7 @@ session_start();
 
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
-                    <button type="submit">Log In</button>
+                    <button id="loginsubmit" type="submit">Log In</button>
 
                     <div id="logError">
                         <!-- <p> Login Error: </p> -->

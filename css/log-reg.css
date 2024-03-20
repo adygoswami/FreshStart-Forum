@@ -9,33 +9,42 @@ body {
     display:flex;
     flex-direction: row;
     height: 100vh;
-    background-color: white;   /* CHANGE */
+    /* background-color: white;   */
+    /*background-color: black;   CHANGE */
+    
 }
 
 .left{
-    
     width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: #0055B7; */
-    background-color: white;
+    /* background-color: #0055B7;  */
+    /* background-color: white; */
     margin: 10px;
     border-radius: 15px;
+    background-image: url("ubcoBG.png");
 }
 .right {
-    width: 30%;
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    /* margin-right: 5em; */
+    width: 30%;
+    height: 100vh;
+}
+
+.login{
+    width: 400px;
+    display: flex;
+    margin:auto;
 }
 
 .login form {
     max-width:400px;
     width: 100%;
     background-color: white;
-    padding: 50px;
+    padding: 3em;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -49,13 +58,22 @@ body {
     width:100%;
 }
 
-.login input, button {
+.login input{
     width: 100%;
     padding:10px;
     margin-bottom: 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+#loginsubmit{
+    width: 50%;
+    padding:10px;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
 
 /* REGISTRATION FORM  */
 .reg form {
