@@ -10,13 +10,20 @@ session_start();
 // $username = "47130992";
 // $password = "Yarvp04117.";
 // $dbname = "db_47130992";
-$servername = "localhost";
-$dbusername = "root";
-$dbpassword = "";
-$dbname = "db_47130992";
+
+$host = "cosc360.ok.ubc.ca";
+$dbname = 'db_47130992';
+$dbuser = '47130992';
+$dbpass = 'Yarvp04117.';
+
+// $servername = "localhost";
+// $dbusername = "root";
+// $dbpassword = "";
+// $dbname = "db_47130992";
 
 // Create a new DB connection
-$db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+// $db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+$conn = new mysqli($host, $dbuser, $dbpass, $dbname);
 
 // form data
 $username = $_POST['username'];
