@@ -14,20 +14,21 @@ body {
 
 .left{
     
-    width: 65%;
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #0055B7;
+    /* background-color: #0055B7; */
+    background-color: white;
     margin: 10px;
     border-radius: 15px;
 }
 .right {
-    width: 35%;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 5em;
+    /* margin-right: 5em; */
 }
 
 .login form {

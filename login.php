@@ -1,60 +1,58 @@
 <?php
 session_start();
-///// SERVER STUFF /////
-// $host = "cosc360.ok.ubc.ca";
-// $dbname = 'db_47130992';
-// $dbuser = '47130992';
-// $dbpass = 'Yarvp04117.';
-
-// $servername = "cosc360.ok.ubc.ca";
-// $username = "47130992";
-// $password = "Yarvp04117.";
-// $dbname = "db_47130992";
-$servername = "localhost";
-$dbusername = "root";
-$dbpassword = "";
-$dbname = "db_47130992";
-
-// Create a new DB connection
-$db = new mysqli($servername, $dbusername, $dbpassword, $dbname);
-
-// form data
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-// Prepare a select statement
-$stmt = $db->prepare("SELECT * FROM users WHERE username = ?");
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-
-// if the user exists
-if ($result->num_rows > 0) {
-    // fetching the user data
-    $user = $result->fetch_assoc();
-
-    if (password_verify($password, $user['password'])) {
-        // start a session unique to the user and store their username
-        
-        $_SESSION['username'] = $username;
-        $_SESSION['user_id'] = $user['user_id'];
-
-        header('Location: main_page.html');
-        exit();
-    } else {
-        // storing an error message in the session and this can be displayed in the login HTML file
-        
-        $_SESSION['error'] = 'Incorrect password';
-
-        header('Location: login.html');
-        exit();
-    }
-} else {
-    
-    $_SESSION['error'] = 'User does not exist';
-
-    header('Location: login.html');
-    exit();
-}
-
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/log-reg.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshStart Forum for UBCO Students</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="left">
+            <div class="welcome">
+                <P>Welcome to
+                <p>
+                <h1>FreshStart</h1>
+            </div>
+        </div>
+
+        <div class="right">
+
+            <div class="login">
+
+                <form action="loginAction.php" method="post">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Log In</button>
+
+                    <div id="logError">
+                        <!-- <p> Login Error: </p> -->
+                        <?php
+                        if (isset ($_SESSION['error'])) {
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                        }
+                        ?>
+                    </div>
+                    <!-- <p> <a href="forgot.html"> Forgot Password?</a></p> -->
+
+                    <p> Not a member?</a></p>
+                    <p> <a href="reg.html"> Sign up</a> or <a href="main page.html"> Continue as a Guest</a></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
