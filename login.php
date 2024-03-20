@@ -15,15 +15,28 @@ session_start();
     <div class="container">
 
         <div class="left">
-            <div class="welcome">
-                <P>Welcome to</p>
-                <h1>FreshStart</h1>
+            <div id="welcometext">
+                <p id="welcome">Welcome to</p>
+                <h1 id="fs">FreshStart</h1>
+
             </div>
+
         </div>
 
         <div class="right">
 
             <div class="login">
+
+                <!-- <h2>New to UBCO? Use FreshStart to:</h2>
+                <ul>
+                    <li>Participate in UBCO Activities.</li>
+                    <li>Seek Academic and Mental Health Support</li>
+                    <li>Access Campus Resources</li>
+                    <li>Explore Job Opportunities</li>
+                    <li>Coordinate Lab Schedules</li>
+                    <li>Trade in the Marketplace</li>
+                    <li>Engage with the Community</li>
+                </ul> -->
 
                 <form action="loginAction.php" method="post">
                     <label for="username">Username</label>
