@@ -15,8 +15,8 @@
 // $dbpass = 'Yarvp04117.';
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "47130992";
+$password = "freshstart360";
 $dbname = "db_47130992";
 
 ///// REGISTERING /////
