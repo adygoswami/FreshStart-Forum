@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // $stmt->execute([$firstName, $lastName, $email, $username, $hashedPassword]);
 
     //redirect the user to the login page
-    header('Location: login.html');
+    header('Location: login.php');
     exit();
 }
 
