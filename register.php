@@ -1,69 +1,104 @@
-<?php
-///// SERVER STUFF /////
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <link rel="stylesheet" href="css/log-reg.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshStart Forum for UBCO Students</title>
+</head>
 
-// $servername = "cosc360.ok.ubc.ca";
-// $username = "47130992";
-// $password = "Yarvp04117.";
-// $dbname = "db_47130992";
+<body>
+    <div class="container">
+        <!-- LEFT SIDE -->
+        <div class="left">
+            <div class="welcome">
+                <P>Welcome to
+                <p>
+                <h1>FreshStart</h1>
+            </div>
+        </div>
 
+        <!-- RIGHT SIDE -->
+        <div class="right">
 
+            <div class="reg">
 
-// $host = "localhost";
-// $dbname = 'db_47130992';
-// $dbuser = '47130992';
-// $dbpass = 'Yarvp04117.';
+                <!-- <form action="main page.html" method="get"> -->
+                <form action="registerAction.php" method="post" onsubmit="return validateForm()">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname">
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_47130992";
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname">
 
-///// REGISTERING /////
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
 
-    // making a connection to the db
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // $conn = new mysqli($host, $dbuser, $dbpass, $dbname);
-    // $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username">
 
-    // form data
-    // with filter_var, I can sanitize the data and ensure that there is no harmful user input data
-    $firstName = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
-    $lastName = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmpassword'];
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
 
-    // to include a number inthe password
-    // (/d) is an expression that checks for a digit
-    if (!preg_match('/\d/', $password)) {
-        die ('Password must contain at least one number');
-    }
-    // // check length of the password
-    if (strlen($password) < 8) {
-        die ('Password must be at least 8 characters long');
-    }
-    // check if the password matches the confpassword
-    if ($password !== $confirmPassword) {
-        die ('Passwords do not match.');
-    }
+                    <!-- Password is invalid -->
+                    <div class="pwe">
+                        <p id="pwErrorLength" class="pwError" style="display: none;"> The password must be at least 8
+                            characters</p>
+                        <p id="pwErrorSpecChar" class="pwError" style="display: none;"> The password must contain a
+                            special character {@, #, $, etc}</p>
+                    </div>
 
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // this is the default hashing algorithm
+                    <label for="confirmpassword">Confirm Password</label>
+                    <input type="password" id="confirmpassword" name="confirmpassword">
 
-    // SQL statements to insert the data
-    $stmt = $conn->prepare('INSERT INTO user_details(first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)');
+                    <!-- Passwords do not match -->
+                    <div class="pwe">
+                        <p id="pwErrorMatch" class="pwError" style="display: none;"> The passwords do not match</p>
+                    </div>
 
-    $stmt->bind_param('sssss', $firstName, $lastName, $email, $username, $hashedPassword);
+                    <button type="submit">Register and Log in</button>
 
-    $stmt->execute();
+                </form>
 
-    // $stmt->execute([$firstName, $lastName, $email, $username, $hashedPassword]);
+            </div>
 
-    //redirect the user to the login page
-    header('Location: login.php');
-    exit();
-}
+        </div>
 
-?>
+    </div>
+    <script>
+        function validateForm() {
+            var pw = document.getElementById("password").value;
+            var cpw = document.getElementById("confirmpassword").value;
+
+            var pwErrorMatch = document.getElementById('pwErrorMatch');
+            var pwErrorLength = document.getElementById('pwErrorLength');
+            var pwErrorSpecChar = document.getElementById('pwErrorSpecChar');
+
+            //for the length
+            if (pw.length < 8) {
+                pwErrorLength.style.display = 'block';
+                pwErrorMatch.display = 'none';
+                pwErrorSpecChar.display = 'none';
+                return false;
+            }
+            //for the special character
+            if (!pw.match(/[!@#$%^&*]/)) {
+                pwErrorSpecChar.style.display = 'block';
+                pwErrorLength.style.display = 'none';
+                pwErrorMatch.display = 'none';
+                return false;
+            }
+            // for confirming password
+            if (pw != cpw) {
+                pwErrorMatch.style.display = 'block';
+                pwErrorSpecChar.style.display = 'none';
+                pwErrorLength.style.display = 'none';
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

@@ -58,7 +58,7 @@ session_start();
                     <!-- <p> <a href="forgot.html"> Forgot Password?</a></p> -->
 
                     <p> Not a member?</a></p>
-                    <p> <a href="reg.html"> Sign up</a> or <a href="main page.html"> Continue as a Guest</a></p>
+                    <p> <a href="register.php"> Sign up</a> or <a href="main page.html"> Continue as a Guest</a></p>
 
                 </form>
 
