@@ -1,26 +1,30 @@
 <?php
 ///// SERVER STUFF /////
-$host = "cosc360.ok.ubc.ca";
-$dbname = 'db_47130992';
-$dbuser = '47130992';
-$dbpass = 'Yarvp04117.';
+
 
 // $servername = "cosc360.ok.ubc.ca";
 // $username = "47130992";
 // $password = "Yarvp04117.";
 // $dbname = "db_47130992";
 
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "db_47130992";
+
+
+// $host = "localhost";
+// $dbname = 'db_47130992';
+// $dbuser = '47130992';
+// $dbpass = 'Yarvp04117.';
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "db_47130992";
 
 ///// REGISTERING /////
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // making a connection to the db
-    // $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn = new mysqli($host, $dbuser, $dbpass, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // $conn = new mysqli($host, $dbuser, $dbpass, $dbname);
     // $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
 
     // form data
