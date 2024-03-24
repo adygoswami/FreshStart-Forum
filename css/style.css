@@ -171,12 +171,14 @@
 
 .post {
     background-color: #ffffff;
-    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     border-radius: 4px;
-    margin-bottom: 20px; 
+    margin: 20px auto; /* Center posts and add space on sides */
     padding: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
+    max-width: 640px; /* Limit post width */
+    width: 100%;
+    box-sizing: border-box;
+  }
 
 .post h3 {
     margin-top: 0;
