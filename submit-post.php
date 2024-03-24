@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost"; // need change
-$username = "root"; // change 'root' if need
-$password = ""; // Default password is empty but need change if diff
-$dbname = "freshstart_forum"; //  database name
+$servername = "localhost";
+$username = "47130992";
+$password = "freshstart360";
+$dbname = "db_47130992";
 
 // sql connection to the database
 $conn = new mysqli($servername, $username, $password, $dbname);

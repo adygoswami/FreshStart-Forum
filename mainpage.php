@@ -39,11 +39,10 @@
     <main class="main-content">     
         
     <?php
-        /* database connection
         $servername = "localhost";
-        $username = "your_username";
-        $password = "your_password";
-        $dbname = "your_dbname"; */
+        $username = "47130992";
+        $password = "freshstart360";
+        $dbname = "db_47130992";
 
         // database connection
         $conn = new mysqli($servername, $username, $password, $dbname);
