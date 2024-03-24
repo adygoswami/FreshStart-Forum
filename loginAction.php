@@ -51,7 +51,7 @@ if ($result->num_rows > 0) {
         $_SESSION['username'] = $username;
         $_SESSION['user_id'] = $user['user_id'];
 
-        header('Location: main_page.html');
+        header('Location: mainpage.php');
         exit();
 
     } else {
