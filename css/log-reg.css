@@ -206,3 +206,11 @@ button:hover {
     margin-bottom: 0.5em;
 }
 
+#logError{
+    color: red;
+    font-size: 1em;
+}
+#regError{
+    color: red;
+    font-size: 1em;
+}

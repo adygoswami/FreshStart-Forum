@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/log-reg.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreshStart Forum for UBCO Students</title>
+    <title>FreshStart - UBCO</title>
 </head>
 
 <body>
@@ -37,6 +37,16 @@
 
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username">
+
+                    <div id="regError">
+                        <!-- <p> Login Error: </p> -->
+                        <?php
+                        if (isset ($_SESSION['error'])) {
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                        }
+                        ?>
+                    </div>
 
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password">
