@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userResult = $userStmt->get_result();
     if ($userResult->num_rows > 0) {
         $_SESSION['error'] = 'Username already exists';
-
         header('Location: register.php');
         exit();
     }
