@@ -2,115 +2,126 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreshStart Forum for UBCO Students</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="container">
-            <aside class="sidebar">
-
-        <nav class="navbar">
+        <div class="navbar">
+            <div class="site-name">FreshStart</div>
             <div class="search-container">
-                <input type="search" id="site-search" name="q"
-                       aria-label="Search through site content">
-                <button>Search</button>
+              <input type="search" id="site-search" placeholder="Search FreshStart">
+              <button class="search-button">Search</button>
             </div>
-            <ul>
-                <li><a href="#job-search" class="active">Job Search</a></li>
-                <li><a href="#lab-switches">Lab Switches</a></li>
-                <li><a href="#ubco-activities">UBCO Activities</a></li>
-                <li><a href="#marketplace">Marketplace</a></li>
-                <li><a href="#help">Help</a></li>
-                <li><a href="#campus-resources">Campus Resources</a></li>
-                <li><a href="post-page.html" class="post-tab">Post</a></li> 
-
-            </ul>
-        </nav>
-
-    </aside>
-
-        
+            <div class="user-menu">
+              <div class="username">Username
+                <div class="login-dropdown">
+                  <a href="#login">Profile</a>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div>
+            <a href="post-page.html" class="post-tab">Create Post</a>
+        </div>
     </header>
 
-    <main class="main-content">     
-        
-    <?php
+    <main class="main-content">
+           
+    <!-- dummy posts -->
+
+<article class="reddit-post">
+<div class="vote-system">
+        <button class="vote-button upvote">Like</button>
+        <span class="vote-count">15</span>
+        <button class="vote-button downvote">Dislike</button>
+    </div>
+
+    <div class="post-content">
+        <h2 class="post-title">How is everyone's midterms???</h2>
+        <p class="post-text">I think I did really bad... help!!</p>
+        <div class="post-footer">
+            <a href="#" class="comments-link">Comments</a>
+        </div>
+    </div>
+</article>
+
+<article class="reddit-post">
+    <div class="vote-system">
+        <button class="vote-button upvote">Like</button>
+        <span class="vote-count">-2</span>
+        <button class="vote-button downvote">Dislike</button>
+    </div>
+
+    <div class="post-content">
+        <h2 class="post-title">I hate coffee!!</h2>
+        <p class="post-text">Is it just me or does anyone just can't stand coffee?</p>
+        <div class="post-footer">
+            <a href="#" class="comments-link">Comments</a>
+        </div>
+    </div>
+</article>
+
+<article class="reddit-post">
+<div class="vote-system">
+        <button class="vote-button upvote">Like</button>
+        <span class="vote-count">4</span>
+        <button class="vote-button downvote">Dislike</button>
+    </div>
+
+    <div class="post-content">
+        <h2 class="post-title">Does anyone want to switch labs for Cosc111?</h2>
+        <p class="post-text">Send me an email on johndoe@gmail.com pls if you want to swap labs to Monday 10am.</p>
+        <div class="post-footer">
+            <a href="#" class="comments-link">Comments</a>
+        </div>
+    </div>
+</article>
+
+        <?php
         $servername = "localhost";
         $username = "47130992";
         $password = "freshstart360";
         $dbname = "db_47130992";
 
-        // database connection
+        // Create a connection to the database
         $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // checking connection
+        // Check the connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // fetch and display posts for a given category
-        function displayPosts($conn, $category) {
-            $sql = "SELECT * FROM posts WHERE community = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $category);
-            $stmt->execute();
-            $result = $stmt->get_result();
+        // SQL query to fetch all posts
+        $sql = "SELECT title, text FROM posts ORDER BY created_at DESC";
+        $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                // Output data of each row
-                while ($row = $result->fetch_assoc()) {
-                    echo "<article class='post'>";
-                    echo "<h3>" . htmlspecialchars($row["title"]) . "</h3>";
-                    echo "<p>" . htmlspecialchars($row["text"]) . "</p>";
-                    echo "</article>";
-                }
-            } else {
-                echo "<p>No posts found in " . htmlspecialchars($category) . ".</p>";
+        if ($result && $result->num_rows > 0) {
+            // Output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<div class='post'>";
+                echo "<h3>" . htmlspecialchars($row['title']) . "</h3>";
+                echo "<p>" . htmlspecialchars($row['text']) . "</p>";
+                echo "</div>";
             }
+        } else {
+            echo "0 results";
         }
-
-        // posts for "Job Search"
-        echo '<section id="job-search">';
-        echo '<h2>Job Search</h2>';
-        echo '<div class="posts-container">';
-        displayPosts($conn, 'job-search');
-        echo '</div>';
-        echo '</section>';
-
-         // posts for "Lab Switch"
-         echo '<section id="lab-switches">';
-         echo '<h2>Lab Switches</h2>';
-         echo '<div class="posts-container">';
-         displayPosts($conn, 'lab-switches');
-         echo '</div>';
-         echo '</section>';
- 
-        // posts for "UBCO Activities"
-        echo '<section id="ubco-activities">';
-        echo '<h2>UBCO Activities</h2>';
-        echo '<div class="posts-container">';
-        displayPosts($conn, 'ubco-activities');
-        echo '</div>';
-        echo '</section>';
-
-        // posts for "Market Place"
-        echo '<section id="marketplace">';
-        echo '<h2>Market Place</h2>';
-        echo '<div class="posts-container">';
-        displayPosts($conn, 'marketplace');
-        echo '</div>';
-        echo '</section>';
-
-      
-
-    
         
+        // Close the connection
         $conn->close();
         ?>
     </main>
+
+    <script>
+        document.querySelector('.username').addEventListener('mouseover', function() {
+            document.querySelector('.login-dropdown').style.display = 'block';
+        });
+
+        document.querySelector('.username').addEventListener('mouseout', function() {
+            document.querySelector('.login-dropdown').style.display = 'none';
+        });
+    </script>
 </body>
 </html>

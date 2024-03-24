@@ -2,203 +2,281 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+  }
+  
+
+  .navbar {
+    background-color: #0055B7;
+    padding: 10px 20px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+  }
+  
+  .site-name {
+    color: white;
+    font-size: 24px; 
+  }
+  
+  /* Style for the search input */
+  #site-search {
+    flex-grow: 1; 
+    margin: 0 15px; 
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    outline: none;
+  }
+  
+  /* Style for the search button */
+  .search-button {
+    padding: 10px 20px;
+    background-color: #003366; 
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  /* Hover effect for the search button */
+  .search-button:hover {
+    background-color: #002244;
+  }
+  
+  /* User menu styling */
+  .user-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .username {
+    background-color: #003366; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative; 
+  }
+  
+  /* Login dropdown menu */
+  .login-dropdown {
+    display: none; 
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 1;
+  }
+  
+  /* Dropdown link styling */
+  .login-dropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Display dropdown on hover */
+  .username:hover .login-dropdown {
+    display: block;
+  }
+  
+  /* Clearing floats */
+  .navbar::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+
+
+.search-container {
+
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    flex-grow: 1; 
+    padding: 20px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; 
-    display: flex; /* flex display to body since there's no more container */
-    min-height: 100vh; 
+#site-search {
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    outline: none;
+    width: 100%; 
+    max-width: none; 
 }
 
 .navbar {
-    background-color: #0055B7; 
-    color: white;
-    padding: 10px 0;
-}
-
-.navbar ul {
-    list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-between; 
     align-items: center;
+    padding: 5px; 
 }
 
-.navbar ul li {
-    margin: 0 10px; 
+.site-name {
+    
+    margin-left: 10px;
 }
 
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    display: block;
-    padding: 10px 20px; 
-    border: 2px solid white; 
-    transition: background-color 0.3s, color 0.3s; 
+.user-menu {
+    margin-right: 10px; 
 }
 
-.navbar ul li a:hover {
-    background-color: white; /* colors on hover */
-    color: #0055B7;
-    cursor: pointer;
+
+.container {
+    width: 100%; 
+    margin: 0 auto; 
 }
 
-.posts-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
+
+/* Style for the Create Post */
+.post-tab {
+    display: block; 
+    background-color: #0055B7; 
+    color: white; 
+    padding: 15px 30px; 
+    font-size: 1.2em; 
+    font-weight: bold; 
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, transform 0.3s; 
+    cursor: pointer; 
+    margin: 20px auto; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    width: 100%; 
+    max-width: 1000px; 
 }
+
+.post-tab:hover {
+    background-color: #003366; 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
 
 .post {
-    background-color: #ffffff; /* background for the post */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
-    border-radius: 5px; 
-    margin: 10px;
-    padding: 20px;
-    width: calc(33% - 20px); 
-    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px; 
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .post h3 {
     margin-top: 0;
-    color: #0055B7; 
+    color: #0055B7;
+    font-size: 24px; 
 }
 
 .post p {
-    color: #333; 
+    color: #333;
+    font-size: 16px; 
+    line-height: 1.6; 
 }
 
- /*To make it good for other devices*/
-
- @media (max-width: 768px) {
-    .posts-container {
-        padding: 10px;
-    }
-
-    .post {
-        width: calc(50% - 20px); /* Adjust for smaller screens */
-    }
+.reddit-post {
+    display: flex;
+    border: 1px solid #ccc;
+    margin-bottom: 16px;
+    background-color: #fff;
 }
 
-@media (max-width: 480px) {
-    .post {
-        width: 100%; /* Full width on very small screens */
-        margin: 10px 0;
-    }
-}
-
-
-/* Search bar */
-.search-container {
-    display: flex; 
-    justify-content: start; 
-    align-items: center; 
-    padding-left: 20px; 
-}
-
-/* Styles for the search input */
-#site-search {
+.vote-section {
     padding: 10px;
-    margin-right: 10px; 
-    border: 2px solid #ccc; 
-    border-radius: 5px; 
-    outline: none; 
+    background-color: #f8f9fa;
+    text-align: center;
 }
 
-/* Styles for the search button */
-.search-button {
-    padding: 10px 20px;
-    background-color: #0055B7; 
-    color: white;
-    border: 2px solid #0055B7; 
-    border-radius: 5px; 
+.vote-section .upvote,
+.vote-section .downvote {
+    border: none;
+    background-color: transparent;
     cursor: pointer;
-    outline: none; 
 }
 
-.search-button:hover {
-    background-color: #003366; /* hover color */
-    border-color: #f80808; /* change the border color on hover */
+.vote-section .score {
+    margin: 8px 0;
+}
+
+.post-content {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.post-title {
+    margin: 0;
+    padding-bottom: 8px;
+    font-size: 18px;
+}
+
+.post-text {
+    margin: 0;
+    padding-bottom: 12px;
+    font-size: 14px;
+}
+
+.post-footer {
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+}
+
+.comments-link {
+    color: #0079d3;
+    text-decoration: none;
+    font-size: 12px;
 }
 
 
-/* style for the Post button */
-.navbar ul li .post-tab {
-    background-color: #0055B7; /* button color */
-    color: #ffffff; /* text color */
-   /*padding: 10px 20px; */
-    border-radius: 5px;
-    /*margin-left: 20px; */
-    transition: background-color 0.3s; /* hover effect */
+
+/* Upvote/Downvote Button Styles */
+.vote-button {
+    padding: 5px 10px;
+    margin: 2px 0; 
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.navbar ul li .post-tab:hover {
-    background-color: #e6b800; /* color for hover */
-    color: #000;
+.vote-button:hover {
+    background-color: #f0f0f0;
 }
 
-/* Container for the two-column */
-.container {
-    display: flex; /* creates a flex container for the side layout */
-    width: 100%; 
+.vote-button.upvote {
+    color: #7193ff; 
 }
 
-/* Sidebar styles */
-.sidebar {
-    flex-basis: 25%; 
-    background-color: #f4f4f4; 
-  
+.vote-button.downvote {
+    color: #ff4500; 
 }
 
-/* Main content styles */
-.main-content {
-    flex-basis: 75%; 
-    background-color: #fff; 
-    padding: 20px;
+/* Layout for the voting system */
+.vote-system {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
 }
 
-/* make navbar to be on the sidebar */
-.navbar {
-    display: block; /* Stack the nav items instead of flex row */
-    background-color: #ffffff;
-    color: white;
-    padding: 0;
-
+.vote-count {
+    margin: 0 5px;
 }
 
-.navbar ul {
-    display: block;
-}
-
-.navbar ul li {
-    margin: 10px 0; 
-}
-
-.navbar ul li a {
-    color: #333; 
-    padding: 10px; 
-    border: none; 
-}
-
-.navbar ul li a:hover {
-    background-color: #f4f4f4; /* hover background color */
-    color: #0055B7; /* text color */
-}
-
-/* search bar styles*/
-.search-container {
-    padding-left: 0; 
-}
-
-/* posts-container to be in main content area */
-.posts-container {
-    flex-direction: column; /* Stack the posts vertically */
-}
-
-.post {
-    width: 100%; 
-    margin: 10px 0;
-}
 
