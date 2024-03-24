@@ -28,7 +28,11 @@
     </header>
 
     <main class="main-content">
-           
+    <div id="postContainer">
+            <!-- live posts -->
+
+    </div>
+
     <!-- dummy posts -->
 
 <article class="reddit-post">
@@ -172,6 +176,23 @@ function updateVoteCount(postId, newVoteCount) {
   // Update the vote count in the DOM
   document.querySelector(`#post-${postId} .vote-count`).textContent = newVoteCount;
 }
+
+document.getElementById('postSubmit').addEventListener('click', function() {
+    var form = document.getElementById('postForm');
+    var formData = new FormData(form);
+
+    fetch('submit-post.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Find the post container and append the new post
+        var postContainer = document.getElementById('postContainer');
+        postContainer.innerHTML += data; // Append the new post
+    })
+    .catch(error => console.error('Error:', error));
+});
 
     </script>
 </body>

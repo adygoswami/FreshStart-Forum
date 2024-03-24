@@ -1,10 +1,10 @@
 <?php
 $servername = "localhost";
-$username = "47130992";
-$password = "freshstart360";
-$dbname = "db_47130992";
+$username = "47130992"; 
+$password = "freshstart360"; 
+$dbname = "db_47130992"; 
 
-// SQL connection to the database
+// Establish a new database connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check the connection
@@ -12,29 +12,32 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if the form data is set
-if(isset($_POST['community'], $_POST['title'], $_POST['text'])) {
-    $community = $_POST['community'];
-    $title = $_POST['title'];
-    $text = $_POST['text'];
-
+// Check if form data has been sent
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare and bind
     $stmt = $conn->prepare("INSERT INTO posts (community, title, text) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $community, $title, $text);
 
-    // Execute the statement
-    if($stmt->execute()) {
+    // Set parameters and execute
+    $community = htmlspecialchars($_POST['community']);
+    $title = htmlspecialchars($_POST['title']);
+    $text = htmlspecialchars($_POST['text']);
+    
+    // Attempt to execute the prepared statement
+    if ($stmt->execute()) {
         echo "New post created successfully";
-        $stmt->close();
-        // Redirect to the main page
-        header("Location: mainpage.php");
-        exit();
     } else {
         echo "Error: " . $stmt->error;
     }
+    
+    // Close statement and connection
+    $stmt->close();
+    $conn->close();
 } else {
-    echo "Form data is missing";
+    echo "No post data to process.";
 }
 
-$conn->close();
+// Redirect back to the main page
+header("Location: mainpage.php");
+exit();
 ?>
