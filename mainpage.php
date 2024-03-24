@@ -79,6 +79,24 @@
     </div>
 </article>
 
+<!-- testing vote count -->
+
+<div class='post' id='post-1'>
+<div class="vote-system">
+    <button class="vote-button upvote" onclick="vote(1, 'up')">Like</button>
+    <div class="vote-count">0</div>
+    <button class="vote-button downvote" onclick="vote(1, 'down')">Dislike</button>
+  </div>
+  
+  <h2>How is everyone's midterms???</h3>
+  <p>I think I did really bad... help!!</p>
+  <div class="post-footer">
+            <a href="#" class="comments-link">Comments</a>
+        </div>
+  
+
+</div>
+
         <?php
         $servername = "localhost";
         $username = "47130992";
@@ -122,6 +140,39 @@
         document.querySelector('.username').addEventListener('mouseout', function() {
             document.querySelector('.login-dropdown').style.display = 'none';
         });
+
+        //test code for vote
+
+        function vote(postId, direction) {
+  // Data to be sent to the server
+  let data = {
+    postId: postId,
+    vote: direction
+  };
+
+  // Send the data using the Fetch API
+  fetch('vote_handler.php', {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+    updateVoteCount(postId, data.newVoteCount);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
+
+function updateVoteCount(postId, newVoteCount) {
+  // Update the vote count in the DOM
+  document.querySelector(`#post-${postId} .vote-count`).textContent = newVoteCount;
+}
+
     </script>
 </body>
 </html>
