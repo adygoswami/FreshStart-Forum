@@ -1,19 +1,5 @@
 <?php
 ///// SERVER STUFF /////
-
-
-// $servername = "cosc360.ok.ubc.ca";
-// $username = "47130992";
-// $password = "Yarvp04117.";
-// $dbname = "db_47130992";
-
-
-
-// $host = "localhost";
-// $dbname = 'db_47130992';
-// $dbuser = '47130992';
-// $dbpass = 'Yarvp04117.';
-
 $servername = "localhost";
 $username = "47130992";
 $password = "freshstart360";
