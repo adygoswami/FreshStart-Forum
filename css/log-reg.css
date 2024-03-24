@@ -214,3 +214,8 @@ button:hover {
     color: red;
     font-size: 1em;
 }
+@media (max-width: 768px) {
+    .container {
+        transform: scale(0.8);
+    }
+}
