@@ -9,7 +9,7 @@
 <body>
     <body>
 
-        <a href="main_page.html" class="home-button">Home</a> <!-- Go Home button -->
+        <a href="mainpage.php" class="home-button">Home</a> <!-- Go Home button -->
     
         <div class="post-container">
             <h1>Create a post</h1>
@@ -18,7 +18,7 @@
                 <button type="button" class="post-type" id="image-video-btn">Image & Video</button>
             </div>
     
-            <form class="post-form" action="main_page.html" method="post">     <!-- takes u to main page after post -->
+            <form class="post-form" action="submit-post.php" method="post">
 
                 <!-- drop down list for where to post-->
                 <label for="community">Choose where to post</label>
@@ -30,13 +30,13 @@
                 </select>
                 <input type="text" id="title" name="title" placeholder="Title" required>
                 <textarea id="text" name="text" placeholder="Text (optional)"></textarea>
-    
+            
                 <!-- Image upload section, shown/hidden -->
                 <div class="image-upload-container" id="image-upload-container" style="display: none;">
                     <input type="file" id="image-upload" name="image-upload" accept="image/*,video/*">
                 </div>
-    
-                <button type="submit" class="post-submit">Post</button> <!--  button to submit the form -->
+            
+                <button type="submit" class="post-submit">Post</button> <!-- button to submit the form -->
             </form>
         </div>
     
