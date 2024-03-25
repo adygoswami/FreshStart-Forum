@@ -31,7 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['username'] = $username;
             $_SESSION['user_id'] = $user['user_id'];
 
-            header('Location: mainpage.php');
+            // Check if the user is an admin
+            $_SESSION['is_admin'] = $user['is_admin'];
+
+            if ($_SESSION['is_admin']) {
+                // If the user is an admin, redirect them to the admin panel page
+                header('Location: adminPanel.php');
+            } else {
+                // If the user is not an admin, redirect them to the main page
+                header('Location: mainpage.php');
+            }
             exit();
 
         } else {
