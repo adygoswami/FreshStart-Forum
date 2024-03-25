@@ -69,7 +69,10 @@ session_start();
                     <div class="pwe">
                         <p id="pwErrorMatch" class="pwError" style="display: none;"> The passwords do not match</p>
                     </div>
-
+                    <div class="profile_picture">
+                        <label for="profilePicture">Profile Picture</label>
+                        <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                    </div>
                     <button type="submit">Register and Log in</button>
 
                 </form>
