@@ -1,10 +1,21 @@
 <?php
 session_start();
-///// SERVER STUFF /////
+///// XAMPP ADMIN /////
+///*
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "db_47130992";
+//*/
+
+
+///// SERVER /////
+/* 
 $servername = "localhost";
 $username = "47130992";
 $password = "freshstart360";
 $dbname = "db_47130992";
+//*/
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -19,7 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmpassword'];
-
+    // USER PROFILE PICTURE
+    $default_pfp_path = '../img/default_pfp.jpg';
+    if (isset ($_FILES['profilePicture']) && $_FILES['profilePicture']['error'] == 0) {
+        $prfile_picture = file_get_contents($_FILES['profilePicture']['tmp_name']);
+    } else {
+        $prfile_picture = file_get_contents($default_pfp_path);
+    }
+    // in case to head back to the previous page (from lab 9) 
+    if (isset ($_SERVER['HTTP_REFERER'])) {
+        $prev_page = $_SERVER['HTTP_REFERER'];
+    }
 
     // check if the username already exists
     $userStmt = $conn->prepare('SELECT * FROM user_details WHERE username = ?');
@@ -27,33 +48,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userStmt->execute();
     $userResult = $userStmt->get_result();
     if ($userResult->num_rows > 0) {
+        // i am doing this because this cannot be checked in the form validation i have using js
+        // there is a div in the registration form that will display this error message
         $_SESSION['error'] = 'Username already exists';
         header('Location: register.php');
         exit();
     }
 
-    // to include a number inthe password || (/d) is an expression that checks for a digit
     if (!preg_match('/\d/', $password)) {
-        die ('Password must contain at least one number');
+        // i am doing this because this is already checked in the form validation using js, but just in case
+        echo "Password must contain at least one number";
+        echo '<br><a href=' . $prev_page . '>Return to the Registration page</a>';
     }
 
     // check length of the password
     if (strlen($password) < 8) {
-        die ('Password must be at least 8 characters long');
+        echo "Password must be at least 8 characters long";
+        echo '<br><a href=' . $prev_page . '>Return to the Registration page</a>';
     }
 
     // check if the password matches the confpassword
     if ($password !== $confirmPassword) {
-        die ('Passwords do not match.');
+        echo "Passwords do not match.";
+        echo '<br><a href=' . $prev_page . '>Return to the Registration page</a>';
     }
 
     // hashing the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // this is the default hashing algorithm
 
-    // SQL statements to insert the data
-    $stmt = $conn->prepare('INSERT INTO user_details(first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)');
-    $stmt->bind_param('sssss', $firstName, $lastName, $email, $username, $hashedPassword);
-    $stmt->execute();
+    $stmt = $conn->prepare('INSERT INTO user_details(first_name, last_name, email, username, password, profile_picture) VALUES (?, ?, ?, ?, ?, ?)');
+
+    // SQL statements to insert the data if the image is small
+    // $stmt->bind_param('sssssb', $firstName, $lastName, $email, $username, $hashedPassword, $prfile_picture);
+    // $stmt->execute();
+
+    // to ensure efficiency if the image is large
+    $null = NULL;
+    $stmt->bind_param('sssssb', $firstName, $lastName, $email, $username, $hashedPassword, $null); //b is for blob data
+    $stmt->send_long_data(5, $profile_picture);
+
 
     //redirect the user to the login page
     header('Location: login.php');

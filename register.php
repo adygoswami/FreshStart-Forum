@@ -28,21 +28,32 @@ session_start();
             <div class="reg">
 
                 <!-- <form action="main page.html" method="get"> -->
-                <form action="registerAction.php" method="post" onsubmit="return validateForm()">
+                <form action="registerAction.php" method="post" onsubmit="return validateForm()"
+                    enctype="multipart/form-data">
+
+                    <!-- First name -->
+
                     <label for="firstname">First Name</label>
                     <input type="text" id="firstname" name="firstname">
+
+                    <!-- Last name -->
 
                     <label for="lastname">Last Name</label>
                     <input type="text" id="lastname" name="lastname">
 
+                    <!-- Email -->
+
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email">
+                    
+                    <!-- Username -->
 
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username">
 
+                    <!-- Username is invalid : Login Error:-->
+
                     <div id="regError">
-                        <!-- <p> Login Error: </p> -->
                         <?php
                         if (isset ($_SESSION['error'])) {
                             echo $_SESSION['error'];
@@ -51,28 +62,38 @@ session_start();
                         ?>
                     </div>
 
+                    <!-- Password -->
+
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password">
 
                     <!-- Password is invalid -->
+
                     <div class="pwe">
                         <p id="pwErrorLength" class="pwError" style="display: none;"> The password must be at least 8
                             characters</p>
                         <p id="pwErrorSpecChar" class="pwError" style="display: none;"> The password must contain a
-                            special character {@, #, $, etc}</p>
+                            special character {!, @, #, $, %, ^,  &, *}</p>
                     </div>
+
+                    <!-- Confirm Password -->
 
                     <label for="confirmpassword">Confirm Password</label>
                     <input type="password" id="confirmpassword" name="confirmpassword">
 
                     <!-- Passwords do not match -->
+
                     <div class="pwe">
                         <p id="pwErrorMatch" class="pwError" style="display: none;"> The passwords do not match</p>
                     </div>
-                    <div class="profile_picture">
-                        <label for="profilePicture">Profile Picture</label>
-                        <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
-                    </div>
+
+                    <!-- Profile Picture -->
+
+                    <label for="profilePicture">Upload a profile picture:</label>
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+
+                    <!-- Register and Log in button -->
+
                     <button type="submit">Register and Log in</button>
 
                 </form>

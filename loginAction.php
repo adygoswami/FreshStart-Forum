@@ -1,11 +1,21 @@
 <?php
 session_start();
-///// SERVER STUFF /////
+///// XAMPP ADMIN /////
+///*
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "db_47130992";
+//*/
+
+
+///// SERVER /////
+/* 
 $servername = "localhost";
 $username = "47130992";
 $password = "freshstart360";
 $dbname = "db_47130992";
-
+//*/
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Create a new DB connection
     $conn = new mysqli($servername, $username, $password, $dbname);
