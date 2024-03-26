@@ -14,13 +14,19 @@
               <input type="search" id="site-search" placeholder="Search FreshStart">
               <button class="search-button">Search</button>
             </div>
+        <!-- profile stuff -->
             <div class="user-menu">
-              <div class="username">Username
-                <div class="login-dropdown">
-                  <a href="#login">Profile</a>
-                </div>
-              </div>
+    <?php if(isset($_SESSION['user_id'])): ?>
+        <div class="username">Profile
+            <div class="login-dropdown">
+                <a href="profile.php">Profile</a>
+                <a href="logout.php">Logout</a>
             </div>
+        </div>
+    <?php else: ?>
+        <div class="username" onclick="window.location.href='login.php';">Login / Register</div>
+    <?php endif; ?>
+</div>
         </div>
         <div>
             <a href="post-page.html" class="post-tab">Create Post</a>
@@ -102,6 +108,8 @@
 </div>
 
         <?php
+        session_start();
+
         $servername = "localhost";
         $username = "47130992";
         $password = "freshstart360";
