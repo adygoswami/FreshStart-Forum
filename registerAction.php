@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmpassword'];
     // USER PROFILE PICTURE
-    $default_pfp_path = '../img/default_pfp.jpg';
+    $default_pfp_path = 'img/default_pfp.jpg';
     if (isset ($_FILES['profilePicture']) && is_uploaded_file($_FILES['profilePicture']['tmp_name'])) {
         $profile_picture = file_get_contents($_FILES['profilePicture']['tmp_name']);
     } elseif (file_exists($default_pfp_path)) {
@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif (!file_exists($default_pfp_path)) {
         echo "The default image does not exist";
         echo '<br><a href=' . $prev_page . '>Return to the Registration page</a>';
+        header('Location: register.php');
     }
 
 
