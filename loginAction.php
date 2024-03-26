@@ -1,7 +1,7 @@
 <?php
 session_start();
 ///// XAMPP ADMIN /////
-///*
+/*
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -10,7 +10,7 @@ $dbname = "db_47130992";
 
 
 ///// SERVER /////
-/* 
+///* 
 $servername = "localhost";
 $username = "47130992";
 $password = "freshstart360";
