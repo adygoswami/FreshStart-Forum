@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (password_verify($password, $user['password'])) {
             // start a session unique to the user and store their username
-
             $_SESSION['username'] = $username;
             $_SESSION['user_id'] = $user['user_id'];
 
