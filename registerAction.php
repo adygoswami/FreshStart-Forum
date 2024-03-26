@@ -22,6 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // making a connection to the db
     $conn = new mysqli($servername, $username, $password, $dbname);
 
+    // in case to head back to the previous page (from lab 9) 
+    if (isset ($_SERVER['HTTP_REFERER'])) {
+        $prev_page = $_SERVER['HTTP_REFERER'];
+    }
+
     // form data
     // with filter_var, I can sanitize the data and ensure that there is no harmful user input data
     $firstName = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
@@ -32,15 +37,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $confirmPassword = $_POST['confirmpassword'];
     // USER PROFILE PICTURE
     $default_pfp_path = '../img/default_pfp.jpg';
-    if (isset ($_FILES['profilePicture']) && $_FILES['profilePicture']['error'] == 0) {
-        $prfile_picture = file_get_contents($_FILES['profilePicture']['tmp_name']);
-    } else {
-        $prfile_picture = file_get_contents($default_pfp_path);
+    if (isset ($_FILES['profilePicture']) && is_uploaded_file($_FILES['profilePicture']['tmp_name'])) {
+        $profile_picture = file_get_contents($_FILES['profilePicture']['tmp_name']);
+    } elseif (file_exists($default_pfp_path)) {
+        $profile_picture = file_get_contents($default_pfp_path);
+    } elseif (!file_exists($default_pfp_path)) {
+        echo "The default image does not exist";
+        echo '<br><a href=' . $prev_page . '>Return to the Registration page</a>';
     }
-    // in case to head back to the previous page (from lab 9) 
-    if (isset ($_SERVER['HTTP_REFERER'])) {
-        $prev_page = $_SERVER['HTTP_REFERER'];
-    }
+
 
     // check if the username already exists
     $userStmt = $conn->prepare('SELECT * FROM user_details WHERE username = ?');
@@ -76,21 +81,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // hashing the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // this is the default hashing algorithm
 
-    $stmt = $conn->prepare('INSERT INTO user_details(first_name, last_name, email, username, password, profile_picture) VALUES (?, ?, ?, ?, ?, ?)');
-
-    // SQL statements to insert the data if the image is small
-    // $stmt->bind_param('sssssb', $firstName, $lastName, $email, $username, $hashedPassword, $prfile_picture);
+    // // INSERT WITHOUT THE PROFILE PICTURE:
+    // $stmt = $conn->prepare('INSERT INTO user_details(first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)');
+    // $stmt->bind_param('sssss', $firstName, $lastName, $email, $username, $hashedPassword);
     // $stmt->execute();
 
-    // to ensure efficiency if the image is large
-    $null = NULL;
-    $stmt->bind_param('sssssb', $firstName, $lastName, $email, $username, $hashedPassword, $null); //b is for blob data
+    // INSERT WITH THE PROFILE PICTURE:
+    $null = null; // Define null for the blob placeholder
+    $stmt = $conn->prepare('INSERT INTO user_details (first_name, last_name, email, username, password, profile_picture) VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->bind_param('sssssb', $firstName, $lastName, $email, $username, $hashedPassword, $null);
     $stmt->send_long_data(5, $profile_picture);
 
-
-    //redirect the user to the login page
-    header('Location: login.php');
-    exit();
+    if ($stmt->execute()) {
+        $_SESSION['success'] = 'Registration successful';
+        header('Location: login.php');
+        exit();
+    } else {
+        $_SESSION['error'] = 'Registration failed';
+        header('Location: register.php');
+        exit();
+    }
 }
+//john1234
+//John1234$
 
 ?>
