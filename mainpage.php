@@ -143,7 +143,9 @@ $conn->close();
         </div>
   
 
-</div>div id="postContainer">
+</div>
+
+<div id="postContainer">
             <?php foreach ($posts as $post): ?>
                 <div class="post">
                     <div class="vote-system">
