@@ -212,7 +212,7 @@ $conn->close();
   .catch((error) => {
     console.error('Error:', error);
   });
-}
+
 
 function updateVoteCount(postId, newVoteCount) {
   // Update the vote count in the DOM
