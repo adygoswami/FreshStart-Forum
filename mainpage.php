@@ -124,7 +124,7 @@
         }
 
         // SQL query to fetch all posts
-        $sql = "SELECT title, text FROM posts ORDER BY created_at DESC";
+        $sql = "SELECT title, content FROM posts ORDER BY created_at DESC";
         $result = $conn->query($sql);
 
         if ($result && $result->num_rows > 0) {
@@ -132,7 +132,7 @@
             while($row = $result->fetch_assoc()) {
                 echo "<div class='post'>";
                 echo "<h3>" . htmlspecialchars($row['title']) . "</h3>";
-                echo "<p>" . htmlspecialchars($row['text']) . "</p>";
+                echo "<p>" . htmlspecialchars($row['content']) . "</p>";
                 echo "</div>";
             }
         } else {

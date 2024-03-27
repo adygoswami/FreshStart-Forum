@@ -15,13 +15,13 @@ if ($conn->connect_error) {
 // Check if form data has been sent
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO posts (community, title, text) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $community, $title, $text);
+    $stmt = $conn->prepare("INSERT INTO posts (community, title, content) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $community, $title, $content);
 
     // Set parameters and execute
     $community = htmlspecialchars($_POST['community']);
     $title = htmlspecialchars($_POST['title']);
-    $text = htmlspecialchars($_POST['text']);
+    $content = htmlspecialchars($_POST['content']);
     
     // Attempt to execute the prepared statement
     if ($stmt->execute()) {
