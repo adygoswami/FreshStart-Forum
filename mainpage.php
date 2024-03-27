@@ -100,57 +100,14 @@ $conn->close();
 
     <!-- dummy posts -->
 
-<article class="reddit-post">
-<div class="vote-system">
-        <button class="vote-button upvote">Like</button>
-        <span class="vote-count">15</span>
-        <button class="vote-button downvote">Dislike</button>
-    </div>
+<
 
-    <div class="post-content">
-        <h2 class="post-title">How is everyone's midterms???</h2>
-        <p class="post-text">I think I did really bad... help!!</p>
-        <div class="post-footer">
-            <a href="#" class="comments-link">Comments</a>
-        </div>
-    </div>
-</article>
 
-<article class="reddit-post">
-    <div class="vote-system">
-        <button class="vote-button upvote">Like</button>
-        <span class="vote-count">-2</span>
-        <button class="vote-button downvote">Dislike</button>
-    </div>
-
-    <div class="post-content">
-        <h2 class="post-title">I hate coffee!!</h2>
-        <p class="post-text">Is it just me or does anyone just can't stand coffee?</p>
-        <div class="post-footer">
-            <a href="#" class="comments-link">Comments</a>
-        </div>
-    </div>
-</article>
-
-<article class="reddit-post">
-<div class="vote-system">
-        <button class="vote-button upvote">Like</button>
-        <span class="vote-count">4</span>
-        <button class="vote-button downvote">Dislike</button>
-    </div>
-
-    <div class="post-content">
-        <h2 class="post-title">Does anyone want to switch labs for Cosc111?</h2>
-        <p class="post-text">Send me an email on johndoe@gmail.com pls if you want to swap labs to Monday 10am.</p>
-        <div class="post-footer">
-            <a href="#" class="comments-link">Comments</a>
-        </div>
-    </div>
 
     
 </article>
 
-<!-- testing vote count -->
+<!-- post 1 -->
 
 <div class='post' id='post-1'>
 <div class="vote-system">
@@ -168,21 +125,45 @@ $conn->close();
 
 </div>
 
-<div id="postContainer">
-    <?php foreach ($posts as $post): ?>
-        <div class="post">
-            <h3><?php echo htmlspecialchars($post['title']); ?></h3>
-            <p><?php echo htmlspecialchars($post['content']); ?></p>
-            <!--  buttons and other content  -->
-            <div class="vote-system">
+</article>
+
+<!-- post 2 -->
+
+<div class='post' id='post-2'>
+<div class="vote-system">
     <button class="vote-button upvote" onclick="vote(1, 'up')">Like</button>
     <div class="vote-count">0</div>
     <button class="vote-button downvote" onclick="vote(1, 'down')">Dislike</button>
   </div>
+  
+  <h2>Does anyone want to switch labs for Cosc 360?</h3>
+  <p>I really need to switch to any other lab. Mine is at 11am Monday. Send me an email at johndoe@gmail.com if u want to switch pls.</p>
+  <div class="post-footer">
+            <a href="#" class="comments-link">Comments</a>
         </div>
-    <?php endforeach; ?>
+  
+
 </div>
 
+div id="postContainer">
+            <?php foreach ($posts as $post): ?>
+                <div class="post">
+                    <div class="vote-system">
+                        <button class="vote-button upvote" onclick="vote(<?= $post['id']; ?>, 'up')">Like</button>
+                        <span class="vote-count"><?= $post['votes']; ?></span>
+                        <button class="vote-button downvote" onclick="vote(<?= $post['id']; ?>, 'down')">Dislike</button>
+                    </div>
+                    <div class="post-content">
+                        <h2 class="post-title"><?= htmlspecialchars($post['title']); ?></h2>
+                        <p class="post-text"><?= htmlspecialchars($post['text']); ?></p>
+                        <!-- a comments section can be linked if u want-->
+                        <div class="post-footer">
+                            <a href="comments.php?post_id=<?= $post['id']; ?>" class="comments-link">Comments</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
        
     </main>
 
