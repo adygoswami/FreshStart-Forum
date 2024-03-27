@@ -87,6 +87,8 @@
             <a href="#" class="comments-link">Comments</a>
         </div>
     </div>
+
+    
 </article>
 
 <!-- testing vote count -->
@@ -107,7 +109,25 @@
 
 </div>
 
+<div id="postContainer">
+    <?php foreach ($posts as $post): ?>
+        <div class="post">
+            <h3><?php echo htmlspecialchars($post['title']); ?></h3>
+            <p><?php echo htmlspecialchars($post['content']); ?></p>
+            <!--  buttons and other content  -->
+            <div class="vote-system">
+    <button class="vote-button upvote" onclick="vote(1, 'up')">Like</button>
+    <div class="vote-count">0</div>
+    <button class="vote-button downvote" onclick="vote(1, 'down')">Dislike</button>
+  </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
         <?php
+
+        //php start
+
         session_start();
 
         $servername = "localhost";
@@ -123,6 +143,16 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
+$sql = "SELECT * FROM posts ORDER BY created_at DESC";
+$result = $conn->query($sql);
+
+// Store posts in a variable
+$posts = [];
+if ($result && $result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $posts[] = $row;
+    }
+}
         $sql = "SELECT id, title, text, votes FROM posts ORDER BY created_at DESC";
 $result = $conn->query($sql);
 
@@ -146,6 +176,8 @@ if ($result && $result->num_rows > 0) {
 } else {
     echo "0 results";
 }
+
+
 
 // Close the connection
 $conn->close();
