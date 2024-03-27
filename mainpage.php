@@ -143,9 +143,7 @@ $conn->close();
         </div>
   
 
-</div>
-
-div id="postContainer">
+</div>div id="postContainer">
             <?php foreach ($posts as $post): ?>
                 <div class="post">
                     <div class="vote-system">
@@ -176,7 +174,6 @@ div id="postContainer">
             document.querySelector('.login-dropdown').style.display = 'none';
         });
 
-        //test code for vote
 
         function vote(postId, direction) {
   // Data to be sent to the server
@@ -208,8 +205,9 @@ function updateVoteCount(postId, newVoteCount) {
   document.querySelector(`#post-${postId} .vote-count`).textContent = newVoteCount;
 }
 
-document.getElementById('postSubmit').addEventListener('click', function() {
-    var form = document.getElementById('postForm');
+document.getElementById('postForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    var form = this;
     var formData = new FormData(form);
 
     fetch('submit-post.php', {
@@ -221,6 +219,7 @@ document.getElementById('postSubmit').addEventListener('click', function() {
         // Find the post container and append the new post
         var postContainer = document.getElementById('postContainer');
         postContainer.innerHTML += data; // Append the new post
+        form.reset(); // Reset the form after successful submission
     })
     .catch(error => console.error('Error:', error));
 });
