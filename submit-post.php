@@ -14,6 +14,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+<<<<<<< HEAD
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form data
@@ -34,6 +35,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<p>" . htmlspecialchars($text) . "</p>";
         // Include image or video if uploaded
         echo "</div>";
+=======
+// Check if form data has been sent
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Prepare and bind
+    $stmt = $conn->prepare("INSERT INTO posts (community, title, content) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $community, $title, $content);
+
+    // Set parameters and execute
+    $community = htmlspecialchars($_POST['community']);
+    $title = htmlspecialchars($_POST['title']);
+    $content = htmlspecialchars($_POST['content']);
+    
+    // Attempt to execute the prepared statement
+    if ($stmt->execute()) {
+        echo "New post created successfully";
+>>>>>>> 9a1ca836888c42498af45b16d52e5708bc8fd4c7
     } else {
         echo "Error: " . $stmt->error;
     }

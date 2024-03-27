@@ -123,6 +123,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
+<<<<<<< HEAD
         $sql = "SELECT id, title, text, votes FROM posts ORDER BY created_at DESC";
 $result = $conn->query($sql);
 
@@ -150,6 +151,27 @@ if ($result && $result->num_rows > 0) {
 // Close the connection
 $conn->close();
 ?>
+=======
+        // SQL query to fetch all posts
+        $sql = "SELECT title, content FROM posts ORDER BY created_at DESC";
+        $result = $conn->query($sql);
+
+        if ($result && $result->num_rows > 0) {
+            // Output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<div class='post'>";
+                echo "<h3>" . htmlspecialchars($row['title']) . "</h3>";
+                echo "<p>" . htmlspecialchars($row['content']) . "</p>";
+                echo "</div>";
+            }
+        } else {
+            echo "0 results";
+        }
+        
+        // Close the connection
+        $conn->close();
+        ?>
+>>>>>>> 9a1ca836888c42498af45b16d52e5708bc8fd4c7
     </main>
 
     <script>

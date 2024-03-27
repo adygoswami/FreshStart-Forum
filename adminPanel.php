@@ -38,7 +38,7 @@ if (isset($_POST['search']) && !empty($_POST['searchQuery']))
 $users = $conn->query("SELECT user_id, username, is_enabled FROM user_details")->fetch_all(MYSQLI_ASSOC);
 
 // Fetching all posts for editing/removing inappropriate posts in admin's POV
-$posts = $conn->query("SELECT postID, title, userID FROM posts")->fetch_all(MYSQLI_ASSOC);
+$posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
@@ -49,7 +49,7 @@ $posts = $conn->query("SELECT postID, title, userID FROM posts")->fetch_all(MYSQ
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/adminstyle.css"> 
 
     <script>  //incorporating AJAX functionality so that reloading the page is not required after any chnages are made by the admin!
     function toggleUserStatus(userId, isEnabled) {
