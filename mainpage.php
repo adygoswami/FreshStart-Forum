@@ -1,3 +1,62 @@
+<?php
+
+//php start
+
+session_start();
+
+$servername = "localhost";
+$username = "47130992";
+$password = "freshstart360";
+$dbname = "db_47130992";
+
+// Create a connection to the database
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM posts ORDER BY created_at DESC";
+$result = $conn->query($sql);
+
+// Store posts in a variable
+$posts = [];
+if ($result && $result->num_rows > 0) {
+while($row = $result->fetch_assoc()) {
+$posts[] = $row;
+}
+}
+$sql = "SELECT id, title, text, votes FROM posts ORDER BY created_at DESC";
+$result = $conn->query($sql);
+
+if ($result && $result->num_rows > 0) {
+// Output data of each row
+while($row = $result->fetch_assoc()) {
+// Each post will have its own unique ID and vote count
+echo "<div class='post' id='post-" . $row['id'] . "'>";
+echo "<div class='vote-system'>";
+echo "<button class='vote-button upvote' onclick='vote(" . $row['id'] . ", \"up\")'>Like</button>";
+echo "<div class='vote-count'>" . $row['votes'] . "</div>";
+echo "<button class='vote-button downvote' onclick='vote(" . $row['id'] . ", \"down\")'>Dislike</button>";
+echo "</div>";
+echo "<h2>" . htmlspecialchars($row['title']) . "</h2>";
+echo "<p>" . htmlspecialchars($row['text']) . "</p>";
+echo "<div class='post-footer'>";
+echo "<a href='#' class='comments-link'>Comments</a>";
+echo "</div>";
+echo "</div>";
+}
+} else {
+echo "0 results";
+}
+
+
+
+// Close the connection
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,64 +183,7 @@
     <?php endforeach; ?>
 </div>
 
-        <?php
-
-        //php start
-
-        session_start();
-
-        $servername = "localhost";
-        $username = "47130992";
-        $password = "freshstart360";
-        $dbname = "db_47130992";
-
-        // Create a connection to the database
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check the connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-$sql = "SELECT * FROM posts ORDER BY created_at DESC";
-$result = $conn->query($sql);
-
-// Store posts in a variable
-$posts = [];
-if ($result && $result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $posts[] = $row;
-    }
-}
-        $sql = "SELECT id, title, text, votes FROM posts ORDER BY created_at DESC";
-$result = $conn->query($sql);
-
-if ($result && $result->num_rows > 0) {
-    // Output data of each row
-    while($row = $result->fetch_assoc()) {
-        // Each post will have its own unique ID and vote count
-        echo "<div class='post' id='post-" . $row['id'] . "'>";
-        echo "<div class='vote-system'>";
-        echo "<button class='vote-button upvote' onclick='vote(" . $row['id'] . ", \"up\")'>Like</button>";
-        echo "<div class='vote-count'>" . $row['votes'] . "</div>";
-        echo "<button class='vote-button downvote' onclick='vote(" . $row['id'] . ", \"down\")'>Dislike</button>";
-        echo "</div>";
-        echo "<h2>" . htmlspecialchars($row['title']) . "</h2>";
-        echo "<p>" . htmlspecialchars($row['text']) . "</p>";
-        echo "<div class='post-footer'>";
-        echo "<a href='#' class='comments-link'>Comments</a>";
-        echo "</div>";
-        echo "</div>";
-    }
-} else {
-    echo "0 results";
-}
-
-
-
-// Close the connection
-$conn->close();
-?>
+       
     </main>
 
     <script>
