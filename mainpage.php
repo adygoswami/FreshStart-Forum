@@ -174,13 +174,27 @@ $conn->close();
             document.querySelector('.login-dropdown').style.display = 'none';
         });
 
+//vote function
+    function vote(postId, direction) {
+  let data = { postId, vote: direction };
+  fetch('vote_handler.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data),
+  })
+  .then(response => response.json())
+  .then(data => {
+    if(data.newVoteCount !== undefined) {
+      document.querySelector(`#post-${postId} .vote-count`).textContent = data.newVoteCount;
+    } else if(data.error) {
+      console.error('Voting error:', data.error);
+    }
+  })
+  .catch((error) => {
+    console.error('Fetch error:', error);
+  });
+}
 
-        function vote(postId, direction) {
-  // Data to be sent to the server
-  let data = {
-    postId: postId,
-    vote: direction
-  };
 
   // Send the data using the Fetch API
   fetch('vote_handler.php', {
