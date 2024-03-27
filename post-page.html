@@ -18,7 +18,7 @@
                 <button type="button" class="post-type" id="image-video-btn">Image & Video</button>
             </div>
     
-            <form class="post-form" action="submit-post.php" method="post" enctype="multipart/form-data" id="postForm">
+            <form id="postForm" action="submit-post.php" method="post">
                 
 
                 <!-- drop down list for where to post-->
@@ -37,12 +37,29 @@
                     <input type="file" id="image-upload" name="image-upload" accept="image/*,video/*">
                 </div>
             
-                <button type="button" id="postSubmit" class="post-submit">Post</button>
+                <button type="button" id="postSubmit">Post</button>
             </form>
         </div>
     
         <!-- JavaScript for image upload button -->
         <script>
+
+document.getElementById('postSubmit').addEventListener('click', function() {
+    var form = document.getElementById('postForm');
+    var formData = new FormData(form);
+
+    fetch('submit-post.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        // If the post was successful, redirect to the main page
+        window.location.href = 'mainpage.php';
+    })
+    .catch(error => console.error('Error:', error));
+});
+
             document.getElementById('image-video-btn').addEventListener('click', function() {
                 var imageUploadContainer = document.getElementById('image-upload-container');
                 imageUploadContainer.style.display = imageUploadContainer.style.display === 'none' ? 'block' : 'none';
@@ -67,6 +84,7 @@
             .catch(error => console.error('Error:', error));
         });
     });
+
 
         </script>
 </body>
