@@ -132,7 +132,7 @@ $conn->close();
 
 <div class='post' id='post-1'>
 <div class="vote-system">
-    <button class="vote-button upvote" onclick="vote(1, 'up')">Like</button>
+<button class="vote-button upvote" onclick="increaseLikeCount(1)">Like</button>
     <div class="vote-count">0</div>
     <button class="vote-button downvote" onclick="vote(1, 'down')">Dislike</button>
   </div>
@@ -152,7 +152,7 @@ $conn->close();
 
 <div class='post' id='post-2'>
 <div class="vote-system">
-    <button class="vote-button upvote" onclick="vote(1, 'up')">Like</button>
+<button class="vote-button upvote" onclick="increaseLikeCount(1)">Like</button>
     <div class="vote-count">0</div>
     <button class="vote-button downvote" onclick="vote(1, 'down')">Dislike</button>
   </div>
@@ -171,6 +171,36 @@ $conn->close();
     </main>
 
     <script>
+        //like function
+
+        let likedPosts = {};
+let dislikedPosts = {};
+
+function increaseLikeCount(postId) {
+  if (likedPosts[postId]) {
+    console.log('You have already liked this post.');
+    return;
+  }
+
+  var voteCountElement = document.querySelector(`#post-${postId} .vote-count`);
+  var currentCount = parseInt(voteCountElement.textContent, 10);
+  voteCountElement.textContent = currentCount + 1;
+  likedPosts[postId] = true;
+}
+
+function decreaseLikeCount(postId) {
+  if (dislikedPosts[postId]) {
+    console.log('You have already disliked this post.');
+    return;
+  }
+
+  var voteCountElement = document.querySelector(`#post-${postId} .vote-count`);
+  var currentCount = parseInt(voteCountElement.textContent, 10);
+  voteCountElement.textContent = currentCount - 1;
+  dislikedPosts[postId] = true;
+}
+//like dislike for dummy post end
+
         document.querySelector('.username').addEventListener('mouseover', function() {
             document.querySelector('.login-dropdown').style.display = 'block';
         });
