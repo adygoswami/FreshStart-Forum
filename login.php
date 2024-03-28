@@ -14,7 +14,7 @@ session_start();
 <body>
     <div class="container">
 
-        <!-- left hand side ubco background and header --> 
+        <!-- left hand side ubco background and header -->
 
         <div class="left">
             <div id="welcometext">
@@ -29,7 +29,7 @@ session_start();
             <div class="login">
                 <form action="loginAction.php" method="post">
 
-                    <!-- username --> 
+                    <!-- username -->
 
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
@@ -47,15 +47,15 @@ session_start();
 
                     <div id="logError">
                         <?php
-                        if (isset ($_SESSION['error'])) {
+                        if (isset($_SESSION['error'])) {
                             echo $_SESSION['error'];
                             unset($_SESSION['error']);
                         }
                         ?>
                     </div>
 
-                    <p> Not a member?</a></p>
-                    <p> <a href="register.php"> Sign up</a> or <a href="main page.html"> Continue as a Guest</a></p>
+                    <p> Not a member?</p>
+                    <p> <a href="register.php"> Sign up</a> or <a href="mainpage.php"> Continue as a Guest</a></p>
 
                 </form>
 

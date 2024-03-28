@@ -45,7 +45,7 @@ session_start();
 
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email">
-                    
+
                     <!-- Username -->
 
                     <label for="username">Username</label>
@@ -55,7 +55,7 @@ session_start();
 
                     <div id="regError">
                         <?php
-                        if (isset ($_SESSION['error'])) {
+                        if (isset($_SESSION['error'])) {
                             echo $_SESSION['error'];
                             unset($_SESSION['error']);
                         }
@@ -73,7 +73,7 @@ session_start();
                         <p id="pwErrorLength" class="pwError" style="display: none;"> The password must be at least 8
                             characters</p>
                         <p id="pwErrorSpecChar" class="pwError" style="display: none;"> The password must contain a
-                            special character {!, @, #, $, %, ^,  &, *}</p>
+                            special character {!, @, #, $, %, ^, &, *}</p>
                     </div>
 
                     <!-- Confirm Password -->
@@ -94,7 +94,7 @@ session_start();
 
                     <!-- Register and Log in button -->
 
-                    <button type="submit">Register and Log in</button>
+                    <button type="submit">Register</button>
 
                 </form>
 
