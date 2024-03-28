@@ -126,45 +126,35 @@ $conn->close();
 
 
     
-</article>
-
 <!-- post 1 -->
-
 <div class='post' id='post-1'>
-<div class="vote-system">
-<button class="vote-button upvote" onclick="increaseLikeCount(1)">Like</button>
+  <div class="vote-system">
+    <button class="vote-button upvote" onclick="increaseLikeCount(1)">Like</button>
     <div class="vote-count">0</div>
-    <button class="vote-button downvote" onclick="vote(1, 'down')">Dislike</button>
+    <button class="vote-button downvote" onclick="decreaseLikeCount(1)">Dislike</button>
   </div>
-  
-  <h2>How is everyone's midterms???</h3>
+  <h2>How is everyone's midterms???</h2>
   <p>I think I did really bad... help!!</p>
   <div class="post-footer">
-            <a href="#" class="comments-link">Comments</a>
-        </div>
-  
-
+    <a href="#" class="comments-link">Comments</a>
+  </div>
 </div>
 
-</article>
 
 <!-- post 2 -->
-
 <div class='post' id='post-2'>
-<div class="vote-system">
-<button class="vote-button upvote" onclick="increaseLikeCount(1)">Like</button>
+  <div class="vote-system">
+    <button class="vote-button upvote" onclick="increaseLikeCount(2)">Like</button>
     <div class="vote-count">0</div>
-    <button class="vote-button downvote" onclick="vote(1, 'down')">Dislike</button>
+    <button class="vote-button downvote" onclick="decreaseLikeCount(2)">Dislike</button>
   </div>
-  
-  <h2>Does anyone want to switch labs for Cosc 360?</h3>
+  <h2>Does anyone want to switch labs for Cosc 360?</h2>
   <p>I really need to switch to any other lab. Mine is at 11am Monday. Send me an email at johndoe@gmail.com if u want to switch pls.</p>
   <div class="post-footer">
-            <a href="#" class="comments-link">Comments</a>
-        </div>
-  
-
+    <a href="#" class="comments-link">Comments</a>
+  </div>
 </div>
+
 
 
        
@@ -173,7 +163,7 @@ $conn->close();
     <script>
         //like function
 
-        let likedPosts = {};
+let likedPosts = {};
 let dislikedPosts = {};
 
 function increaseLikeCount(postId) {
@@ -199,6 +189,8 @@ function decreaseLikeCount(postId) {
   voteCountElement.textContent = currentCount - 1;
   dislikedPosts[postId] = true;
 }
+
+
 //like dislike for dummy post end
 
         document.querySelector('.username').addEventListener('mouseover', function() {
@@ -210,18 +202,18 @@ function decreaseLikeCount(postId) {
         });
 
 //vote function
-    function vote(postId, direction) {
+function vote(postId, direction) {
   let data = { postId, vote: direction };
   fetch('vote_handler.php', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
   .then(response => response.json())
   .then(data => {
-    if(data.newVoteCount !== undefined) {
+    if (data.newVoteCount !== undefined) {
       document.querySelector(`#post-${postId} .vote-count`).textContent = data.newVoteCount;
-    } else if(data.error) {
+    } else if (data.error) {
       console.error('Voting error:', data.error);
     }
   })
