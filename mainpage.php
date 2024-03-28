@@ -107,8 +107,8 @@ $conn->close();
                     </div>
                     <div class="post-content">
                         <h2 class="post-title"><?= htmlspecialchars($post['title']); ?></h2>
-                        <p class="post-text"><?= htmlspecialchars($post['text']); ?></p>
-                        <!-- a comments section can be linked if u want-->
+                        <p class="post-text"><?= htmlspecialchars($post['content']); ?></p>
+                        <!-- a comments section can be linked here-->
                         <div class="post-footer">
                             <a href="comments.php?post_id=<?= $post['id']; ?>" class="comments-link">Comments</a>
                         </div>
@@ -120,10 +120,6 @@ $conn->close();
     </div>
 
     <!-- dummy posts -->
-
-
-
-
 
     
 <!-- post 1 -->

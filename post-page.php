@@ -30,7 +30,7 @@
                     <option value="marketplace">Marketplace</option>
                 </select>
                 <input type="text" id="title" name="title" placeholder="Title" required>
-                <textarea id="text" name="text" placeholder="Text (optional)"></textarea>
+                <textarea id="content" name="content" ></textarea>
             
                 <!-- Image upload section, shown/hidden -->
                 <div class="image-upload-container" id="image-upload-container" style="display: none;">
@@ -75,9 +75,9 @@ document.getElementById('postSubmit').addEventListener('click', function() {
             })
             .then(response => response.text())
             .then(data => {
-                console.log(data); // Or handle the response in your desired way.
+                console.log(data); 
                 // If you want to show the post on the main page without reloading:
-                // Assuming you have a div with id="postContainer" on your main page
+                // need id="postContainer" on the main page
                 var postContainer = document.getElementById('postContainer');
                 postContainer.innerHTML += data; // data should be the HTML of the new post
             })
