@@ -18,7 +18,7 @@
                 <button type="button" class="post-type" id="image-video-btn">Image & Video</button>
             </div>
     
-            <form id="postForm" action="submit-post.php" method="post">
+            <form id="postForm" action="submit-post.php" method="post" enctype="multipart/form-data">
                 
 
                 <!-- drop down list for where to post-->

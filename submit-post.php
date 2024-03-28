@@ -23,10 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
     $title = $_POST['title'];
     $content = $_POST['content'];
     $userId = $_SESSION['user_id']; 
+   
+    if (isset ($_FILES['image-upload']) && is_uploaded_file($_FILES['image-upload']['tmp_name'])) {
+        $post_img = file_get_contents($_FILES['image-upload']['tmp_name']);
+    }
 
     // SQL to insert post
-    $stmt = $conn->prepare("INSERT INTO posts (userID, community, title, content) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("isss", $userId, $community, $title, $content);
+    $null = null;
+    $stmt = $conn->prepare("INSERT INTO posts (userID, community, title, content, post_img) VALUES (?, ?, ?, ? , ?)");
+    $stmt->bind_param("isssb", $userId, $community, $title, $content, $null);
+    $stmt->send_long_data(4,$post_img);
 
     // Execute and check if the query was successful
     if($stmt->execute()) {
