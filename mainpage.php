@@ -93,10 +93,11 @@ $conn->close();
     </header>
 
     <main class="main-content">
+
     <div id="postContainer">
             <!-- live posts -->
 
-            <div id="postContainer">
+            
             <?php foreach ($posts as $post): ?>
                 <div class="post">
                     <div class="vote-system">
@@ -114,7 +115,7 @@ $conn->close();
                     </div>
                 </div>
             <?php endforeach; ?>
-        </div>
+        
 
     </div>
 
