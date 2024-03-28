@@ -96,6 +96,26 @@ $conn->close();
     <div id="postContainer">
             <!-- live posts -->
 
+            <div id="postContainer">
+            <?php foreach ($posts as $post): ?>
+                <div class="post">
+                    <div class="vote-system">
+                        <button class="vote-button upvote" onclick="vote(<?= $post['id']; ?>, 'up')">Like</button>
+                        <span class="vote-count"><?= $post['votes']; ?></span>
+                        <button class="vote-button downvote" onclick="vote(<?= $post['id']; ?>, 'down')">Dislike</button>
+                    </div>
+                    <div class="post-content">
+                        <h2 class="post-title"><?= htmlspecialchars($post['title']); ?></h2>
+                        <p class="post-text"><?= htmlspecialchars($post['text']); ?></p>
+                        <!-- a comments section can be linked if u want-->
+                        <div class="post-footer">
+                            <a href="comments.php?post_id=<?= $post['id']; ?>" class="comments-link">Comments</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
     </div>
 
     <!-- dummy posts -->
@@ -145,25 +165,7 @@ $conn->close();
 
 </div>
 
-<div id="postContainer">
-            <?php foreach ($posts as $post): ?>
-                <div class="post">
-                    <div class="vote-system">
-                        <button class="vote-button upvote" onclick="vote(<?= $post['id']; ?>, 'up')">Like</button>
-                        <span class="vote-count"><?= $post['votes']; ?></span>
-                        <button class="vote-button downvote" onclick="vote(<?= $post['id']; ?>, 'down')">Dislike</button>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title"><?= htmlspecialchars($post['title']); ?></h2>
-                        <p class="post-text"><?= htmlspecialchars($post['text']); ?></p>
-                        <!-- a comments section can be linked if u want-->
-                        <div class="post-footer">
-                            <a href="comments.php?post_id=<?= $post['id']; ?>" class="comments-link">Comments</a>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
+
        
     </main>
 
