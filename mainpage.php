@@ -1,61 +1,34 @@
 <?php
 
-//php start
-
+// Start the session and establish a database connection
 session_start();
-
-$servername = "localhost";
-$username = "47130992";
-$password = "freshstart360";
-$dbname = "db_47130992";
-
-// Create a connection to the database
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli('localhost', '47130992', 'freshstart360', 'db_47130992');
 
 // Check the connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die('Connection failed: ' . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM posts ORDER BY created_at DESC";
+// Fetch posts from the database
+$sql = 'SELECT id, title, content, votes FROM posts ORDER BY created_at DESC';
 $result = $conn->query($sql);
 
-// Store posts in a variable
+// Initialize an array to store the posts
 $posts = [];
-if ($result && $result->num_rows > 0) {
-while($row = $result->fetch_assoc()) {
-$posts[] = $row;
-}
-}
-$sql = "SELECT id, title, text, votes FROM posts ORDER BY created_at DESC";
-$result = $conn->query($sql);
 
+// Check if there are any posts and store them in the $posts array
 if ($result && $result->num_rows > 0) {
-// Output data of each row
-while($row = $result->fetch_assoc()) {
-// Each post will have its own unique ID and vote count
-echo "<div class='post' id='post-" . $row['id'] . "'>";
-echo "<div class='vote-system'>";
-echo "<button class='vote-button upvote' onclick='vote(" . $row['id'] . ", \"up\")'>Like</button>";
-echo "<div class='vote-count'>" . $row['votes'] . "</div>";
-echo "<button class='vote-button downvote' onclick='vote(" . $row['id'] . ", \"down\")'>Dislike</button>";
-echo "</div>";
-echo "<h2>" . htmlspecialchars($row['title']) . "</h2>";
-echo "<p>" . htmlspecialchars($row['text']) . "</p>";
-echo "<div class='post-footer'>";
-echo "<a href='#' class='comments-link'>Comments</a>";
-echo "</div>";
-echo "</div>";
-}
+    while ($row = $result->fetch_assoc()) {
+        $posts[] = $row;
+    }
 } else {
-echo "0 results";
+    echo '0 results';
 }
 
-
-
-// Close the connection
+// Close the database connection
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,30 +67,26 @@ $conn->close();
 
     <main class="main-content">
 
+        <!-- live posts -->
+
     <div id="postContainer">
-            <!-- live posts -->
 
-            
-            <?php foreach ($posts as $post): ?>
-                <div class="post">
-                    <div class="vote-system">
-                        <button class="vote-button upvote" onclick="vote(<?= $post['id']; ?>, 'up')">Like</button>
-                        <span class="vote-count"><?= $post['votes']; ?></span>
-                        <button class="vote-button downvote" onclick="vote(<?= $post['id']; ?>, 'down')">Dislike</button>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title"><?= htmlspecialchars($post['title']); ?></h2>
-                        <p class="post-text"><?= htmlspecialchars($post['content']); ?></p>
-                        <!-- a comments section can be linked here-->
-                        <div class="post-footer">
-                            <a href="comments.php?post_id=<?= $post['id']; ?>" class="comments-link">Comments</a>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        
-
+    <?php foreach ($posts as $post): ?>
+    <div class="post" id="post-<?php echo $post['id']; ?>">
+        <div class="vote-system">
+            <button class="vote-button upvote">Like</button>
+            <div class="vote-count"><?php echo $post['votes']; ?></div>
+            <button class="vote-button downvote">Dislike</button>
+        </div>
+        <h2><?php echo htmlspecialchars($post['title']); ?></h2>
+        <p><?php echo htmlspecialchars($post['content']); ?></p>
+        <div class="post-footer">
+            <a href="#" class="comments-link">Comments</a>
+        </div>
     </div>
+    <?php endforeach; ?>
+
+</div>
 
     <!-- dummy posts -->
 
@@ -198,6 +167,25 @@ function decreaseLikeCount(postId) {
         });
 
 //vote function
+
+document.addEventListener('DOMContentLoaded', function()) {
+        var upvoteButtons = document.querySelectorAll('.vote-button.upvote');
+        var downvoteButtons = document.querySelectorAll('.vote-button.downvote');
+
+        upvoteButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var postId = this.parentNode.parentNode.id.split('-')[1];
+                vote(postId, 'up');
+            });
+        });
+
+        downvoteButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var postId = this.parentNode.parentNode.id.split('-')[1];
+                vote(postId, 'down');
+            });
+        });
+    }
 function vote(postId, direction) {
   let data = { postId, vote: direction };
   fetch('vote_handler.php', {
