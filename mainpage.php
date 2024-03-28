@@ -88,7 +88,7 @@ $conn->close();
 </div>
         </div>
         <div>
-            <a href="post-page.html" class="post-tab">Create Post</a>
+            <a href="post-page.php" class="post-tab">Create Post</a>
         </div>
     </header>
 
