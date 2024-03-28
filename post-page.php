@@ -19,8 +19,6 @@
             </div>
     
             <form id="postForm" action="submit-post.php" method="post">
-                
-
                 <!-- drop down list for where to post-->
                 <label for="community">Choose where to post</label>
                 <select id="community" name="community">
@@ -35,8 +33,7 @@
                 <!-- Image upload section, shown/hidden -->
                 <div class="image-upload-container" id="image-upload-container" style="display: none;">
                     <input type="file" id="image-upload" name="image-upload" accept="image/*,video/*">
-                </div>
-            
+                </div>        
                 <button type="button" id="postSubmit">Post</button>
             </form>
         </div>
@@ -51,7 +48,7 @@ document.getElementById('postSubmit').addEventListener('click', function() {
     fetch('submit-post.php', {
         method: 'POST',
         body: formData
-    })
+    }) 
     .then(response => response.text())
     .then(data => {
         // If the post was successful, redirect to the main page

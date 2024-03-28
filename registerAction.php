@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmpassword'];
+    
     // USER PROFILE PICTURE
     $default_pfp_path = 'img/default_pfp.jpg';
     if (isset ($_FILES['profilePicture']) && is_uploaded_file($_FILES['profilePicture']['tmp_name'])) {
