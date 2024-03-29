@@ -5,7 +5,8 @@ session_start();
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="css/log-reg.css">
+    <!-- <link rel="stylesheet" href="css/log-reg.css"> -->
+    <link rel="stylesheet" href="css/login-register.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreshStart - UBCO</title>
@@ -15,10 +16,9 @@ session_start();
     <div class="container">
         <!-- LEFT SIDE -->
         <div class="left">
-            <div class="welcome">
-                <P>Welcome to
-                <p>
-                <h1>FreshStart</h1>
+            <div id="welcometext">
+                <p id="welcome">Welcome to</p>
+                <h1 id="freshStartText">FreshStart</h1>
             </div>
         </div>
 
@@ -30,7 +30,7 @@ session_start();
                 <!-- <form action="main page.html" method="get"> -->
                 <form action="registerAction.php" method="post" onsubmit="return validateForm()"
                     enctype="multipart/form-data">
-
+                    <h2>Register</h2>
                     <!-- First name -->
 
                     <label for="firstname">First Name</label>

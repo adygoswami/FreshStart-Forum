@@ -1,0 +1,291 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: serifGeorgia, 'Times New Roman', Times;
+    
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #010203;
+    backdrop-filter: blur(50px);
+    overflow: auto;
+}
+
+/* LEFT SIDE */
+
+.left {
+    width: 70%;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    margin: 2em;
+    border-radius: 15px;
+    background-image: url("../img/ubcoBG.png");
+    background-size: cover; 
+}
+#welcometext {
+    font-family: serifGeorgia,'Times New Roman',Times;
+    border-collapse: collapse;
+}
+#welcome {
+    margin-bottom: 0;
+    font-size: 3em;
+}
+#freshStartText {
+    margin-top: 0;
+    font-size: 10em;
+}
+
+/*////////////////////////////// RIGHT SIDE //////////////////////////////////*/
+
+/* the right container */
+.right {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100vh;
+}
+
+/* /////////////////////////// OBJECTIVES ///////////////////////////// */
+
+#objective {
+    margin-top: 4em;
+    max-width: 400px;
+    width: 100%;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-weight: 0;
+    background: linear-gradient(180deg,
+            #2173c9 0%,
+            #2f7ecd 11%,
+            #5d8dcb 22%,
+            #4d8acb 33%,
+            #7499c6 44%,
+            #3d5981 67%,
+            #5d556a 78%,
+            #656a7e 89%,
+            #8e7c7c 100%);
+}
+
+#objective h2{
+    margin-bottom: 0;
+}
+#objective ul li{
+    margin-bottom: 1em;
+}
+
+
+/* ///////////////////////////////////////////////////////////////////// */
+/*////////////////// login - form /////////////////////////////////////*/
+.login,
+.login form,
+#objective {
+    box-sizing: border-box;
+}
+/* login - div //////////////////////////////*/
+.login {
+    width: 400px;
+    display: flex;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    
+}
+.login form {
+    max-width: 400px;
+    width: 100%;
+    background-color: white;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    /* background: linear-gradient(to right,  #2576a8, #163553); */
+    background: linear-gradient(180deg,
+                #2173c9 0%,
+                    #2f7ecd 11%,
+                    #5d8dcb 22%,
+                    #4d8acb 33%,
+                    #7499c6 44%,
+                    #3d5981 67%,
+                    #5d556a 78%,
+                    #656a7e 89%,
+                    #8e7c7c 100%);
+}
+.login, .login form {
+    margin-bottom: 2em;
+    margin-top: 1em;
+}
+/* for 'username' and 'password' text */
+.login label {
+    align-self: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+/* for the input fields */
+.login input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+#loginsubmit {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+button {
+    padding: 15px;
+    background-color: #0055B7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    opacity: 0.8;
+}
+/* ///////////////////////////////////////////////////////////////////// */
+/*////////////////// REG - form /////////////////////////////////////*/
+.reg form {
+    max-width: 25em;
+    width: 25em;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background: linear-gradient(180deg,
+                #2173c9 0%,
+                #2f7ecd 11%,
+                #5d8dcb 22%,
+                #4d8acb 33%,
+                #7499c6 44%,
+                #3d5981 67%,
+                #5d556a 78%,
+                #656a7e 89%,
+                #8e7c7c 100%);
+}
+
+.reg label {
+    align-self: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.reg input,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.pwError {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+button {
+    padding: 15px;
+    background-color: #0055B7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.pwe {
+    margin-bottom: 0.5em;
+}
+
+#logError {
+    color: red;
+    font-size: 1em;
+}
+
+#regError {
+    color: red;
+    font-size: 1em;
+}
+
+/* ///////////////////////// Media Queries ///////////////////////////////////////////////////  */
+
+@media (max-width: 1900px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: auto;
+    }
+
+    .right {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 1500px) {
+    .container {
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: auto;
+    }
+    .left{
+        margin-top:50%;
+    }
+
+    .right {
+        margin-top: 5em;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1400px) {
+    .container {
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: auto;
+    }
+    #welcometext {
+        font-size: 0.5em;
+    }
+
+    .left {
+        margin-top: 40%;
+    }
+
+    .right {
+        margin-top: 5em;
+        flex-direction: column;
+    }
+}
