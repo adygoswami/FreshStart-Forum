@@ -25,7 +25,7 @@ if ($conn->connect_error) {
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mainpage.css">
     <script src="mainpage.js" defer></script>
 </head>
 <body data-logged-in="<?= $isLoggedIn ? 'true' : 'false' ?>" data-is-admin="<?= $isAdmin ? 'true' : 'false' ?>">
@@ -76,6 +76,6 @@ if ($conn->connect_error) {
     <main id="post-container">
         <!-- Posts will be dynamically loaded here -->
     </main>
-    
+
 </body>
 </html>
