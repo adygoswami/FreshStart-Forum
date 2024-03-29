@@ -28,7 +28,7 @@ header input {
     flex-grow: 1;
 }
 
-.topic-list {
+#topics-list {
     background-color: #2f7ecd;
     padding: 20px;
     display: flex;
