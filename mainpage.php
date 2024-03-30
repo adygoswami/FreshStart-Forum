@@ -27,7 +27,7 @@ if ($conn->connect_error) {
     <meta charset="UTF-8">
     <title>Main Page</title>
     <link rel="stylesheet" href="css/mainpage.css">
-    <script src="mainpage.js" defer></script>
+    <script src="javascript/mainpage.js" defer></script>
 </head>
 
 <body data-logged-in="<?= $isLoggedIn ? 'true' : 'false' ?>" data-is-admin="<?= $isAdmin ? 'true' : 'false' ?>">
