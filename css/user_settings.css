@@ -34,6 +34,9 @@ body {
     justify-content:center;
     align-items:center;
 }
+.profile-picture >*{
+    margin-bottom: 1em;
+}
 .user-settings form input {
     margin: 0.5em;
     padding: 0.5em;
