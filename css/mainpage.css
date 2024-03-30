@@ -23,6 +23,9 @@ header input, header button, .topic-button, .post-button, header input::placehol
     /* color: white; */
     color: black;
     cursor: pointer;
+}
+
+header input::placeholder {
     font-weight: 700;
 }
 
