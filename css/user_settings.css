@@ -29,6 +29,6 @@ body {
     align-items: center;
 }
 
-#profilePictureForm{
+#profilePictureForm input{
     display: block;
 }
