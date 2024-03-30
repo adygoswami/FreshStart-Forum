@@ -72,7 +72,10 @@ header input {
 
 /* /////////////////// CREATE A POST  ///////////////////////////////////// */
 #postCreationForm{
-    margin-left: 50em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 15%;
     margin-bottom: 1em;
     background-color: white;
 }
