@@ -62,6 +62,7 @@ if ($conn->connect_error) {
             <!-- Form for Creating Posts (visible only to logged-in users) -->
             <div id="postCreationForm">
                 <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
+                    <h1>Create a Post</h1>
                     <input type="text" name="title" placeholder="Title" required>
                     <textarea name="content" placeholder="Content" required></textarea>
                     <input type="file" name="image" accept="image/*">

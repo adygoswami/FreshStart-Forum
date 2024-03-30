@@ -77,7 +77,7 @@ header input {
 }
 
 #post-container {
-    background-color: black;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center; 
