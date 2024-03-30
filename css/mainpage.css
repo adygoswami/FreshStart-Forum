@@ -30,10 +30,11 @@ header input {
 
 #fsheader {
     color: white;
-    background-color: #0055B7;
+    background-color: #0a4583;
     border: none;
     text-decoration: none;
     margin-right: 1em;
+    border-radius: 10em;
 }
 
 /* ////////////////////// TOPIC LIST LEFT HAND SIDE NAV //////////////////*/

@@ -34,7 +34,7 @@ if ($conn->connect_error) {
     <header>
         <!-- Search Bar -->
         <a href="mainpage.php" id="fsheader">
-            <h1>FreshStart Forum</h1>
+            <h1>FreshStart</h1>
         </a>
         <input type="text" id="searchQuery" placeholder="Search posts..." class="searchQuery">
         <button onclick="searchPosts()">Search</button>
