@@ -33,14 +33,16 @@ if ($conn->connect_error) {
 <body data-logged-in="<?= $isLoggedIn ? 'true' : 'false' ?>" data-is-admin="<?= $isAdmin ? 'true' : 'false' ?>">
     <header>
         <!-- Search Bar -->
-        <input type="text" id="searchQuery" placeholder="Search posts...">
+        <input type="text" id="searchQuery" placeholder="Search posts..." class="searchQuery">
         <button onclick="searchPosts()">Search</button>
 
         <!-- User Profile Link -->
         <?php if ($isLoggedIn): ?>
-            <a href="userSettings.php">Profile</a>
+            <!-- <a href="userSettings.php">Profile</a> -->
+            <a href="userSettings.php"><button class="searchQuery">Profile</button></a>
         <?php else: ?>
-            <a href="login.php">Login</a>
+            <!-- <a href="login.php">Login</a> -->
+            <a href="login.php"><button class="searchQuery">Login</button></a>
         <?php endif; ?>
     </header>
 
