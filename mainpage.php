@@ -77,7 +77,6 @@ if ($conn->connect_error)
                         <option value="Marketplace">Marketplace</option>
                         <option value="Campus Resources">Campus Resources</option>
                     </select>
-                    
                     <button type="submit">Create Post</button>
                 </form>
             </div>
