@@ -8,7 +8,7 @@ body {
 
 header {
     background-color: #2173c9;
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
