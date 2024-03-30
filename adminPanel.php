@@ -1,3 +1,7 @@
+<!-- admin_username = admin
+     admin_password = admin@Freshstart360 -->
+
+
 <?php
 session_start();
 
