@@ -76,6 +76,7 @@ header input {
     flex-direction: row;
     justify-content: space-between;
     margin-left: 15%;
+    margin-right: 15%;
     margin-bottom: 1em;
     background-color: white;
 }
