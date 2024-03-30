@@ -69,10 +69,6 @@ header input {
     border: none;
 }
 
-.topic-button {
-    margin-bottom: 10px;
-}
-
 .post-container {
     padding: 20px;
     display: flex;
