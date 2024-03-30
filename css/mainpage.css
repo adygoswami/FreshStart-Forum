@@ -44,7 +44,7 @@ header input {
     display: flex;
     flex-direction: column;
     float: left;
-    height: 100%;
+    height: 100;
     width: 10%;
 }
 #disc-header {
@@ -92,7 +92,7 @@ header input {
     margin-left: 15%;
     margin-right: 15%;
     margin-bottom: 1em;
-    background-color: orange;
+    background-color: #2173c9;
     padding: 1em;
     border-radius: 5em;
 }
