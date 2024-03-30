@@ -14,7 +14,7 @@ header {
     align-items: center;
 }
 
-header input, header button, .topic-button, .post-button {
+header input, header button, .topic-button, .post-button, header input::placeholder {
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
@@ -23,6 +23,7 @@ header input, header button, .topic-button, .post-button {
     /* color: white; */
     color: black;
     cursor: pointer;
+    font-weight: 700;
 }
 
 header input {
