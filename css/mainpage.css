@@ -14,7 +14,7 @@ header {
     align-items: center;
 }
 
-header input, header button, .topic-button, .post-button, header input::placeholder {
+header input, header button, .topic-button, .post-button{
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
