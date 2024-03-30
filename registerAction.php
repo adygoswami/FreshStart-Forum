@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $confirmPassword = $_POST['confirmpassword'];
     
     // USER PROFILE PICTURE
+    // if the user does not upload a profile picture, then the default profile picture will be used. I realized later that it was not a requirement
     $default_pfp_path = 'img/default_pfp.jpg';
     if (isset ($_FILES['profilePicture']) && is_uploaded_file($_FILES['profilePicture']['tmp_name'])) {
         $profile_picture = file_get_contents($_FILES['profilePicture']['tmp_name']);
