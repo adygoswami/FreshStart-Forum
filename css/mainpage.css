@@ -20,7 +20,8 @@ header input, header button, .topic-button, .post-button {
     border-radius: 5px;
     border: 1px solid #ccc;
     background-color: #7596bd;
-    color: white;
+    /* color: white; */
+    color: black;
     cursor: pointer;
 }
 
