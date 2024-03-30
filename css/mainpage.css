@@ -46,10 +46,13 @@ header input {
 }
 #topics-list button{
     margin-bottom: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
     padding: 1em;
     background-color: #7596bd;
     border-radius: 1em;
     border: none;
+    
 }
 
 .topic-button {
