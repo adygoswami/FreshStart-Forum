@@ -28,7 +28,12 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+.profile-picture{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
 .user-settings form input {
     margin: 0.5em;
     padding: 0.5em;
