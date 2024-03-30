@@ -18,3 +18,10 @@ body {
     background-color: #2173c9;
     color: black;
 }
+
+.user-settings form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
