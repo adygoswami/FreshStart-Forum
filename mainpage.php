@@ -48,39 +48,28 @@ if ($conn->connect_error) {
             <a href="login.php"><button class="searchQuery">Login</button></a>
         <?php endif; ?>
     </header>
-    <div id="maincontainer">
-        <!-- Topics List -->
-        <aside id="topics-list">
-            <h1 id="disc-header">Discussion Topics</h1>
-            <button onclick="filterByTopic('Job Search')">Job Search</button>
-            <button onclick="filterByTopic('Lab Switches')">Lab Switches</button>
-            <button onclick="filterByTopic('UBCO Activities')">UBCO Activities</button>
-            <button onclick="filterByTopic('HELP')">HELP</button>
-            <button onclick="filterByTopic('Marketplace')">Marketplace</button>
-            <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
-        </aside>
-        <?php if ($isLoggedIn): ?>
-            <!-- Form for Creating Posts (visible only to logged-in users) -->
-            <div id="postCreationForm">
-                <form action="createPost.php" method="post" enctype="multipart/form-data">
-                    <input type="text" name="title" placeholder="Title" required>
-                    <textarea name="content" placeholder="Content" required></textarea>
-                    <input type="file" name="image" id="image" accept="image/*">
-                    <select name="topic">
-                        <option value="Job Search">Job Search</option>
-                        <option value="Lab Switches">Lab Switches</option>
-                        <option value="UBCO Activities">UBCO Activities</option>
-                        <option value="HELP">HELP</option>
-                        <option value="Marketplace">Marketplace</option>
-                        <option value="Campus Resources">Campus Resources</option>
-                    </select>
-                    <button type="submit">Create Post</button>
-                </form>
-            </div>
-        <?php endif; ?>
-    </div>
 
-    <!-- Topics List
+    <?php if ($isLoggedIn): ?>
+        <!-- Form for Creating Posts (visible only to logged-in users) -->
+        <div id="postCreationForm">
+            <form action="createPost.php" method="post" enctype="multipart/form-data">
+                <input type="text" name="title" placeholder="Title" required>
+                <textarea name="content" placeholder="Content" required></textarea>
+                <input type="file" name="image" id="image" accept="image/*">
+                <select name="topic">
+                    <option value="Job Search">Job Search</option>
+                    <option value="Lab Switches">Lab Switches</option>
+                    <option value="UBCO Activities">UBCO Activities</option>
+                    <option value="HELP">HELP</option>
+                    <option value="Marketplace">Marketplace</option>
+                    <option value="Campus Resources">Campus Resources</option>
+                </select>
+                <button type="submit">Create Post</button>
+            </form>
+        </div>
+    <?php endif; ?>
+
+    Topics List
     <aside id="topics-list">
         <h1 id="disc-header">Discussion Topics</h1>
         <button onclick="filterByTopic('Job Search')">Job Search</button>
@@ -89,7 +78,7 @@ if ($conn->connect_error) {
         <button onclick="filterByTopic('HELP')">HELP</button>
         <button onclick="filterByTopic('Marketplace')">Marketplace</button>
         <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
-    </aside> -->
+    </aside>
 
     <!-- Main Content -->
     <main id="post-container">
