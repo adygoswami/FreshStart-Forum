@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: serifGeorgia, 'Times New Roman', Times;
+    background-color: #2173c9;
+    color: black;
+}
+
+.user-settings {
+    background-color: #2173c9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-family: serifGeorgia, 'Times New Roman', Times;
+    background-color: #2173c9;
+    color: black;
+}
