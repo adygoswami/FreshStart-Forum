@@ -79,6 +79,7 @@ if ($conn->connect_error) {
 
     <!-- Main Content for Posts -->
     <main id="post-container">
+        <h1 id="post-header">Recent Posts</h1>
         <!-- Posts will be dynamically loaded here by mainpage.js -->
     </main>
 </body>
