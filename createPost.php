@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         echo "Post created successfully.";
         // Redirect to the main page or wherever you'd like the user to go next
-        header("Location: mainpage.php");
+        exit;
     } else {
         echo "Error: " . $stmt->error;
     }

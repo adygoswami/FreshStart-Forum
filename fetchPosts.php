@@ -16,19 +16,32 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Define the query to fetch posts
-$query = "SELECT * FROM posts ORDER BY created_at DESC";
-
-// Execute the query
-$result = $conn->query($query);
-
 // Initialize an array to hold the fetched posts
 $posts = [];
 
-// Iterate over the result set and add each post to the $posts array
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $posts[] = $row;
+// First, fetch all posts
+$postQuery = "SELECT postID, title, content, image, likes, dislikes, created_at FROM posts ORDER BY created_at DESC";
+$postResult = $conn->query($postQuery);
+
+if ($postResult->num_rows > 0) {
+    while ($postRow = $postResult->fetch_assoc()) {
+        // Initialize comments array for each post
+        $postRow['comments'] = [];
+        $posts[$postRow['postID']] = $postRow;
+    }
+}
+
+// Next, fetch all comments for these posts
+$commentQuery = "SELECT commentID, postID, userID, commentText, created_at FROM comments ORDER BY created_at ASC";
+$commentResult = $conn->query($commentQuery);
+
+if ($commentResult->num_rows > 0) {
+    while ($commentRow = $commentResult->fetch_assoc()) {
+        // Check if this comment's postID exists in the $posts array
+        if (array_key_exists($commentRow['postID'], $posts)) {
+            // Append this comment to the post's comments array
+            $posts[$commentRow['postID']]['comments'][] = $commentRow;
+        }
     }
 }
 
@@ -39,4 +52,5 @@ $conn->close();
 header('Content-Type: application/json');
 
 // Convert the $posts array into JSON and output it
-echo json_encode($posts);
+echo json_encode(array_values($posts)); // Use array_values to re-index the array numerically
+?>

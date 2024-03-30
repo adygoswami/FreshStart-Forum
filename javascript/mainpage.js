@@ -1,7 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadPosts(); // Initial load of posts
+    setupTopicFilters(); // Setup topic filter buttons
+
+    const createPostForm = document.getElementById('createPostForm');
+    if (createPostForm) {
+        createPostForm.addEventListener('submit', handleCreatePost);
+    }
 });
 
+function setupTopicFilters() {
+    document.querySelectorAll('#topics-list button').forEach(button => {
+        button.addEventListener('click', function() {
+            filterByTopic(this.textContent);
+        });
+    });
+}
+
+function handleCreatePost(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(event.target);
+
+    fetch('createPost.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text()) 
+    .then(data => {
+        alert(data); 
+        loadPosts(); // Reload the posts to include the new one
+    })
+    .catch(error => console.error('Error creating post:', error));
+}
 
 // Check if the user is logged in
 let isLoggedIn = document.body.dataset.loggedIn === 'true';
@@ -27,16 +57,9 @@ function displayPosts(posts) {
     posts.forEach(post => {
         const postDiv = document.createElement('div');
         postDiv.className = 'post';
-        
-        let imageHtml = post.image ? `<img src="${post.image}" alt="Post Image" style="max-width: 100%; height: auto;">` : '';
-        let commentsHtml = '';
-        if (post.comments) {
-            // Assuming comments are stored as a JSON string
-            const comments = JSON.parse(post.comments);
-            comments.forEach(comment => {
-                commentsHtml += `<div class="comment"><p>${comment.author}: ${comment.text}</p></div>`;
-            });
-        }
+
+        let imageHtml = post.image ? `<img src="data:image/jpeg;base64,${post.image}" alt="Post Image" style="max-width: 100%; height: auto;">` : '';
+        let commentsHtml = post.comments.map(comment => `<div class="comment"><p>${comment.author}: ${comment.text}</p></div>`).join('');
 
         postDiv.innerHTML = `
             <h3>${post.title}</h3>
@@ -45,9 +68,9 @@ function displayPosts(posts) {
             <p>Likes: ${post.likes}</p>
             <p>Dislikes: ${post.dislikes}</p>
             <div class="comments">${commentsHtml}</div>
-            <button onclick="likePost(${post.postID})">Like</button>
-            <button onclick="dislikePost(${post.postID})">Dislike</button>
-            ${isLoggedIn ? `<button onclick="commentOnPost(${post.postID})">Comment</button>` : ''}
+            <button onclick="updateLikes(${post.postID})">Like</button>
+            <button onclick="updateDislikes(${post.postID})">Dislike</button>
+            ${isLoggedIn ? `<textarea class="commentText"></textarea><button onclick="addComment(${post.postID})">Comment</button>` : ''}
             ${isAdmin ? `<button onclick="deletePost(${post.postID})">Delete</button>` : ''}
         `;
         postContainer.appendChild(postDiv);
@@ -111,13 +134,14 @@ function updateDislikes(postID) {
     .catch(error => console.error('Error updating dislikes:', error));
 } 
 
-// Function to add a comment to a post
 function addComment(postId) {
-    const commentText = document.querySelector(`.commentText`).value; // Assuming there's a textarea for comment input
+    const commentText = document.querySelector(`.commentText-${postId}`).value;
+    if (!commentText) return;
+
     fetch('addComment.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `postId=${postId}&commentText=${encodeURIComponent(commentText)}`
+        body: `postID=${postId}&commentText=${encodeURIComponent(commentText)}`
     })
     .then(response => response.json())
     .then(data => {

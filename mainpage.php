@@ -4,20 +4,6 @@ session_start();
 // Check if the user is logged in and if they are an admin
 $isLoggedIn = isset($_SESSION['user_id']);
 $isAdmin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'];
-
-// Database connection details
-$servername = "localhost";
-$username = "47130992"; 
-$password = "freshstart360"; 
-$dbname = "db_47130992"; 
-
-// Establish database connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +20,7 @@ if ($conn->connect_error) {
         <input type="text" id="searchQuery" placeholder="Search posts...">
         <button onclick="searchPosts()">Search</button>
 
-        <!-- User Profile Link -->
+        <!-- User Profile or Login Link -->
         <?php if ($isLoggedIn): ?>
             <a href="userSettings.php">Profile</a>
         <?php else: ?>
@@ -45,10 +31,10 @@ if ($conn->connect_error) {
     <?php if ($isLoggedIn): ?>
         <!-- Form for Creating Posts (visible only to logged-in users) -->
         <div id="postCreationForm">
-            <form action="createPost.php" method="post" enctype="multipart/form-data">
+            <form id="createPostForm" enctype="multipart/form-data">
                 <input type="text" name="title" placeholder="Title" required>
                 <textarea name="content" placeholder="Content" required></textarea>
-                <input type="file" name="image" id="image" accept="image/*">
+                <input type="file" name="image" accept="image/*">
                 <select name="topic">
                     <option value="Job Search">Job Search</option>
                     <option value="Lab Switches">Lab Switches</option>
@@ -72,10 +58,9 @@ if ($conn->connect_error) {
         <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
     </aside>
 
-    <!-- Main Content -->
+    <!-- Main Content for Posts -->
     <main id="post-container">
-        <!-- Posts will be dynamically loaded here -->
+        <!-- Posts will be dynamically loaded here by mainpage.js -->
     </main>
-
 </body>
 </html>
