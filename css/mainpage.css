@@ -110,6 +110,12 @@ header input {
     padding-right: 2em;
     border-radius: 5em;
 }
+
+#postCreationForm form input {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    /* border: 1px solid black; */
+}
 /* /////////////////// DISPLAYING POSTS ///////////////////////////////////// */
 .post-container {
     padding: 20px;
