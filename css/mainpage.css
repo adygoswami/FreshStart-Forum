@@ -27,7 +27,7 @@ header input, header button, .topic-button, .post-button {
 header input {
     flex-grow: 1;
 }
-
+/* ////////////////////// TOPIC LIST LEFT HAND SIDE NAV //////////////////*/
 #topics-list {
     background-color: #2f7ecd;
     padding: 20px;
@@ -36,13 +36,18 @@ header input {
     float: left;
     height: 100vh;
 }
-
+#disc-header {
+    background-color: #2173c9;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 #topics-list button{
-
     margin-bottom: 1em;
     padding: 1em;
     background-color: #7596bd;
-    border-radius: 1em;
+    /* border-radius: 1em; */
     border: none;
 }
 

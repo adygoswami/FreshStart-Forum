@@ -7,9 +7,9 @@ $isAdmin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'];
 
 // Database connection details
 $servername = "localhost";
-$username = "47130992"; 
-$password = "freshstart360"; 
-$dbname = "db_47130992"; 
+$username = "47130992";
+$password = "freshstart360";
+$dbname = "db_47130992";
 
 // Establish database connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -22,12 +22,14 @@ if ($conn->connect_error) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
     <link rel="stylesheet" href="css/mainpage.css">
     <script src="mainpage.js" defer></script>
 </head>
+
 <body data-logged-in="<?= $isLoggedIn ? 'true' : 'false' ?>" data-is-admin="<?= $isAdmin ? 'true' : 'false' ?>">
     <header>
         <!-- Search Bar -->
@@ -64,6 +66,7 @@ if ($conn->connect_error) {
 
     <!-- Topics List -->
     <aside id="topics-list">
+        <h1 id="disc-header">Discussion Topics</h1>
         <button onclick="filterByTopic('Job Search')">Job Search</button>
         <button onclick="filterByTopic('Lab Switches')">Lab Switches</button>
         <button onclick="filterByTopic('UBCO Activities')">UBCO Activities</button>
@@ -78,4 +81,5 @@ if ($conn->connect_error) {
     </main>
 
 </body>
+
 </html>
