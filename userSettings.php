@@ -94,6 +94,7 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
         <div class="profile-picture">
             <img id="profilePic" src="<?php echo $profilePicture; ?>" alt="Profile Picture" width="100" height="100">
             <form id="profilePictureForm">
+                <label for="profilePicture">Update Profile Picture:</label>
                 <input type="file" name="profilePicture" accept="image/*">
                 <input type="button" value="Update Picture" onclick="updateProfilePicture()">
             </form>
