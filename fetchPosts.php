@@ -20,12 +20,17 @@ if ($conn->connect_error) {
 $posts = [];
 
 // First, fetch all posts
-$postQuery = "SELECT postID, title, content, image, likes, dislikes, created_at, commentID FROM posts ORDER BY created_at DESC";
+$postQuery = "SELECT postID, title, content, image, likes, dislikes, created_at FROM posts ORDER BY created_at DESC";
 $postResult = $conn->query($postQuery);
 
 if ($postResult->num_rows > 0) {
     while ($postRow = $postResult->fetch_assoc()) {
-        // Initialize comments array for each post
+        // Base64-encode the image if it's not null
+        if (!is_null($postRow['image'])) {
+            $postRow['image'] = base64_encode($postRow['image']);
+        }
+
+        // Initialize comments array for each post and add the post to the array
         $postRow['comments'] = [];
         $posts[$postRow['postID']] = $postRow;
     }
@@ -40,7 +45,12 @@ if ($commentResult->num_rows > 0) {
         // Check if this comment's postID exists in the $posts array
         if (array_key_exists($commentRow['postID'], $posts)) {
             // Append this comment to the post's comments array
-            $posts[$commentRow['postID']]['comments'][] = $commentRow;
+            $posts[$commentRow['postID']]['comments'][] = [
+                'commentID' => $commentRow['commentID'],
+                'userID' => $commentRow['userID'],
+                'commentText' => $commentRow['commentText'],
+                'created_at' => $commentRow['created_at']
+            ];
         }
     }
 }

@@ -49,7 +49,6 @@ function loadPosts() {
     });
 }
 
-// Display posts on the page
 function displayPosts(posts) {
     const postContainer = document.getElementById('post-container');
     postContainer.innerHTML = ''; // Clear existing posts
@@ -58,18 +57,15 @@ function displayPosts(posts) {
         const postDiv = document.createElement('div');
         postDiv.className = 'post';
 
-        let imageHtml = post.image ? `<img src="data:image/jpeg;base64,${post.image}" alt="Post Image" style="max-width: 100%; height: auto;">` : '';
-        let commentsHtml = '';
-        if (post.comments && post.comments.length > 0) {
-            commentsHtml = post.comments.map(comment => `<div class="comment"><p>${comment.userID}: ${comment.commentText}</p></div>`).join('');
-        }
+        let imageHtml = post.image ? `<img src="data:image/jpeg;base64,${post.image}" alt="Post image" style="max-width: 100%; height: auto;">` : '';
+        let commentsHtml = post.comments.map(comment => `<div class="comment"><p><strong>User ${comment.userID}:</strong> ${comment.commentText}</p></div>`).join('');
 
         postDiv.innerHTML = `
             <h3>${post.title}</h3>
             <p>${post.content}</p>
             ${imageHtml}
-            <p>Likes: ${post.likes}</p>
-            <p>Dislikes: ${post.dislikes}</p>
+            <div>Likes: <span id="likes-${post.postID}">${post.likes}</span></div>
+            <div>Dislikes: <span id="dislikes-${post.postID}">${post.dislikes}</span></div>
             <div class="comments">${commentsHtml}</div>
             <button onclick="updateLikes(${post.postID})">Like</button>
             <button onclick="updateDislikes(${post.postID})">Dislike</button>
