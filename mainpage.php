@@ -60,7 +60,7 @@ if ($conn->connect_error) {
     <?php if ($isLoggedIn): ?>
         <!-- Form for Creating Posts (visible only to logged-in users) -->
         <div id="postCreationForm">
-            <form id="createPostForm" enctype="multipart/form-data">
+            <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
                 <input type="text" name="title" placeholder="Title" required>
                 <textarea name="content" placeholder="Content" required></textarea>
                 <input type="file" name="image" accept="image/*">
