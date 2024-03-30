@@ -48,7 +48,7 @@ if ($conn->connect_error) {
             <form action="createPost.php" method="post" enctype="multipart/form-data">
                 <input type="text" name="title" placeholder="Title" required>
                 <textarea name="content" placeholder="Content" required></textarea>
-                <input type="file" name="image">
+                <input type="file" name="image" id="image" accept="image/*">
                 <select name="topic">
                     <option value="Job Search">Job Search</option>
                     <option value="Lab Switches">Lab Switches</option>

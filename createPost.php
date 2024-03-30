@@ -31,20 +31,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userID = $_SESSION['user_id']; // Assuming user_id is stored in session
 
     // Handle the image upload if provided
-    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $imagePath = 'uploads/' . basename($_FILES['image']['name']);
-        // Attempt to move the uploaded file to your target directory
-        if (!move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {
-            echo "Failed to upload image.";
-            exit;
-        }
+    if (isset ($_FILES['image']) && is_uploaded_file($_FILES['image']['tmp_name'])) {
+        $postImage = file_get_contents($_FILES['image']['tmp_name']);
     } else {
-        $imagePath = null; // No image provided or an error occurred
+        $postImage = null; // No image provided or an error occurred
     }
 
     // Prepare an INSERT statement
+    $null = null;
     $stmt = $conn->prepare("INSERT INTO posts (title, content, image, topic, userID) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssi", $title, $content, $imagePath, $topic, $userID);
+    $stmt->bind_param("ssbsi", $title, $content, $null, $topic, $userID);
+    $stmt->send_long_data(2, $postImage);
 
     // Execute the statement and check for success
     if ($stmt->execute()) {
