@@ -1,60 +1,43 @@
 <?php
-// Start the session
 session_start();
 
-// Database connection details
 $servername = "localhost";
-$username = "47130992"; // Your database username
-$password = "freshstart360"; // Your database password
-$dbname = "db_47130992"; // Your database name
+$username = "47130992";
+$password = "freshstart360";
+$dbname = "db_47130992";
 
-// Establish database connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve the topic from the URL parameters
 $topic = isset($_GET['topic']) ? $_GET['topic'] : '';
 
-// Protect against SQL injection
-$filteredTopic = $conn->real_escape_string($topic);
-
-// Define the SQL query to fetch posts by topic
-$query = "SELECT * FROM posts WHERE topic = '$filteredTopic' ORDER BY created_at DESC";
-
-// Prepare the SQL statement
-$stmt = $conn->prepare($query);
-
-// Execute the prepared statement
-$stmt->execute();
-
-// Bind the result to variables
-$stmt->bind_result($postID, $title, $content, $userID, $created_at, $topic);
-
-// Initialize an array to hold the fetched posts
 $posts = [];
+if ($topic != '') {
+    $stmt = $conn->prepare("SELECT postID, title, content, image, likes, dislikes, created_at FROM posts WHERE topic = ? ORDER BY created_at DESC");
+    $stmt->bind_param("s", $topic);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-// Fetch the results and add them to the $posts array
-while ($stmt->fetch()) {
-    $posts[] = [
-        'postID' => $postID,
-        'title' => $title,
-        'content' => $content,
-        'userID' => $userID,
-        'created_at' => $created_at,
-        'topic' => $topic
-    ];
+    while ($post = $result->fetch_assoc()) {
+        if (!is_null($post['image'])) {
+            $post['image'] = base64_encode($post['image']);
+        }
+        $post['comments'] = [];
+        $posts[$post['postID']] = $post;
+    }
+
+    $commentResult = $conn->query("SELECT commentID, postID, userID, commentText, created_at FROM comments ORDER BY created_at ASC");
+    while ($comment = $commentResult->fetch_assoc()) {
+        if (isset($posts[$comment['postID']])) {
+            $posts[$comment['postID']]['comments'][] = $comment;
+        }
+    }
 }
 
-// Close the statement and the database connection
-$stmt->close();
 $conn->close();
-
-// Set the content type of the response to application/json
 header('Content-Type: application/json');
-
-// Encode the $posts array to JSON and output it
-echo json_encode($posts);
+echo json_encode(array_values($posts));
+?>
