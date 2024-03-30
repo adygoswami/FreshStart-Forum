@@ -44,7 +44,7 @@ header input {
     display: flex;
     flex-direction: column;
     float: left;
-    height: 100vh;
+    height: 100%;
     width: 10%;
 }
 #disc-header {
