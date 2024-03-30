@@ -110,6 +110,11 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,'.base64_en
                 <input type="button" value="Update Bio" onclick="updateBio()">
             </form>
         </div>
+        <div class="logout">
+        <form action="logout.php" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+        </div>
     </div>
 </body>
 </html>
