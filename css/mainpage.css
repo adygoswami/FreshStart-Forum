@@ -36,7 +36,7 @@ header input {
     height: 100vh;
 }
 #disc-header {
-    background-color: #2173c9;
+    background-color: #0a4583;
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -52,7 +52,6 @@ header input {
     background-color: #7596bd;
     border-radius: 1em;
     border: none;
-    
 }
 
 .topic-button {
