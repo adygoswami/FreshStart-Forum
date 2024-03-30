@@ -45,6 +45,7 @@ header input {
     flex-direction: column;
     float: left;
     height: 100vh;
+    width: 20%;
 }
 #disc-header {
     background-color: #0a4583;
