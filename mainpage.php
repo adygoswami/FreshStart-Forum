@@ -57,31 +57,33 @@ if ($conn->connect_error) {
         <button onclick="filterByTopic('Marketplace')">Marketplace</button>
         <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
     </aside>
-    <?php if ($isLoggedIn): ?>
-        <!-- Form for Creating Posts (visible only to logged-in users) -->
-        <div id="postCreationForm">
-            <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
-                <input type="text" name="title" placeholder="Title" required>
-                <textarea name="content" placeholder="Content" required></textarea>
-                <input type="file" name="image" accept="image/*">
-                <select name="topic">
-                    <option value="Job Search">Job Search</option>
-                    <option value="Lab Switches">Lab Switches</option>
-                    <option value="UBCO Activities">UBCO Activities</option>
-                    <option value="HELP">HELP</option>
-                    <option value="Marketplace">Marketplace</option>
-                    <option value="Campus Resources">Campus Resources</option>
-                </select>
-                <button type="submit">Create Post</button>
-            </form>
-        </div>
-    <?php endif; ?>
+    <div id="main-content">
+        <?php if ($isLoggedIn): ?>
+            <!-- Form for Creating Posts (visible only to logged-in users) -->
+            <div id="postCreationForm">
+                <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
+                    <input type="text" name="title" placeholder="Title" required>
+                    <textarea name="content" placeholder="Content" required></textarea>
+                    <input type="file" name="image" accept="image/*">
+                    <select name="topic">
+                        <option value="Job Search">Job Search</option>
+                        <option value="Lab Switches">Lab Switches</option>
+                        <option value="UBCO Activities">UBCO Activities</option>
+                        <option value="HELP">HELP</option>
+                        <option value="Marketplace">Marketplace</option>
+                        <option value="Campus Resources">Campus Resources</option>
+                    </select>
+                    <button type="submit">Create Post</button>
+                </form>
+            </div>
+        <?php endif; ?>
 
-    <!-- Main Content for Posts -->
-    <main id="post-container">
-        <h1 id="post-header">Recent Posts</h1>
-        <!-- Posts will be dynamically loaded here by mainpage.js -->
-    </main>
+        <!-- Main Content for Posts -->
+        <main id="post-container">
+            <h1 id="post-header">Recent Posts</h1>
+            <!-- Posts will be dynamically loaded here by mainpage.js -->
+        </main>
+    </div>
 </body>
 
 </html>

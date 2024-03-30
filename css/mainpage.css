@@ -87,7 +87,13 @@ header input {
 
 
 
-
+#main-content{
+    display: flex;
+    flex-direction: column;
+}
+#post-container{
+    background-color: black;
+}
 
 
 
