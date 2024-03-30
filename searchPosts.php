@@ -23,7 +23,7 @@ $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
 $searchTerm = $conn->real_escape_string($searchQuery);
 
 // Define the SQL query to search posts by title or content
-$query = "SELECT * FROM posts WHERE title LIKE '%$searchTerm%' OR content LIKE '%$searchTerm%' OR title LIKE '%$searchTerm%' ORDER BY created_at DESC";
+$query = "SELECT * FROM posts WHERE title LIKE '%$searchTerm%' OR content LIKE '%$searchTerm%' ORDER BY created_at DESC";
 
 // Execute the query
 $result = $conn->query($query);
