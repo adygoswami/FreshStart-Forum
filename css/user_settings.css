@@ -43,3 +43,10 @@ body {
     border-radius: 0.5em;
     border: 1px solid black;
 }
+
+.user-infor{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
