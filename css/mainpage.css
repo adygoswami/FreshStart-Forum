@@ -71,6 +71,17 @@ header input {
 }
 
 /* /////////////////// CREATE A POST  ///////////////////////////////////// */
+#main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+#post-container {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
 #postCreationForm form{
     display: flex;
     flex-direction: row;
@@ -81,18 +92,6 @@ header input {
     margin-bottom: 1em;
     background-color: orange;
     padding: 1em;
-}
-
-
-
-
-
-#main-content{
-    display: flex;
-    flex-direction: column;
-}
-#post-container{
-    background-color: black;
 }
 
 
