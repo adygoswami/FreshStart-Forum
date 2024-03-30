@@ -45,7 +45,7 @@ header input {
     flex-direction: column;
     float: left;
     height: 100vh;
-    width: 20%;
+    width: 10%;
 }
 #disc-header {
     background-color: #0a4583;
@@ -72,7 +72,6 @@ header input {
 
 /* /////////////////// CREATE A POST  ///////////////////////////////////// */
 #postCreationForm{
-    display: flex;
     margin-left: 50em;
     margin-bottom: 1em;
     background-color: white;
