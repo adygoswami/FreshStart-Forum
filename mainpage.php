@@ -1,21 +1,21 @@
+<!-- WE had to create the Mainpage and the functionality connected to it in one and a half day after our team member couldn't upload his progress due to some personal issues that the professor has been updated about.-->
+
+
 <?php
 session_start();
 
-// Check if the user is logged in and if they are an admin
+// Checking if the user is logged in or not to determine the functionality that is just for the logged in user!
 $isLoggedIn = isset($_SESSION['user_id']);
 $isAdmin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'];
 
-// Database connection details
+//DB Connect
 $servername = "localhost";
 $username = "47130992";
 $password = "freshstart360";
 $dbname = "db_47130992";
-
-// Establish database connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
+if ($conn->connect_error) 
+{
     die("Connection failed: " . $conn->connect_error);
 }
 ?>
@@ -32,6 +32,7 @@ if ($conn->connect_error) {
 
 <body data-logged-in="<?= $isLoggedIn ? 'true' : 'false' ?>" data-is-admin="<?= $isAdmin ? 'true' : 'false' ?>">
     <header>
+
         <!-- Search Bar -->
         <a href="mainpage.php" id="fsheader">
             <h1>FreshStart</h1>
@@ -39,15 +40,15 @@ if ($conn->connect_error) {
         <input type="text" id="searchQuery" placeholder="Search posts..." class="searchQuery">
         <button onclick="searchPosts()">Search</button>
 
-        <!-- User Profile or Login Link -->
+        <!--Giving links to userProfile and Login feature each defined differently since we have different functionality for users who are logged in and users who are not-->
         <?php if ($isLoggedIn): ?>
-            <!-- <a href="userSettings.php">Profile</a> -->
             <a href="userSettings.php"><button class="searchQuery">Profile</button></a>
         <?php else: ?>
-            <!-- <a href="login.php">Login</a> -->
             <a href="login.php"><button class="searchQuery">Login</button></a>
         <?php endif; ?>
+
     </header>
+
     <aside id="topics-list">
         <h1 id="disc-header">Discussion Topics</h1>
         <button onclick="filterByTopic('Job Search')">Job Search</button>
@@ -57,15 +58,17 @@ if ($conn->connect_error) {
         <button onclick="filterByTopic('Marketplace')">Marketplace</button>
         <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
     </aside>
+
     <div id="main-content">
         <?php if ($isLoggedIn): ?>
-            <!-- Form for Creating Posts (visible only to logged-in users) -->
+            
             <div id="postCreationForm">
                 <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
                     <h1>Create a Post</h1>
                     <input type="text" name="title" placeholder="Title" required>
                     <textarea name="content" placeholder="Content" required></textarea>
                     <input type="file" name="image" accept="image/*">
+
                     <select name="topic">
                         <option value="Job Search">Job Search</option>
                         <option value="Lab Switches">Lab Switches</option>
@@ -74,15 +77,18 @@ if ($conn->connect_error) {
                         <option value="Marketplace">Marketplace</option>
                         <option value="Campus Resources">Campus Resources</option>
                     </select>
+                    
                     <button type="submit">Create Post</button>
                 </form>
             </div>
+
         <?php endif; ?>
 
-        <!-- Main Content for Posts -->
+       
         <main id="post-container">
-            <!-- Posts will be dynamically loaded here by mainpage.js -->
+            <!-- We did Dynamic placement of posts here using the mainpage.js file -->
         </main>
+
     </div>
 </body>
 

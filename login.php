@@ -5,7 +5,6 @@ session_start();
 <html lang="en">
 
 <head>
-    <!-- <link rel="stylesheet" href="css/log-reg.css"> -->
     <link rel="stylesheet" href="css/login-register.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

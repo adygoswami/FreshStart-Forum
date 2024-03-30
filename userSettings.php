@@ -1,6 +1,5 @@
 <?php
 session_start();
-// The user ID is stored in session when they log in
 $userId = $_SESSION['user_id'] ?? null;
 if (!$userId) {
     header('Location: login.php'); // Redirect to login if not authenticated as a valid user.
@@ -13,20 +12,19 @@ $username = "47130992";
 $password = "freshstart360";
 $dbname = "db_47130992";
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-//Checking Connection 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch user details
+// Fetching the user details
 $stmt = $conn->prepare("SELECT username, profile_picture, bio FROM user_details WHERE user_id = ?");
 $stmt->bind_param("i", $userId);
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-if (!$user) {
+if (!$user) 
+{
     echo "User not found";
     exit();
 }
@@ -43,7 +41,8 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
     <title>User Settings</title>
     <link rel="stylesheet" href="css/user_settings.css">
     <script>
-        function updateProfilePicture() {
+        function updateProfilePicture() 
+        {
             var formData = new FormData(document.getElementById('profilePictureForm'));
             fetch('updateProfilePicture.php', {
                 method: 'POST',
@@ -51,19 +50,24 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
             })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.success) {
+                    if (data.success) 
+                    {
                         document.getElementById('profilePic').src = data.profilePicture;
                         alert('Profile picture updated successfully!');
-                    } else {
+                    } 
+                    else 
+                    {
                         alert('Failed to update profile picture.');
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
 
-        function updatePassword() {
+        function updatePassword() 
+        {
             var formData = new FormData(document.getElementById('passwordForm'));
-            fetch('updatePassword.php', {
+            fetch('updatePassword.php', 
+            {
                 method: 'POST',
                 body: formData
             })
@@ -74,14 +78,17 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
                 .catch(error => console.error('Error:', error));
         }
 
-        function updateBio() {
+        function updateBio() 
+        {
             var formData = new FormData(document.getElementById('bioForm'));
-            fetch('updateBio.php', {
+            fetch('updateBio.php', 
+            {
                 method: 'POST',
                 body: formData
             })
                 .then(response => response.json())
-                .then(data => {
+                .then(data => 
+                {
                     alert(data.message);
                 })
                 .catch(error => console.error('Error:', error));
@@ -91,6 +98,7 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
 
 <body>
     <div class="user-settings">
+        
         <div class="profile-picture">
             <img id="profilePic" src="<?php echo $profilePicture; ?>" alt="Profile Picture" width="100" height="100">
             <form id="profilePictureForm">
@@ -99,6 +107,7 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
                 <input type="button" value="Update Picture" onclick="updateProfilePicture()">
             </form>
         </div>
+
         <div class="user-info">
             <p>Username:
                 <?php echo htmlspecialchars($user['username']); ?>
@@ -114,11 +123,13 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
                 <input type="button" value="Update Bio" onclick="updateBio()">
             </form>
         </div>
+
         <div class="logout">
             <form action="logout.php" method="POST">
                 <button type="submit">Logout</button>
             </form>
         </div>
+
     </div>
 </body>
 

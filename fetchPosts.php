@@ -1,50 +1,46 @@
 <?php
-// Start the session
 session_start();
 
-// Database connection details
+//DB connect
 $servername = "localhost";
 $username = "47130992";
 $password = "freshstart360";
 $dbname = "db_47130992";
-
-// Create database connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
+if ($conn->connect_error) 
+{
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Initialize an array to hold the fetched posts
 $posts = [];
-
-// First, fetch all posts
+//FetchingPosts
 $postQuery = "SELECT postID, title, content, image, likes, dislikes, created_at FROM posts ORDER BY created_at DESC";
 $postResult = $conn->query($postQuery);
 
-if ($postResult->num_rows > 0) {
-    while ($postRow = $postResult->fetch_assoc()) {
-        // Base64-encode the image if it's not null
-        if (!is_null($postRow['image'])) {
+if ($postResult->num_rows > 0) 
+{
+    while ($postRow = $postResult->fetch_assoc()) 
+    {
+        if (!is_null($postRow['image'])) 
+        {
             $postRow['image'] = base64_encode($postRow['image']);
         }
-
-        // Initialize comments array for each post and add the post to the array
         $postRow['comments'] = [];
         $posts[$postRow['postID']] = $postRow;
     }
 }
 
-// Next, fetch all comments for these posts
+//Fetching Comments
 $commentQuery = "SELECT commentID, postID, userID, commentText, created_at FROM comments ORDER BY created_at ASC";
 $commentResult = $conn->query($commentQuery);
 
-if ($commentResult->num_rows > 0) {
-    while ($commentRow = $commentResult->fetch_assoc()) {
-        // Check if this comment's postID exists in the $posts array
-        if (array_key_exists($commentRow['postID'], $posts)) {
-            // Append this comment to the post's comments array
+if ($commentResult->num_rows > 0) 
+{
+    while ($commentRow = $commentResult->fetch_assoc()) 
+    {
+        if (array_key_exists($commentRow['postID'], $posts)) 
+        {
             $posts[$commentRow['postID']]['comments'][] = [
                 'commentID' => $commentRow['commentID'],
                 'userID' => $commentRow['userID'],
@@ -54,13 +50,7 @@ if ($commentResult->num_rows > 0) {
         }
     }
 }
-
-// Close the database connection
 $conn->close();
-
-// Set header to indicate the content type is JSON
 header('Content-Type: application/json');
-
-// Convert the $posts array into JSON and output it
-echo json_encode(array_values($posts)); // Use array_values to re-index the array numerically
+echo json_encode(array_values($posts));
 ?>

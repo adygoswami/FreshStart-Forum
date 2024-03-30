@@ -16,7 +16,8 @@ $dbname = "db_47130992";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 //Checking Connection 
-if ($conn->connect_error) {
+if ($conn->connect_error) 
+{
     die("Connection failed: " . $conn->connect_error);
 }
 
@@ -52,10 +53,11 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
     <link rel="stylesheet" href="css/adminstyle.css"> 
 
     <script>  //incorporating AJAX functionality so that reloading the page is not required after any chnages are made by the admin!
-    function toggleUserStatus(userId, isEnabled) {
+    function toggleUserStatus(userId, isEnabled) 
+    {
         var formData = new FormData();
         formData.append('userId', userId);
-        formData.append('isEnabled', isEnabled);   //NEED TO VERIFY THE COLUMN NAME, CAN't CHECK SINCE THE SERVER IS DOWN.
+        formData.append('isEnabled', isEnabled);   //NEED TO VERIFY THE COLUMN NAME, CAN't CHECK SINCE THE SERVER IS DOWN. // server came back up everything working
 
         fetch('toggleUserStatus.php', 
         {
@@ -72,7 +74,8 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
         .catch(error => console.error('Error:', error));
     }
 
-    function removePost(postId) {
+    function removePost(postId) 
+    {
         var formData = new FormData();
         formData.append('postId', postId);
 
@@ -96,7 +99,6 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
 <body>
     <div class="admin-container">
 
-        <!-- Search Users and Posts -->
         <div class="search-section">
             <h2>Search Users and Posts</h2>
             <form method="post">
@@ -127,7 +129,6 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
             </div>
         </div>
 
-        <!-- Enable/Disable Users Section -->
         <div class="users-section">
             <h2>Toggle User Status</h2>
             <table>
@@ -154,7 +155,6 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
             </table>
         </div>
 
-        <!-- Edit/Remove Posts Section -->
         <div class="posts-section">
             <h2>Make Changes to Posts</h2>
             <table>
@@ -178,6 +178,7 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
                 </tbody>
             </table>
         </div>
+
     </div>
 </body>
 
