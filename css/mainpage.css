@@ -71,7 +71,7 @@ header input {
 }
 
 /* /////////////////// CREATE A POST  ///////////////////////////////////// */
-#postCreationForm{
+#postCreationForm form{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
