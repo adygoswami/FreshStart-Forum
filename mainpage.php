@@ -69,7 +69,6 @@ if ($conn->connect_error) {
         </div>
     <?php endif; ?>
 
-    Topics List
     <aside id="topics-list">
         <h1 id="disc-header">Discussion Topics</h1>
         <button onclick="filterByTopic('Job Search')">Job Search</button>
