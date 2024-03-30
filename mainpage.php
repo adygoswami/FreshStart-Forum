@@ -65,7 +65,7 @@ if ($conn->connect_error) {
                     <h1>Create a Post</h1>
                     <input type="text" name="title" placeholder="Title" required>
                     <textarea name="content" placeholder="Content" required></textarea>
-                    <input type="file" name="image" accept="image/*">
+                    <input type="file" value="Add image" name="image" accept="image/*">
                     <select name="topic">
                         <option value="Job Search">Job Search</option>
                         <option value="Lab Switches">Lab Switches</option>

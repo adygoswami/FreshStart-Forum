@@ -49,7 +49,7 @@ header input {
     display: flex;
     flex-direction: column;
     float: left;
-    height: 100;
+    /* height: 100; */
     width: 10%;
 }
 #disc-header {
@@ -168,5 +168,26 @@ header input {
     header input, header button, .topic-button, .post-button {
         padding: 8px;
         font-size: 0.9em;
+    }
+}
+
+@media (max-width: 1900px) {
+    #postCreationForm form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 1500px) {
+    #postCreationForm form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 1400px) {
+    #postCreationForm form {
+        display: flex;
+        flex-direction: column;
     }
 }
