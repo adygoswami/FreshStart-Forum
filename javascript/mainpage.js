@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadPosts(); // Initial load of posts
+    displayPosts();
     setupTopicFilters(); // Setup topic filter buttons
 
     const createPostForm = document.getElementById('createPostForm');
