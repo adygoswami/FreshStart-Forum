@@ -33,7 +33,7 @@ if ($conn->connect_error) {
 <body data-logged-in="<?= $isLoggedIn ? 'true' : 'false' ?>" data-is-admin="<?= $isAdmin ? 'true' : 'false' ?>">
     <header>
         <!-- Search Bar -->
-        <a href="mainpage.php">
+        <a href="mainpage.php" id="fsheader">
             <h1>FreshStart Forum</h1>
         </a>
         <input type="text" id="searchQuery" placeholder="Search posts..." class="searchQuery">

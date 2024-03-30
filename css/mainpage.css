@@ -27,6 +27,15 @@ header input, header button, .topic-button, .post-button {
 header input {
     flex-grow: 1;
 }
+
+#fsheader {
+    color: white;
+    background-color: #0055B7;
+    border: none;
+    text-decoration: none;
+    margin-right: 1em;
+}
+
 /* ////////////////////// TOPIC LIST LEFT HAND SIDE NAV //////////////////*/
 #topics-list {
     background-color: #2173c9;
