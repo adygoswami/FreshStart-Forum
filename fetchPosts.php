@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 $posts = [];
 
 // First, fetch all posts
-$postQuery = "SELECT * FROM posts ORDER BY created_at DESC";
+$postQuery = "SELECT postID, title, content, image, likes, dislikes, created_at, commentID FROM posts ORDER BY created_at DESC";
 $postResult = $conn->query($postQuery);
 
 if ($postResult->num_rows > 0) {
@@ -32,7 +32,7 @@ if ($postResult->num_rows > 0) {
 }
 
 // Next, fetch all comments for these posts
-$commentQuery = "SELECT * FROM comments ORDER BY created_at ASC";
+$commentQuery = "SELECT commentID, postID, userID, commentText, created_at FROM comments ORDER BY created_at ASC";
 $commentResult = $conn->query($commentQuery);
 
 if ($commentResult->num_rows > 0) {
