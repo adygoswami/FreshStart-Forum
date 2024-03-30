@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadPosts(); // Initial load of posts
-    displayPosts();
     setupTopicFilters(); // Setup topic filter buttons
 
     const createPostForm = document.getElementById('createPostForm');
@@ -60,7 +59,10 @@ function displayPosts(posts) {
         postDiv.className = 'post';
 
         let imageHtml = post.image ? `<img src="data:image/jpeg;base64,${post.image}" alt="Post Image" style="max-width: 100%; height: auto;">` : '';
-        let commentsHtml = post.comments.map(comment => `<div class="comment"><p>${comment.author}: ${comment.text}</p></div>`).join('');
+        let commentsHtml = '';
+        if (post.comments && post.comments.length > 0) {
+            commentsHtml = post.comments.map(comment => `<div class="comment"><p>${comment.userID}: ${comment.commentText}</p></div>`).join('');
+        }
 
         postDiv.innerHTML = `
             <h3>${post.title}</h3>
@@ -71,7 +73,7 @@ function displayPosts(posts) {
             <div class="comments">${commentsHtml}</div>
             <button onclick="updateLikes(${post.postID})">Like</button>
             <button onclick="updateDislikes(${post.postID})">Dislike</button>
-            ${isLoggedIn ? `<textarea class="commentText"></textarea><button onclick="addComment(${post.postID})">Comment</button>` : ''}
+            ${isLoggedIn ? `<textarea class="commentText-${post.postID}"></textarea><button onclick="addComment(${post.postID})">Comment</button>` : ''}
             ${isAdmin ? `<button onclick="deletePost(${post.postID})">Delete</button>` : ''}
         `;
         postContainer.appendChild(postDiv);
