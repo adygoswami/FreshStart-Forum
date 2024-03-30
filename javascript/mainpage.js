@@ -16,22 +16,22 @@ function setupTopicFilters() {
     });
 }
 
-// function handleCreatePost(event) {
-//     event.preventDefault(); // Prevent the default form submission
+function handleCreatePost(event) {
+    event.preventDefault(); // Prevent the default form submission
 
-//     const formData = new FormData(event.target);
+    const formData = new FormData(event.target);
 
-//     fetch('createPost.php', {
-//         method: 'POST',
-//         body: formData
-//     })
-//     .then(response => response.text()) 
-//     .then(data => {
-//         alert(data); 
-//         loadPosts(); // Reload the posts to include the new one
-//     })
-//     .catch(error => console.error('Error creating post:', error));
-// }
+    fetch('createPost.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text()) 
+    .then(data => {
+        alert(data); 
+        loadPosts(); // Reload the posts to include the new one
+    })
+    .catch(error => console.error('Error creating post:', error));
+}
 
 // Check if the user is logged in
 let isLoggedIn = document.body.dataset.loggedIn === 'true';
