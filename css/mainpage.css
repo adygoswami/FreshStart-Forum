@@ -71,6 +71,7 @@ header input {
 }
 
 /* /////////////////// CREATE A POST  ///////////////////////////////////// */
+/* main content has the createPost form and post-container */
 #main-content {
     display: flex;
     flex-direction: column;
@@ -96,12 +97,6 @@ header input {
     padding: 1em;
     border-radius: 5em;
 }
-
-
-
-
-
-
 /* /////////////////// DISPLAYING POSTS ///////////////////////////////////// */
 .post-container {
     padding: 20px;
@@ -131,6 +126,7 @@ header input {
     border-radius: 5px;
 }
 /* /////////////////////// MEdia Queries ////////////////////////////////////// */
+
 @media (max-width: 768px) {
     .post {
         width: 45%;
