@@ -37,7 +37,10 @@ header input {
 }
 #disc-header {
     background-color: #0a4583;
-    padding: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
