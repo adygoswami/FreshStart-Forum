@@ -48,7 +48,15 @@ if ($conn->connect_error) {
             <a href="login.php"><button class="searchQuery">Login</button></a>
         <?php endif; ?>
     </header>
-
+    <aside id="topics-list">
+        <h1 id="disc-header">Discussion Topics</h1>
+        <button onclick="filterByTopic('Job Search')">Job Search</button>
+        <button onclick="filterByTopic('Lab Switches')">Lab Switches</button>
+        <button onclick="filterByTopic('UBCO Activities')">UBCO Activities</button>
+        <button onclick="filterByTopic('HELP')">HELP</button>
+        <button onclick="filterByTopic('Marketplace')">Marketplace</button>
+        <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
+    </aside>
     <?php if ($isLoggedIn): ?>
         <!-- Form for Creating Posts (visible only to logged-in users) -->
         <div id="postCreationForm">
@@ -68,16 +76,6 @@ if ($conn->connect_error) {
             </form>
         </div>
     <?php endif; ?>
-
-    <aside id="topics-list">
-        <h1 id="disc-header">Discussion Topics</h1>
-        <button onclick="filterByTopic('Job Search')">Job Search</button>
-        <button onclick="filterByTopic('Lab Switches')">Lab Switches</button>
-        <button onclick="filterByTopic('UBCO Activities')">UBCO Activities</button>
-        <button onclick="filterByTopic('HELP')">HELP</button>
-        <button onclick="filterByTopic('Marketplace')">Marketplace</button>
-        <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
-    </aside>
 
     <!-- Main Content -->
     <main id="post-container">
