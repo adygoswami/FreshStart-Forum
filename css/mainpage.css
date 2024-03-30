@@ -68,6 +68,18 @@ header input {
     background-color: #7596bd;
     border-radius: 1em;
     border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+#topics-list button:hover, #topics-list button.active {
+    background-color: #3e3f3f;
+        /* Slightly lighter blue on hover/active */
+    margin-left: -15px;
+        /* Offset to the left */
+    padding-left: 30px;
+        /* Increased padding */
+    border-right: 5px solid #1abc9c;
+        /* Cyan highlight */
 }
 
 /* /////////////////// CREATE A POST  ///////////////////////////////////// */
