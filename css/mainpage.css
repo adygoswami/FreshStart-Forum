@@ -33,6 +33,7 @@ header input {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    float: left;
 }
 
 .topic-button {
