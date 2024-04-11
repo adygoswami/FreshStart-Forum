@@ -20,7 +20,7 @@ header input, header button, .topic-button, .post-button{
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     /* background-color: #7596bd; */
     /* color: white; */
     color: black;
@@ -196,12 +196,11 @@ header input {
 }
 
 #topics-list button:hover,
+#topics-list button.active, 
 #topics-list button.active {
     background-color: #3e3f3f;
-    margin-left: 2em;
-    padding-left: 30px;
+    margin-left: 5em;
     border-right: 5px solid #1abc9c;
-
 }
 
 
