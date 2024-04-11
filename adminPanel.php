@@ -24,15 +24,6 @@ if ($conn->connect_error)
 {
     die("Connection failed: " . $conn->connect_error);
 }
-// Fetch weekly login data
-$loginDataQuery = "SELECT week, SUM(login_count) AS total_logins FROM weekly_logins GROUP BY week ORDER BY week ASC";
-$loginDataResult = $conn->query($loginDataQuery);
-$loginData = $loginDataResult->fetch_all(MYSQLI_ASSOC);
-
-// Fetch weekly interactions data
-$interactionDataQuery = "SELECT week, SUM(post_count) AS total_posts, SUM(comment_count) AS total_comments FROM weekly_interactions GROUP BY week ORDER BY week ASC";
-$interactionDataResult = $conn->query($interactionDataQuery);
-$interactionData = $interactionDataResult->fetch_all(MYSQLI_ASSOC);
 
 // Admin's ability to search for specific Users and their Posts
 $searchResults = [];
@@ -106,89 +97,9 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
         })
         .catch(error => console.error('Error:', error));
     }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+    </script> 
 </head>
 <body>
-    <script>
-        var loginData = <?php echo json_encode($loginData); ?>;
-        var interactionData = <?php echo json_encode($interactionData); ?>;
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Prepare data for the charts
-            var loginWeeks = loginData.map(data => "Week " + data.week);
-            var loginCounts = loginData.map(data => data.total_logins);
-            var interactionWeeks = interactionData.map(data => "Week " + data.week);
-            var postCounts = interactionData.map(data => data.total_posts);
-            var commentCounts = interactionData.map(data => data.total_comments);
-
-            // Set up the Login Chart
-            var ctxLogin = document.getElementById('loginChart').getContext('2d');
-            var loginChart = new Chart(ctxLogin, {
-                type: 'line', // Type of chart
-                data: {
-                    labels: loginWeeks, // X-axis labels
-                    datasets: [{
-                        label: 'Total Logins',
-                        data: loginCounts, // Y-axis data
-                        fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    },
-                    responsive: true,
-                    maintainAspectRatio: false
-                }
-            });
-
-            // Set up the Interaction Chart
-            var ctxInteraction = document.getElementById('interactionChart').getContext('2d');
-            var interactionChart = new Chart(ctxInteraction, {
-                type: 'bar', // Type of chart
-                data: {
-                    labels: interactionWeeks, // X-axis labels
-                    datasets: [{
-                        label: 'Total Posts',
-                        data: postCounts, // Y-axis data for posts
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Total Comments',
-                        data: commentCounts, // Y-axis data for comments
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    },
-                    responsive: true,
-                    maintainAspectRatio: false
-                }
-            });
-        });
-
-    </script>
-    <div class="admin-container">
-        <div class="chart-container">
-        <h2>Weekly Logins</h2>
-        <canvas id="loginChart"></canvas>
-        <h2>Weekly Interactions</h2>
-        <canvas id="interactionChart"></canvas>
-    </div>
         <div class="search-section">
         <h2>Search Users and Posts</h2>
             <form method="post">
