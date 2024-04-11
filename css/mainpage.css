@@ -55,8 +55,6 @@ header input {
     justify-content: space-between;
     align-items: flex-start;
     height: 100vh;
-
-
 }
 
 #main-content {
@@ -163,15 +161,16 @@ header input {
     background-color: #0a4583;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 3em;
+    padding-right: 1em; 
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
     width: 100%;
+
 }
 #cp-header {
     background-color: #0a4583;
