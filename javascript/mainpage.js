@@ -103,6 +103,16 @@ function filterByTopic(topic) {
     .catch(error => {
         console.error('Error:', error);
     });
+    var buttons = document.querySelectorAll('#topics-list button');
+
+    // Remove the 'active' class from all buttons
+    buttons.forEach(function(button) {
+        button.classList.remove('active');
+    });
+
+    // Add the 'active' class to the clicked button
+    // The 'this' keyword refers to the button that was clicked
+    this.classList.add('active');
 }
 
 // Update likes for a post

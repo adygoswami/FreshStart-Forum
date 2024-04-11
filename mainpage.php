@@ -52,12 +52,18 @@ if ($conn->connect_error) {
         <div id="main-content">
             <div id="topics-list">
                 <h1 class="disc-header">Discussion Topics</h1>
-                <button onclick="filterByTopic('Job Search')">Job Search</button>
+                <button onclick="filterByTopic.call(this, 'Job Search')">Job Search</button>
+                <button onclick="filterByTopic.call(this, 'Lab Switches')">Lab Switches</button>
+                <button onclick="filterByTopic.call(this, 'UBCO Activities')">UBCO Activities</button>
+                <button onclick="filterByTopic.call(this, 'HRLP')">HELP</button>
+                <button onclick="filterByTopic.call(this, 'Marketplace')">Marketplace</button>
+                <button onclick="filterByTopic.call(this, 'Campus Resources')">Campus Resources</button>
+                <!-- <button onclick="filterByTopic('Job Search')">Job Search</button>
                 <button onclick="filterByTopic('Lab Switches')">Lab Switches</button>
                 <button onclick="filterByTopic('UBCO Activities')">UBCO Activities</button>
                 <button onclick="filterByTopic('HELP')">HELP</button>
                 <button onclick="filterByTopic('Marketplace')">Marketplace</button>
-                <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
+                <button onclick="filterByTopic('Campus Resources')">Campus Resources</button> -->
             </div>
             <?php if ($isLoggedIn): ?>
                 <div id="postCreationForm">
