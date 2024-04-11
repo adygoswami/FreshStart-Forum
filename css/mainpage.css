@@ -60,13 +60,13 @@ header input {
 }
 
 #main-content {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     /* height: 100%; */
     height: 100vh;
     /* float: left; */
     width: 35%;
-    overflow: hidden;
 }
 
 #post-container {
