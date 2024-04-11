@@ -83,13 +83,13 @@ if ($conn->connect_error) {
 
         <?php endif; ?>
 
-
+        <main id="post-container">
+            <!-- We did Dynamic placement of posts here using the mainpage.js file -->
+        </main>
 
     </div>
 
-    <main id="post-container">
-        <!-- We did Dynamic placement of posts here using the mainpage.js file -->
-    </main>
+
 </body>
 
 </html>
