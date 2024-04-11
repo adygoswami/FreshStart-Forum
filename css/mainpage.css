@@ -88,6 +88,10 @@ header input {
     padding: 0;
     /* flex: 1; */
 }
+#createPostForm{
+    margin: 0;
+    padding: 0;
+}
 #postCreationForm form {
     color: black;
     display: flex;
