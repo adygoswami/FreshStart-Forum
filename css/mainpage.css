@@ -203,10 +203,9 @@ header input {
     border-right: 5px solid #0a4583;
 }
 
-#topics-list button.selected {
-    /* background-color: #3e3f3f; */
-    margin-left: 4em;
-    border-right: 5px solid #0a4583;
+#topics-list button.clicked {
+    background-color: #3e3f3f; 
+    color: white;
 }
 
 
