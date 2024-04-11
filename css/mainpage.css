@@ -92,7 +92,7 @@ header input {
     flex-direction: column;
     flex: 1;
     justify-content:flex-start;
-    align-items:first baseline;
+    align-items:center;
     /* margin: 2em 15% 1em; */
     /* margin-top: 2em;
     margin-left: 15%;
@@ -114,7 +114,10 @@ header input {
     margin-bottom: 2em;
     border-radius: 0.5em;
 }
-
+#imgSel{
+    display: flex;
+    flex-direction: row;
+}
 #postCreationForm form textarea{
     height: 10em;
     width: 80%;

@@ -64,17 +64,18 @@ if ($conn->connect_error) {
                     <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
                         <h1 class="disc-header">Create a Post</h1>
                         <input id="tcss" type="text" name="title" placeholder="Title" required>
+                        <div id="imgSel">
+                            <input type="file" name="image" accept="image/*">
+                            <select name="topic">
+                                <option value="Job Search">Job Search</option>
+                                <option value="Lab Switches">Lab Switches</option>
+                                <option value="UBCO Activities">UBCO Activities</option>
+                                <option value="HELP">HELP</option>
+                                <option value="Marketplace">Marketplace</option>
+                                <option value="Campus Resources">Campus Resources</option>
+                            </select>
+                        </div>
                         <textarea name="content" placeholder="Content" required></textarea>
-                        <input type="file" name="image" accept="image/*">
-
-                        <select name="topic">
-                            <option value="Job Search">Job Search</option>
-                            <option value="Lab Switches">Lab Switches</option>
-                            <option value="UBCO Activities">UBCO Activities</option>
-                            <option value="HELP">HELP</option>
-                            <option value="Marketplace">Marketplace</option>
-                            <option value="Campus Resources">Campus Resources</option>
-                        </select>
                         <button type="submit">Create Post</button>
                     </form>
                 </div>
