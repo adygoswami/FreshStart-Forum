@@ -198,14 +198,14 @@ header input {
 #topics-list button:hover,
 #topics-list button.active{
     /* background-color: #3e3f3f; */
-    margin-left: 3em;
-    margin-right: 3em;
+    margin-left: 4em;
+    margin-right: 4em;
     border-right: 5px solid #0a4583;
 }
 
 #topics-list button.selected {
     /* background-color: #3e3f3f; */
-    margin-left: 3em;
+    margin-left: 4em;
     border-right: 5px solid #0a4583;
 }
 
