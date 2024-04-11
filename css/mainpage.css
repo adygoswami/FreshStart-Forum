@@ -213,6 +213,7 @@ header input {
     width: 100%;
     overflow: scroll;
     background-color: #7596bd;
+    height: 100vh;
 }
 
 .post {
