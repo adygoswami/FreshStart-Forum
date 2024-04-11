@@ -117,6 +117,7 @@ header input {
 #imgSel{
     display: flex;
     flex-direction: row;
+    width: 80%;
 }
 #postCreationForm form textarea{
     height: 10em;
@@ -124,8 +125,14 @@ header input {
 }
 #tcss{
     height:2em;
-    width: 50%;
+    width: 80%;
 }
+#cpbtn{
+    height: 2em;
+    width: 80%;
+    padding: 1.5em;
+}
+
 .disc-header {
     background-color: #0a4583;
     padding-top: 0.5em;

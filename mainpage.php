@@ -76,7 +76,7 @@ if ($conn->connect_error) {
                             </select>
                         </div>
                         <textarea name="content" placeholder="Content" required></textarea>
-                        <button type="submit">Create Post</button>
+                        <button id="cpbtn" type="submit">Create Post</button>
                     </form>
                 </div>
             <?php endif; ?>
