@@ -60,6 +60,8 @@ function displayPosts(posts) {
 
         let imageHtml = post.image ? `<img src="data:image/jpeg;base64,${post.image}" alt="Post Image" style="max-width: 100%; height: auto;">` : '';
         let commentsHtml = '';
+        let likeButtonClass = post.userInteraction === 'like' ? 'liked' : '';
+        let dislikeButtonClass = post.userInteraction === 'dislike' ? 'disliked' : '';
         if (post.comments && post.comments.length > 0) {
             commentsHtml = post.comments.map(comment => `<div class="comment"><p>${comment.userID}: ${comment.commentText}</p></div>`).join('');
         }
@@ -71,8 +73,8 @@ function displayPosts(posts) {
             <p>Likes: ${post.likes}</p>
             <p>Dislikes: ${post.dislikes}</p>
             <div class="comments">${commentsHtml}</div>
-            <button onclick="updateLikes(${post.postID})">Like</button>
-            <button onclick="updateDislikes(${post.postID})">Dislike</button>
+            <button class="${likeButtonClass}" onclick="updateLikes(${post.postID})">Like</button>
+            <button class="${dislikeButtonClass}" onclick="updateDislikes(${post.postID})">Dislike</button>
             ${isLoggedIn ? `<textarea class="commentText-${post.postID}"></textarea><button onclick="addComment(${post.postID})">Comment</button>` : ''}
             ${isAdmin ? `<button onclick="deletePost(${post.postID})">Delete</button>` : ''}
         `;
