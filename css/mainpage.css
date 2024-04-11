@@ -88,6 +88,13 @@ header input {
 
 /* /////////////////// CREATE A POST  ///////////////////////////////////// */
 /* main content has the createPost form and post-container */
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 #main-content {
     display: flex;
     flex-direction: column;
