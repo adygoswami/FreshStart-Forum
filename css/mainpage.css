@@ -61,7 +61,7 @@ header input {
     flex-direction: column;
     /* height: 100%; */
     height: 100vh;
-    float: left;
+    /* float: left; */
     width: 35%;
 }
 
