@@ -45,46 +45,6 @@ header input {
 }
 
 /* ////////////////////// TOPIC LIST - LEFT HAND SIDE NAV - //////////////////*/
-#topics-list {
-    background-color: #2173c9;
-    display: flex;
-    flex-direction: column;
-    float: left;
-    height: 100vh;
-    min-height: 100%;
-    width: 20%;
-}
-#disc-header {
-    background-color: #0a4583;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    padding-left: 1em;
-    padding-right: 1em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-}
-#topics-list button{
-    margin-bottom: 1em;
-    margin-left: 2em;
-    margin-right: 2em;
-    padding: 1em;
-    background-color: #7596bd;
-    border-radius: 1em;
-    border: none;
-    transition: all 0.3s ease-in-out;
-}
-
-#topics-list button:hover, #topics-list button.active {
-    background-color: #3e3f3f;
-    margin-left: -15px;
-    padding-left: 30px;
-    border-right: 5px solid #1abc9c;
-
-}
 
 /* /////////////////// CREATE A POST  ///////////////////////////////////// */
 /* main content has the createPost form and post-container */
@@ -98,6 +58,7 @@ header input {
 #main-content {
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 #post-container {
@@ -107,20 +68,65 @@ header input {
     justify-content: center; 
     align-items: center;
 }
-#postCreationForm form{
+#topics-list {
+    background-color: #2173c9;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    float: left;
+    width: 100%;
+    flex:1;
+}
+
+#disc-header {
+    background-color: #0a4583;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+
+#topics-list button {
+    margin-bottom: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+    padding: 1em;
+    background-color: #7596bd;
+    border-radius: 1em;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+#topics-list button:hover,
+#topics-list button.active {
+    background-color: #3e3f3f;
+    margin-left: -15px;
+    padding-left: 30px;
+    border-right: 5px solid #1abc9c;
+
+}
+#postCreationForm form{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2em 15% 1em;
+    /* margin-top: 2em;
     margin-left: 15%;
     margin-right: 15%;
-    margin-bottom: 1em;
+    margin-bottom: 1em; */
     background-color: #2173c9;
-    padding-top: 1em;
+    padding: 1em 2em;
+    /* padding-top: 1em;
     padding-bottom: 1em;
     padding-left: 2em;
-    padding-right: 2em;
+    padding-right: 2em; */
     border-radius: 5em;
 }
 

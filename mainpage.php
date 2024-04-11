@@ -50,7 +50,7 @@ if ($conn->connect_error) {
     </header>
     <div id="container">
         <div id="main-content">
-            <aside id="topics-list">
+            <div id="topics-list">
                 <h1 id="disc-header">Discussion Topics</h1>
                 <button onclick="filterByTopic('Job Search')">Job Search</button>
                 <button onclick="filterByTopic('Lab Switches')">Lab Switches</button>
@@ -58,33 +58,27 @@ if ($conn->connect_error) {
                 <button onclick="filterByTopic('HELP')">HELP</button>
                 <button onclick="filterByTopic('Marketplace')">Marketplace</button>
                 <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
-            </aside>
-
-
+            </div>
             <?php if ($isLoggedIn): ?>
-                <div id="postCreationForm">
-                    <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
-                        <h1>Create a Post</h1>
-                        <input type="text" name="title" placeholder="Title" required>
-                        <textarea name="content" placeholder="Content" required></textarea>
-                        <input type="file" name="image" accept="image/*">
+            <div id="postCreationForm">
+                <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
+                    <h1>Create a Post</h1>
+                    <input type="text" name="title" placeholder="Title" required>
+                    <textarea name="content" placeholder="Content" required></textarea>
+                    <input type="file" name="image" accept="image/*">
 
-                        <select name="topic">
-                            <option value="Job Search">Job Search</option>
-                            <option value="Lab Switches">Lab Switches</option>
-                            <option value="UBCO Activities">UBCO Activities</option>
-                            <option value="HELP">HELP</option>
-                            <option value="Marketplace">Marketplace</option>
-                            <option value="Campus Resources">Campus Resources</option>
-                        </select>
-                        <button type="submit">Create Post</button>
-                    </form>
-                </div>
-
+                    <select name="topic">
+                        <option value="Job Search">Job Search</option>
+                        <option value="Lab Switches">Lab Switches</option>
+                        <option value="UBCO Activities">UBCO Activities</option>
+                        <option value="HELP">HELP</option>
+                        <option value="Marketplace">Marketplace</option>
+                        <option value="Campus Resources">Campus Resources</option>
+                    </select>
+                    <button type="submit">Create Post</button>
+                </form>
+            </div>
             <?php endif; ?>
-
-
-
         </div>
         <main id="post-container">
             <!-- We did Dynamic placement of posts here using the mainpage.js file -->
