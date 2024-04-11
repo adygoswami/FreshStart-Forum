@@ -62,7 +62,8 @@ if ($conn->connect_error) {
             <?php if ($isLoggedIn): ?>
                 <div id="postCreationForm">
                     <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
-                        <h1 class="c-header">Create a Post</h1>
+                        <!-- <h1 class="c-header">Create a Post</h1> -->
+                        <h1 class="disc-header">Create a Post</h1>
                         <input id="tcss" type="text" name="title" placeholder="Title" required>
                         <div id="imgSel">
                             <input type="file" name="image" accept="image/*">
