@@ -62,7 +62,6 @@ if ($conn->connect_error)
 
     <div id="main-content">
         <?php if ($isLoggedIn): ?>
-            
             <div id="postCreationForm">
                 <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
                     <h1>Create a Post</h1>
