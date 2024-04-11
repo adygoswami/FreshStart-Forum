@@ -51,6 +51,7 @@ if ($conn->connect_error) {
     <div id="container">
         <div id="main-content">
             <div id="topics-list">
+                <h1 class="disc-header">Discussion Topics</h1>
                 <button onclick="filterByTopic('Job Search')">Job Search</button>
                 <button onclick="filterByTopic('Lab Switches')">Lab Switches</button>
                 <button onclick="filterByTopic('UBCO Activities')">UBCO Activities</button>
