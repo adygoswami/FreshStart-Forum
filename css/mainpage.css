@@ -55,7 +55,6 @@ header input {
     justify-content: space-between;
     align-items: flex-start;
     height: 100vh;
-    position: absolute;
 
 }
 
@@ -67,6 +66,7 @@ header input {
     height: 100vh;
     /* float: left; */
     width: 35%;
+    overflow-y: auto;
 }
 
 #post-container {
