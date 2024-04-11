@@ -142,7 +142,7 @@ header input {
 .post-container {
     padding: 20px;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: space-around;
 }
 
