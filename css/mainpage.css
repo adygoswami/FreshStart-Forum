@@ -204,8 +204,8 @@ header input {
 }
 
 #topics-list button.clicked {
-    background-color: #3e3f3f; 
-    color: white;
+    border-right: 15px solid #0a4583; 
+    /* color: white; */
 }
 
 
