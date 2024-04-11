@@ -127,7 +127,7 @@ header input {
     padding-bottom: 1em;
     padding-left: 2em;
     padding-right: 2em; */
-    border-radius: 5em;
+    /* border-radius: 5em; */
 }
 
 #postCreationForm form input, #postCreationForm form textarea, #postCreationForm form select{
