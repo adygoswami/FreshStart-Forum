@@ -117,7 +117,10 @@ header input {
     height: 10em;
     width: 80%;
 }
-
+#postCreationForm form input text{
+    height:2em;
+    width: 50%;
+}
 
 
 
