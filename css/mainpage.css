@@ -76,7 +76,28 @@ header input {
     width: 100%;
     flex:1;
 }
-
+#postCreationForm{
+    background-color: #3e3f3f;
+}
+#postCreationForm form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2em 15% 1em;
+    /* margin-top: 2em;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 1em; */
+    background-color: #2173c9;
+    padding: 1em 2em;
+    /* padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 2em;
+    padding-right: 2em; */
+    /* border-radius: 5em; */
+}
 #disc-header {
     background-color: #0a4583;
     padding-top: 0.5em;
@@ -105,30 +126,12 @@ header input {
 #topics-list button:hover,
 #topics-list button.active {
     background-color: #3e3f3f;
-    margin-left: -15px;
+    margin-left: 2em;
     padding-left: 30px;
     border-right: 5px solid #1abc9c;
 
 }
-#postCreationForm form{
-    display: flex;
-    flex-direction: column;
-    flex:1;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2em 15% 1em;
-    /* margin-top: 2em;
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-bottom: 1em; */
-    background-color: #2173c9;
-    padding: 1em 2em;
-    /* padding-top: 1em;
-    padding-bottom: 1em;
-    padding-left: 2em;
-    padding-right: 2em; */
-    /* border-radius: 5em; */
-}
+
 
 #postCreationForm form input, #postCreationForm form textarea, #postCreationForm form select{
     padding: 0.5em;
