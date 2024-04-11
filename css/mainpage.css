@@ -78,7 +78,7 @@ header input {
     display: flex;
     flex-direction:column;
     width: 100%;
-    flex:1;
+    /* flex:1; */
 }
 #postCreationForm{
     background-color: #3e3f3f;
