@@ -55,6 +55,7 @@ header input {
     justify-content: space-between;
     align-items: flex-start;
     height: 100vh;
+    position: absolute;
 
 }
 
