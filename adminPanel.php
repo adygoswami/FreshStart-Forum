@@ -205,7 +205,7 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
         document.addEventListener('DOMContentLoaded', function () {
             var ctxLogin = document.getElementById('loginChart').getContext('2d');
             var loginChart = new Chart(ctxLogin, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: loginData.map(item => item.week),
                     datasets: [{
@@ -233,7 +233,6 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
                     datasets: [{
                         label: 'Weekly Interactions',
                         data: interactionData.map(item => item.comment_count),
-                        data: interactionData.map(item => item.post_count),
                         backgroundColor: 'rgba(255, 99, 132, 0.5)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
