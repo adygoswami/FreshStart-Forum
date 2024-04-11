@@ -92,7 +92,7 @@ header input {
     flex-direction: column;
     flex: 1;
     justify-content:flex-start;
-    align-items:center;
+    align-items:first baseline;
     /* margin: 2em 15% 1em; */
     /* margin-top: 2em;
     margin-left: 15%;
