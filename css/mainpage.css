@@ -164,7 +164,7 @@ header input {
     padding-left: 1.5em;
     padding-right: 1em; 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-left: 0;
     margin-right: 0;
