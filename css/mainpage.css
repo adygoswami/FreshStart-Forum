@@ -203,10 +203,7 @@ header input {
     border-right: 5px solid #0a4583;
 }
 
-#topics-list button.clicked {
-    border-right: 15px solid #0a4583; 
-    margin-right: -2em;
-}
+
 
 
 
