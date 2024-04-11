@@ -203,11 +203,6 @@ header input {
     border-right: 5px solid #0a4583;
 }
 
-#topics-list button.active {
-    background-color: #0a4583; /* or any color that indicates selection */
-    border-right: 5px solid #7596bd; /* or any other style changes */
-}
-
 /* /////////////////// DISPLAYING POSTS ///////////////////////////////////// */
 #post-container {
     padding-top: 0;
