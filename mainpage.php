@@ -15,8 +15,7 @@ $username = "47130992";
 $password = "freshstart360";
 $dbname = "db_47130992";
 $conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) 
-{
+if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 ?>
@@ -50,17 +49,18 @@ if ($conn->connect_error)
 
     </header>
 
-    <aside id="topics-list">
-        <h1 id="disc-header">Discussion Topics</h1>
-        <button onclick="filterByTopic('Job Search')">Job Search</button>
-        <button onclick="filterByTopic('Lab Switches')">Lab Switches</button>
-        <button onclick="filterByTopic('UBCO Activities')">UBCO Activities</button>
-        <button onclick="filterByTopic('HELP')">HELP</button>
-        <button onclick="filterByTopic('Marketplace')">Marketplace</button>
-        <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
-    </aside>
-
     <div id="main-content">
+        <aside id="topics-list">
+            <h1 id="disc-header">Discussion Topics</h1>
+            <button onclick="filterByTopic('Job Search')">Job Search</button>
+            <button onclick="filterByTopic('Lab Switches')">Lab Switches</button>
+            <button onclick="filterByTopic('UBCO Activities')">UBCO Activities</button>
+            <button onclick="filterByTopic('HELP')">HELP</button>
+            <button onclick="filterByTopic('Marketplace')">Marketplace</button>
+            <button onclick="filterByTopic('Campus Resources')">Campus Resources</button>
+        </aside>
+
+
         <?php if ($isLoggedIn): ?>
             <div id="postCreationForm">
                 <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
@@ -83,12 +83,13 @@ if ($conn->connect_error)
 
         <?php endif; ?>
 
-       
-        <main id="post-container">
-            <!-- We did Dynamic placement of posts here using the mainpage.js file -->
-        </main>
+
 
     </div>
+
+    <main id="post-container">
+        <!-- We did Dynamic placement of posts here using the mainpage.js file -->
+    </main>
 </body>
 
 </html>
