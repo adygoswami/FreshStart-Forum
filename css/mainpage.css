@@ -54,7 +54,6 @@ header input {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    overflow-y: scroll;
     height: 100vh;
 
 }
