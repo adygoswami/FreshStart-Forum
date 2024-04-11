@@ -204,7 +204,7 @@ header input {
 
 /* /////////////////// DISPLAYING POSTS ///////////////////////////////////// */
 #post-container {
-    padding-top: 1em;
+    padding-top: 0;
     display: flex;
     /* flex-wrap: wrap; */
     justify-content: space-around;
