@@ -115,9 +115,9 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
 <body>
     <div class="admin-container">
         <div class="chart-container">
-            <h2>Login Trends</h2>
+            <h2>Login Trends - Year and Week Number</h2>
             <canvas id="loginChart"></canvas>
-            <h2>Interaction Trends</h2>
+            <h2>Interaction Trends - Year and Week Number</h2>
             <canvas id="interactionChart"></canvas>
         </div>
         <div class="search-section">
