@@ -148,7 +148,7 @@ header input {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    overflow: scroll;
+    overflow:hidden;
 }
 
 .post {
