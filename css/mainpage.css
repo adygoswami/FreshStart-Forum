@@ -88,18 +88,25 @@ header input {
     flex: 1;
     justify-content: space-between;
     align-items: center;
-    /* margin: 2em 15% 1em; */
+    margin: 2em 15% 1em;
     /* margin-top: 2em;
     margin-left: 15%;
     margin-right: 15%;
     margin-bottom: 1em; */
     background-color: #2173c9;
-    /* padding: 1em 2em; */
+    padding: 1em 2em;
     /* padding-top: 1em;
     padding-bottom: 1em;
     padding-left: 2em;
     padding-right: 2em; */
     /* border-radius: 5em; */
+}
+#postCreationForm form input,
+#postCreationForm form textarea,
+#postCreationForm form select {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    /* border: 1px solid black; */
 }
 #disc-header {
     background-color: #0a4583;
@@ -136,11 +143,7 @@ header input {
 }
 
 
-#postCreationForm form input, #postCreationForm form textarea, #postCreationForm form select{
-    padding: 0.5em;
-    border-radius: 0.5em;
-    /* border: 1px solid black; */
-}
+
 /* /////////////////// DISPLAYING POSTS ///////////////////////////////////// */
 #post-container {
     padding: 20px;
