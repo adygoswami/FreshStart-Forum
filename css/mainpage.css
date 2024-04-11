@@ -136,7 +136,19 @@ header input {
     margin-top: 0;
     width: 100%;
 }
-
+#cp-header {
+    background-color: #0a4583;
+    
+    padding-left: 1em;
+    padding-right: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    width: 100%;
+}
 #topics-list button {
     margin-bottom: 1em;
     margin-left: 2em;
