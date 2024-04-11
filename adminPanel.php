@@ -2,7 +2,7 @@
      admin_password = admin@Freshstart360 -->
 
 
-<?php
+     <?php
 session_start();
 
 // Access control: Only allow admins and if you try to jump to the admin page through URL it throws you back to login!!!
@@ -97,16 +97,18 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
         })
         .catch(error => console.error('Error:', error));
     }
-    </script> 
+    </script>
+
 </head>
 <body>
+    <div class="admin-container">
+
         <div class="search-section">
-        <h2>Search Users and Posts</h2>
+            <h2>Search Users and Posts</h2>
             <form method="post">
                 <input type="text" name="searchQuery" placeholder="Search by username, email, or post title">
                 <button type="submit" name="search">Search</button>
             </form>
-        </div>
             <div class="search-results">
                 <?php if (!empty($searchResults)): ?>
                     <table>
