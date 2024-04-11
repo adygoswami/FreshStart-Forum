@@ -232,7 +232,8 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
                     labels: interactionData.map(item => item.week),
                     datasets: [{
                         label: 'Weekly Interactions',
-                        data: interactionData.map(item => item.comment_count + item.post_count),
+                        data: interactionData.map(item => item.comment_count),
+                        data: interactionData.map(item => item.post_count),
                         backgroundColor: 'rgba(255, 99, 132, 0.5)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
