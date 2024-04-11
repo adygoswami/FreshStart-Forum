@@ -12,18 +12,29 @@ $dbname = "db_47130992";
 ///// SERVER /////
 ///* 
 $servername = "localhost";
-$username = "47130992";
-$password = "freshstart360";
+$dbusername = "47130992";
+$dbpassword = "freshstart360";
 $dbname = "db_47130992";
 //*/
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Create a new DB connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
     // form data
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    function updateWeeklyLogins($conn)
+    {
+        $current_week = date('W'); // current week
+        $current_year = date('o'); // current year
+        $yearweek = $current_year . $current_week; // combined
+
+        $stmt = $conn->prepare("INSERT INTO weekly_logins (week, login_count) VALUES (?, 1) ON DUPLICATE KEY UPDATE login_count = login_count + 1");
+        $stmt->bind_param("s", $yearweek);
+        $stmt->execute();
+        $stmt->close();
+    }
     // Prepare a select statement
     $stmt = $conn->prepare("SELECT * FROM user_details WHERE username = ?");
     $stmt->bind_param("s", $username);
@@ -42,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Check if the user is an admin
             $_SESSION['is_admin'] = $user['is_admin'];
+            updateWeeklyLogins($conn);
 
             if ($_SESSION['is_admin']) {
                 // If the user is an admin, redirect them to the admin panel page
