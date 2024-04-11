@@ -140,11 +140,9 @@ header input {
 }
 #cp-header {
     background-color: #0a4583;
-    
+    margin: 0%;
     padding-left: 1em;
     padding-right: 1em;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-left: 0;
     margin-right: 0;
