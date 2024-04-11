@@ -51,7 +51,7 @@ if ($conn->connect_error) {
     <div id="container">
         <div id="main-content">
             <div id="topics-list">
-                <h1 id="disc-header">Discussion Topics</h1>
+                <h1 class="disc-header">Discussion Topics</h1>
                 <button onclick="filterByTopic('Job Search')">Job Search</button>
                 <button onclick="filterByTopic('Lab Switches')">Lab Switches</button>
                 <button onclick="filterByTopic('UBCO Activities')">UBCO Activities</button>
@@ -62,7 +62,7 @@ if ($conn->connect_error) {
             <?php if ($isLoggedIn): ?>
                 <div id="postCreationForm">
                     <form action="createPost.php" method="post" id="createPostForm" enctype="multipart/form-data">
-                        <h1>Create a Post</h1>
+                        <h1 class="disc-header">Create a Post</h1>
                         <input type="text" name="title" placeholder="Title" required>
                         <textarea name="content" placeholder="Content" required></textarea>
                         <input type="file" name="image" accept="image/*">
