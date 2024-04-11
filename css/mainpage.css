@@ -63,7 +63,7 @@ header input {
     height: 100vh;
     float: left;
     width: 35%;
-    position: absolute;
+    position:fixed;
 }
 
 #post-container {
