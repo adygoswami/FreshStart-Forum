@@ -8,10 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// function setupTopicFilters() {
+//     document.querySelectorAll('#topics-list button').forEach(button => {
+//         button.addEventListener('click', function() {
+//             filterByTopic(this.textContent);
+//         });
+//     });
+// }
+
 function setupTopicFilters() {
     document.querySelectorAll('#topics-list button').forEach(button => {
         button.addEventListener('click', function() {
-            filterByTopic(this.textContent);
+            const topic = this.textContent;
+            const isPopular = topic === "Popular Topics"; // Check if the button is for Popular Topics
+            filterByTopic(topic, isPopular);
         });
     });
 }
@@ -96,8 +106,36 @@ function searchPosts() {
 }
 
 // Filter posts by topic
-function filterByTopic(topic) {
-    fetch('filterPosts.php?topic=' + encodeURIComponent(topic))
+// function filterByTopic(topic) {
+//     fetch('filterPosts.php?topic=' + encodeURIComponent(topic))
+//     .then(response => response.json())
+//     .then(posts => {
+//         displayPosts(posts);
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//     });
+//     var buttons = document.querySelectorAll('#topics-list button');
+
+//     // Remove the 'active' class from all buttons
+//     buttons.forEach(function(button) {
+//         button.classList.remove('active');
+//     });
+
+//     // Add the 'active' class to the clicked button
+//     // The 'this' keyword refers to the button that was clicked
+//     this.classList.add('active');
+// }
+
+function filterByTopic(topic, isPopular = false) {
+    let url = 'filterPosts.php';
+    if (isPopular) {
+        url += '?popular=true'; // If it's the Popular Topics button, adjust the query
+    } else {
+        url += '?topic=' + encodeURIComponent(topic);
+    }
+
+    fetch(url)
     .then(response => response.json())
     .then(posts => {
         displayPosts(posts);
