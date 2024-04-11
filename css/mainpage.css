@@ -119,6 +119,10 @@ header input {
     flex-direction: row;
     width: 80%;
 }
+#imgSel input, #imgSel select{
+    padding: 1em;
+    height: 2em;
+}
 #postCreationForm form textarea{
     height: 10em;
     width: 80%;
