@@ -159,11 +159,10 @@ header input {
 .c-header {
     color: white;
     background-color: #0a4583;
-    padding: auto;
-    /* padding-top: 0.5em;
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
-    padding-left: 3em;
-    padding-right: 1em; */
+    padding-left: 1.5em;
+    padding-right: 1em; 
     display: flex;
     justify-content: center;
     align-items: center;
