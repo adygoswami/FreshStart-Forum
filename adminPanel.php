@@ -210,7 +210,7 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
                     labels: loginData.map(item => item.week),
                     datasets: [{
                         label: 'Weekly Logins',
-                        data: loginData.map(item => item.logins),
+                        data: loginData.map(item => item.login_count),
                         backgroundColor: 'rgba(54, 162, 235, 0.5)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
