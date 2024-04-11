@@ -143,8 +143,12 @@ header input {
 #post-container {
     padding: 20px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    /* flex-wrap: wrap;
+    justify-content: space-around; */
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    overflow: scroll;
 }
 
 .post {
