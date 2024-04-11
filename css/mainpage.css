@@ -149,6 +149,7 @@ header input {
     flex-direction: column;
     width: 100%;
     overflow:hidden;
+    background-color: #7596bd;
 }
 
 .post {
