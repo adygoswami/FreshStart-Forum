@@ -106,54 +106,64 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
         })
         .catch(error => console.error('Error:', error));
     }
-    // var loginData = <?php echo json_encode($loginData); ?>;
-    // var interactionData = <?php echo json_encode($interactionData); ?>;
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+</head>
+<body>
     <script>
-        // Prepare data for Login Chart
-        var loginWeeks = loginData.map(data => "Week " + data.week);
-         var loginCounts = loginData.map(data => data.total_logins);
+        var loginData = <?php echo json_encode($loginData); ?>;
+        var interactionData = <?php echo json_encode($interactionData); ?>;
+    </script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            
-
-            // Prepare data for Interaction Chart
+            // Prepare data for the charts
+            var loginWeeks = loginData.map(data => "Week " + data.week);
+            var loginCounts = loginData.map(data => data.total_logins);
             var interactionWeeks = interactionData.map(data => "Week " + data.week);
             var postCounts = interactionData.map(data => data.total_posts);
             var commentCounts = interactionData.map(data => data.total_comments);
 
-            // Login Chart
+            // Set up the Login Chart
             var ctxLogin = document.getElementById('loginChart').getContext('2d');
             var loginChart = new Chart(ctxLogin, {
-                type: 'line',
+                type: 'line', // Type of chart
                 data: {
-                    labels: loginWeeks,
+                    labels: loginWeeks, // X-axis labels
                     datasets: [{
                         label: 'Total Logins',
-                        data: loginCounts,
+                        data: loginCounts, // Y-axis data
                         fill: false,
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1
                     }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false
                 }
             });
 
-            // Interaction Chart
+            // Set up the Interaction Chart
             var ctxInteraction = document.getElementById('interactionChart').getContext('2d');
             var interactionChart = new Chart(ctxInteraction, {
-                type: 'bar',
+                type: 'bar', // Type of chart
                 data: {
-                    labels: interactionWeeks,
+                    labels: interactionWeeks, // X-axis labels
                     datasets: [{
                         label: 'Total Posts',
-                        data: postCounts,
+                        data: postCounts, // Y-axis data for posts
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'Total Comments',
-                        data: commentCounts,
+                        data: commentCounts, // Y-axis data for comments
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
@@ -164,15 +174,14 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
                         y: {
                             beginAtZero: true
                         }
-                    }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false
                 }
             });
         });
+
     </script>
-
-
-</head>
-<body>
     <div class="admin-container">
         <div class="chart-container">
         <h2>Weekly Logins</h2>
@@ -181,13 +190,12 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
         <canvas id="interactionChart"></canvas>
     </div>
         <div class="search-section">
-            <div class="chart-container">
-            <h2>Weekly Logins</h2>
-            <canvas id="loginChart"></canvas>
-            <h2>Weekly Interactions</h2>
-            <canvas id="interactionChart"></canvas>
+        <h2>Search Users and Posts</h2>
+            <form method="post">
+                <input type="text" name="searchQuery" placeholder="Search by username, email, or post title">
+                <button type="submit" name="search">Search</button>
+            </form>
         </div>
-
             <div class="search-results">
                 <?php if (!empty($searchResults)): ?>
                     <table>
