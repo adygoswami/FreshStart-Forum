@@ -134,9 +134,10 @@ header input {
     width: 80%;
 }
 #cpbtn{
+    font-weight: 700;
+    background-color: #0a4583;
     height: 2em;
     width: 80%;
-    padding: 1.5em;
     justify-content: center;
     align-items: center;
 }
