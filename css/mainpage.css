@@ -139,10 +139,10 @@ header input {
     /* border: 1px solid black; */
 }
 /* /////////////////// DISPLAYING POSTS ///////////////////////////////////// */
-.post-container {
+#post-container {
     padding: 20px;
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
