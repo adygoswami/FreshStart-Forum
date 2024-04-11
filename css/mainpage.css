@@ -82,7 +82,7 @@ header input {
     /* flex:1; */
 }
 #postCreationForm{
-    /* height: 50%; */
+    height: 100%;
     width: 100%;
     padding: 0;
     /* flex: 1; */
