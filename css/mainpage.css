@@ -120,12 +120,8 @@ header input {
 #tcss{
     height:2em;
     width: 50%;
+    border: none;
 }
-
-
-
-
-
 .disc-header {
     background-color: #0a4583;
     padding-top: 0.5em;
