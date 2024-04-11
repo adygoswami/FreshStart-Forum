@@ -16,6 +16,7 @@ $dbusername = "47130992";
 $dbpassword = "freshstart360";
 $dbname = "db_47130992";
 //*/
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Create a new DB connection
     $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
@@ -30,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $current_year = date('o'); // current year
         $yearweek = $current_year . $current_week; // combined
 
+        // this is checking if the week already exists in a row, if then it will update the login count. 
         $stmt = $conn->prepare("INSERT INTO weekly_logins (week, login_count) VALUES (?, 1) ON DUPLICATE KEY UPDATE login_count = login_count + 1");
         $stmt->bind_param("s", $yearweek);
         $stmt->execute();
