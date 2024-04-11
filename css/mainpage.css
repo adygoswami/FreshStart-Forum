@@ -59,7 +59,8 @@ header input {
 #main-content {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    /* height: 100%; */
+    height: 100vh;
     float: left;
 }
 
@@ -111,6 +112,16 @@ header input {
     border-radius: 0.5em;
     /* border: 1px solid black; */
 }
+
+#postCreationForm form textarea{
+    height: 10em;
+}
+
+
+
+
+
+
 .disc-header {
     background-color: #0a4583;
     padding-top: 0.5em;
