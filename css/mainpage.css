@@ -59,7 +59,8 @@ header input {
 #main-content {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
+    float: left;
 }
 
 #post-container {
@@ -73,12 +74,13 @@ header input {
     background-color: #2173c9;
     display: flex;
     flex-direction: column;
-    float: left;
     width: 100%;
     flex:1;
 }
 #postCreationForm{
     background-color: #3e3f3f;
+    height: 50%;
+    width: 100%;
 }
 #postCreationForm form {
     display: flex;
