@@ -5,7 +5,7 @@ html, body {
     /* background-color: white; */
     background-color: #7596bd;
     color: white;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 
 header {
