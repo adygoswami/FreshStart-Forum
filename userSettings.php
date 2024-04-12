@@ -114,7 +114,9 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
 
 <body>
     <header class="user-settings-header">
-        <a href="mainpage.php"><img src="path/to/logo.png" alt="FreshStart Logo" id="logo"></a>
+        <a href="mainpage.php" id="fsheader">
+            <h1>FreshStart</h1>
+        </a>
     </header>
     <div class="user-settings">
         
