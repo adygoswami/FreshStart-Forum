@@ -93,10 +93,29 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
                 })
                 .catch(error => console.error('Error:', error));
         }
+
+        function updateUsername() {
+            var formData = new FormData(document.getElementById('usernameForm'));
+            fetch('updateUsername.php', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Username updated successfully!');
+                } else {
+                    alert('Failed to update username.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
     </script>
 </head>
 
 <body>
+    <header class="user-settings-header">
+        <a href="mainpage.php"><img src="path/to/logo.png" alt="FreshStart Logo" id="logo"></a>
+    </header>
     <div class="user-settings">
         
         <div class="profile-picture">
@@ -109,18 +128,20 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
         </div>
 
         <div class="user-info">
-            <p>Username:
-                <?php echo htmlspecialchars($user['username']); ?>
-            </p>
+        <form id="usernameForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
+                <button type="button" onclick="updateUsername()">Change Username</button>
+            </form>
             <form id="passwordForm">
                 <label for="newPassword">New Password:</label>
                 <input type="password" id="newPassword" name="newPassword" required>
-                <input type="button" value="Change Password" onclick="updatePassword()">
+                <button type="button" onclick="updatePassword()">Change Password</button>
             </form>
             <form id="bioForm">
                 <label for="bio">Bio:</label>
                 <textarea id="bio" name="bio"><?php echo htmlspecialchars($user['bio']); ?></textarea>
-                <input type="button" value="Update Bio" onclick="updateBio()">
+                <button type="button" onclick="updateBio()">Update Bio</button>
             </form>
         </div>
 
