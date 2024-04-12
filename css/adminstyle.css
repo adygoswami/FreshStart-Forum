@@ -7,6 +7,16 @@
     border-radius: 8px;
   }
   
+  #fsheader {
+    color: white;
+    background-color: #0a4583;
+    border: none;
+    text-decoration: none;
+    margin-right: 1em;
+    border-radius: 10em;
+    padding: 0.5em 1em;
+  }
+  
   .search-section, .users-section, .posts-section {
     margin-bottom: 40px;
   }

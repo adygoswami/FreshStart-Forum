@@ -113,6 +113,11 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
 </head>
 
 <body>
+    <header>
+    <a href="mainpage.php" id="fsheader">
+            <h1>FreshStart</h1>
+    </a>
+    </header>
     <div class="admin-container">
         <div class="chart-container">
             <h2>Login Trends - Year and Week Number</h2>
