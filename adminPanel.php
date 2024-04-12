@@ -121,7 +121,7 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
             <canvas id="interactionChart"></canvas>
         </div>
         <div class="search-section">
-            <h2>Search Users and Posts</h2>
+            <h2>Search Users</h2>
             <form method="post">
                 <input type="text" name="searchQuery" placeholder="Search by username, email, or post title">
                 <button type="submit" name="search">Search</button>
