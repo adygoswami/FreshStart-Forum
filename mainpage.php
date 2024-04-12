@@ -1,7 +1,3 @@
-<!-- WE had to create the Mainpage and the functionality connected to it in one and a half day after our team member couldn't upload his progress due to some personal issues that the professor has been updated about.
-     our team mate had a chat with the professor where she gave us an extention till Friday on Compassionate grounds!-->
-
-
 <?php
 session_start();
 

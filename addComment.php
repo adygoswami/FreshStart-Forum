@@ -20,9 +20,9 @@ if ($conn->connect_error) {
 }
 function updateWeeklyCommentCount($conn)
 {
-    $current_week = date('W'); // current week
-    $current_year = date('o'); // current year
-    $yearweek = $current_year . $current_week; // combined
+    $current_week = date('W'); 
+    $current_year = date('o'); 
+    $yearweek = $current_year . $current_week; 
 
     // this is checking if the week already exists in a row, if then it will update the login count. 
     $stmt = $conn->prepare("INSERT INTO weekly_interactions (week, comment_count) VALUES (?, 1) ON DUPLICATE KEY UPDATE comment_count = comment_count + 1");
@@ -41,6 +41,7 @@ $userID = $_SESSION['user_id'];
 $stmt = $conn->prepare("INSERT INTO comments (postID, userID, commentText, created_at) VALUES (?, ?, ?, NOW())");
 $stmt->bind_param("iis", $postID, $userID, $commentText);
 
+//Funtional testing in real time!
 if ($stmt->execute()) {
     updateWeeklyCommentCount($conn);
     echo json_encode(['success' => true, 'message' => 'Comment added successfully']);

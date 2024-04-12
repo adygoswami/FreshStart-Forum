@@ -94,16 +94,20 @@ $profilePicture = $user['profile_picture'] ? 'data:image/jpeg;base64,' . base64_
                 .catch(error => console.error('Error:', error));
         }
 
-        function updateUsername() {
+        function updateUsername() 
+        {
             var formData = new FormData(document.getElementById('usernameForm'));
             fetch('updateUsername.php', {
                 method: 'POST',
                 body: formData
             }).then(response => response.json())
             .then(data => {
-                if (data.success) {
+                if (data.success) 
+                {
                     alert('Username updated successfully!');
-                } else {
+                } 
+                else 
+                {
                     alert('Failed to update username.');
                 }
             })

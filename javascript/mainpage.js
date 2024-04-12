@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    loadPosts(); // Initial load of posts
-    setupTopicFilters(); // Setup topic filter buttons
+    loadPosts(); 
+    setupTopicFilters(); 
 
     const createPostForm = document.getElementById('createPostForm');
     if (createPostForm) {
@@ -8,26 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// function setupTopicFilters() {
-//     document.querySelectorAll('#topics-list button').forEach(button => {
-//         button.addEventListener('click', function() {
-//             filterByTopic(this.textContent);
-//         });
-//     });
-// }
-
-function setupTopicFilters() {
+function setupTopicFilters() 
+{
     document.querySelectorAll('#topics-list button').forEach(button => {
         button.addEventListener('click', function() {
             const topic = this.textContent;
-            const isPopular = topic === "Popular Topics"; // Check if the button is for Popular Topics
+            const isPopular = topic === "Popular Topics"; 
             filterByTopic(topic, isPopular);
         });
     });
 }
 
-function handleCreatePost(event) {
-    event.preventDefault(); // Prevent the default form submission
+function handleCreatePost(event) 
+{
+    event.preventDefault(); 
 
     const formData = new FormData(event.target);
 
@@ -38,7 +32,7 @@ function handleCreatePost(event) {
     .then(response => response.text()) 
     .then(data => {
         alert(data); 
-        loadPosts(); // Reload the posts to include the new one
+        loadPosts(); 
     })
     .catch(error => console.error('Error creating post:', error));
 }
@@ -62,7 +56,7 @@ function loadPosts() {
 // Display posts on the page
 function displayPosts(posts) {
     const postContainer = document.getElementById('post-container');
-    postContainer.innerHTML = ''; // Clear existing posts
+    postContainer.innerHTML = ''; 
 
     posts.forEach(post => {
         const postDiv = document.createElement('div');
@@ -72,7 +66,9 @@ function displayPosts(posts) {
         let commentsHtml = '';
         let likeButtonClass = post.userInteraction === 'like' ? 'liked' : '';
         let dislikeButtonClass = post.userInteraction === 'dislike' ? 'disliked' : '';
-        if (post.comments && post.comments.length > 0) {
+
+        if (post.comments && post.comments.length > 0) 
+        {
             commentsHtml = post.comments.map(comment => `<div class="comment"><p>${comment.userID}: ${comment.commentText}</p></div>`).join('');
         }
 
@@ -93,7 +89,8 @@ function displayPosts(posts) {
 }
 
 // Search posts
-function searchPosts() {
+function searchPosts() 
+{
     const query = document.getElementById('searchQuery').value.trim();
     fetch('searchPosts.php?query=' + encodeURIComponent(query))
     .then(response => response.json())
@@ -105,33 +102,15 @@ function searchPosts() {
     });
 }
 
-// Filter posts by topic
-// function filterByTopic(topic) {
-//     fetch('filterPosts.php?topic=' + encodeURIComponent(topic))
-//     .then(response => response.json())
-//     .then(posts => {
-//         displayPosts(posts);
-//     })
-//     .catch(error => {
-//         console.error('Error:', error);
-//     });
-//     var buttons = document.querySelectorAll('#topics-list button');
-
-//     // Remove the 'active' class from all buttons
-//     buttons.forEach(function(button) {
-//         button.classList.remove('active');
-//     });
-
-//     // Add the 'active' class to the clicked button
-//     // The 'this' keyword refers to the button that was clicked
-//     this.classList.add('active');
-// }
-
-function filterByTopic(topic, isPopular = false) {
+function filterByTopic(topic, isPopular = false) 
+{
     let url = 'filterPosts.php';
-    if (isPopular) {
-        url += '?popular=true'; // If it's the Popular Topics button, adjust the query
-    } else {
+    if (isPopular) 
+    {
+        url += '?popular=true'; 
+    } 
+    else 
+    {
         url += '?topic=' + encodeURIComponent(topic);
     }
 
@@ -145,33 +124,31 @@ function filterByTopic(topic, isPopular = false) {
     });
     var buttons = document.querySelectorAll('#topics-list button');
 
-    // Remove the 'active' class from all buttons
     buttons.forEach(function(button) {
         button.classList.remove('active');
     });
 
-    // Add the 'active' class to the clicked button
-    // The 'this' keyword refers to the button that was clicked
     this.classList.add('active');
 }
 
-// Update likes for a post
-function updateLikes(postID) {
-    fetch('updateLikes.php', {
+function updateLikes(postID) 
+{
+    fetch('updateLikes.php', 
+    {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: `postID=${postID}`
     })
     .then(response => response.json())
     .then(data => {
-        if (data.success) {
-            loadPosts(); // Refresh posts to reflect updated likes
+        if (data.success) 
+        {
+            loadPosts(); 
         }
     })
     .catch(error => console.error('Error updating likes:', error));
 }
 
-// Update dislikes for a post
 function updateDislikes(postID) {
     fetch('updateDislikes.php', {
         method: 'POST',
@@ -181,7 +158,7 @@ function updateDislikes(postID) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            loadPosts(); // Refresh posts to reflect updated dislikes
+            loadPosts(); 
         }
     })
     .catch(error => console.error('Error updating dislikes:', error));
@@ -199,7 +176,7 @@ function addComment(postId) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            loadPosts(); // Reload posts to show the new comment
+            loadPosts(); 
         } else {
             alert('Failed to add comment.');
         }

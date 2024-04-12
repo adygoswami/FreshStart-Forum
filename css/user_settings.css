@@ -1,13 +1,11 @@
-/* General body styles */
 body {
     font-family: 'Georgia', serif;
     margin: 0;
     padding: 0;
-    background-color: #7596bd; /* Background color similar to main page */
+    background-color: #7596bd; 
     color: #fff;
 }
 
-/* Header styles */
 .user-settings-header {
     background-color: #2173c9;
     padding: 10px 20px;
@@ -17,7 +15,6 @@ body {
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
-/* Main settings container */
 .user-settings {
     max-width: 600px;
     margin: 20px auto;
@@ -25,10 +22,9 @@ body {
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 8px;
-    color: #333; /* Text color for better readability */
+    color: #333; 
 }
 
-/* Profile picture styles */
 .profile-picture img {
     width: 100px;
     height: 100px;
@@ -37,7 +33,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Forms and inputs styling */
 form {
     margin-bottom: 20px;
 }
@@ -79,7 +74,6 @@ button:hover {
     background-color: #0055bb;
 }
 
-/* Logout button styles */
 .logout button {
     background-color: #cc0000;
     width: 100%;
@@ -89,7 +83,6 @@ button:hover {
     background-color: #bb0000;
 }
 
-/* Responsive design for smaller devices */
 @media (max-width: 768px) {
     .user-settings {
         width: 95%;

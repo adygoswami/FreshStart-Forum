@@ -20,27 +20,30 @@ $userId = $_SESSION['user_id'] ?? null;
 $postQuery = "SELECT postID, title, content, image, likes, dislikes, created_at FROM posts ORDER BY created_at DESC";
 $postResult = $conn->query($postQuery);
 
-if ($postResult->num_rows > 0) {
+if ($postResult->num_rows > 0) 
+{
     while ($postRow = $postResult->fetch_assoc()) {
-        if (!is_null($postRow['image'])) {
+        if (!is_null($postRow['image'])) 
+        {
             $postRow['image'] = base64_encode($postRow['image']);
         }
-        $postRow['comments'] = [];
-        $postRow['userInteraction'] = null; // Initialize user interaction status
 
-        // Fetching user interaction for each post if user is logged in
-        if ($userId) {
+        $postRow['comments'] = [];
+        $postRow['userInteraction'] = null;
+
+        if ($userId) 
+        {
             $interactionQuery = "SELECT interaction_type FROM post_interactions WHERE post_id = ? AND user_id = ?";
             $interactionStmt = $conn->prepare($interactionQuery);
             $interactionStmt->bind_param("ii", $postRow['postID'], $userId);
             $interactionStmt->execute();
             $interactionResult = $interactionStmt->get_result();
-            if ($interactionRow = $interactionResult->fetch_assoc()) {
-                $postRow['userInteraction'] = $interactionRow['interaction_type']; // like or dislike
+            if ($interactionRow = $interactionResult->fetch_assoc()) 
+            {
+                $postRow['userInteraction'] = $interactionRow['interaction_type']; 
             }
             $interactionStmt->close();
         }
-
         $posts[$postRow['postID']] = $postRow;
     }
 }
