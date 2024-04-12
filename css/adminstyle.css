@@ -59,3 +59,13 @@
         padding: 8px;
     }
   }
+
+  /* Logout button styles */
+.logout button {
+  background-color: #cc0000;
+  width: 100%;
+}
+
+.logout button:hover {
+  background-color: #bb0000;
+}

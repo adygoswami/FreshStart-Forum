@@ -120,11 +120,6 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
             <h2>Interaction Trends - Year and Week Number</h2>
             <canvas id="interactionChart"></canvas>
         </div>
-        <div class="logout-button">
-            <form action="logout.php" method="POST">
-                <button type="submit">Logout</button>
-            </form>
-        </div>
         <div class="search-section">
             <h2>Search Users and Posts</h2>
             <form method="post">
@@ -204,6 +199,11 @@ $posts = $conn->query("SELECT postID, title, userID, title, content FROM posts")
                     <?php endforeach; ?>
                 </tbody>
             </table>
+        </div>
+        <div class="logout">
+            <form action="logout.php" method="POST">
+                <button type="submit">Logout</button>
+            </form>
         </div>
     </div>
     <script>
